@@ -3,7 +3,7 @@ import 'package:baca_app/app/core/font/app_text_style.dart';
 import 'package:baca_app/app/core/widget/button_large.dart';
 import 'package:baca_app/app/core/widget/textfield.dart';
 import 'package:baca_app/app/modules/auth/controllers/auth_controller.dart';
-import 'package:baca_app/app/modules/auth/utils/validator.dart';
+import 'package:baca_app/app/core/utils/validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
