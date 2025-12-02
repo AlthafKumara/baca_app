@@ -1,7 +1,41 @@
+import 'package:baca_app/app/core/widget/snackbar.dart';
+import 'package:baca_app/app/data/model/profiles_model.dart';
+import 'package:baca_app/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
+import 'package:supabase_flutter/supabase_flutter.dart';
+
 class HomeController extends GetxController {
-  //TODO: Implement HomeController
+  final supabase = Supabase.instance.client;
+
+  Rxn<Profile> profile = Rxn<Profile>();
+  Future<void> loadUser() async {
+    try {
+      final user = supabase.auth.currentUser;
+
+      if (user == null) {
+        CustomSnackbar.failedSnackbar("User not found");
+        Get.offAllNamed(Routes.LOGIN);
+      }
+
+      final response = await supabase
+          .from('profiles')
+          .select()
+          .eq('id', user!.id)
+          .maybeSingle();
+      if (response == null) {
+        CustomSnackbar.failedSnackbar("Insert your profile first");
+        Get.offAllNamed(Routes.COMPLETE_PROFILE);
+        return;
+      } else {
+        final userProfile = Profile.fromMap(response);
+        profile.value = userProfile;
+        Get.offAllNamed(Routes.HOME);
+      }
+    } catch (e) {
+      CustomSnackbar.failedSnackbar(e.toString());
+    }
+  }
 
   final count = 0.obs;
   @override
@@ -12,6 +46,7 @@ class HomeController extends GetxController {
   @override
   void onReady() {
     super.onReady();
+    loadUser();
   }
 
   @override

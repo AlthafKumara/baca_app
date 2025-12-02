@@ -1,5 +1,7 @@
+import 'package:baca_app/app/modules/auth/views/complete_profile_view.dart';
 import 'package:baca_app/app/modules/auth/views/login_view.dart';
 import 'package:baca_app/app/modules/auth/views/onboarding_view.dart';
+import 'package:baca_app/app/modules/auth/views/register_view.dart';
 import 'package:baca_app/app/modules/auth/views/splash_view.dart';
 import 'package:get/get.dart';
 
@@ -32,6 +34,18 @@ class AppPages {
     GetPage(
       name: _Paths.LOGIN,
       page: () => LoginView(),
+      binding: AuthBinding(),
+    ),
+
+    GetPage(
+      name: _Paths.REGISTER,
+      page: () => RegisterView(),
+      binding: AuthBinding(),
+    ),
+
+    GetPage(
+      name: _Paths.COMPLETE_PROFILE,
+      page: () => CompleteProfileView(),
       binding: AuthBinding(),
     ),
 

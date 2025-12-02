@@ -26,7 +26,7 @@ class OnboardingView extends GetView {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(24.r),
                       image: DecorationImage(
-                        image: AssetImage("assets/onboard.png"),
+                        image: AssetImage("assets/auth/onboard.png"),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -59,7 +59,9 @@ class OnboardingView extends GetView {
                 ),
                 SizedBox(height: 12.h),
                 CustomButtonLarge.outlinelarge(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.offAllNamed(Routes.REGISTER);
+                  },
                   text: "I'm  new, sign me up",
                 ),
               ],

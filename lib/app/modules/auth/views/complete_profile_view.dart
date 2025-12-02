@@ -1,19 +1,23 @@
 import 'package:baca_app/app/core/color/app_color.dart';
 import 'package:baca_app/app/core/font/app_text_style.dart';
+import 'package:baca_app/app/core/utils/validator.dart';
+import 'package:baca_app/app/core/widget/button_large.dart';
 
-import 'package:baca_app/app/modules/auth/widget/login_body.dart';
-import 'package:baca_app/app/routes/app_pages.dart';
+import 'package:baca_app/app/modules/auth/controllers/auth_controller.dart';
+import 'package:baca_app/app/modules/auth/widget/complete_profile_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 
-class LoginView extends GetView {
-  const LoginView({super.key});
+class CompleteProfileView extends GetView<AuthController> {
+  final controller = Get.find<AuthController>();
+  Validator validator = Validator();
+
+  CompleteProfileView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: true,
       backgroundColor: AppColor.Neutral100,
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -44,30 +48,14 @@ class LoginView extends GetView {
         ),
         centerTitle: true,
       ),
-      body: LoginBody(),
+      body: CompleteProfileBody(),
       bottomNavigationBar: Padding(
-        padding: EdgeInsetsGeometry.symmetric(vertical: 42.h),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "Don't have an account?",
-              style: AppTextStyle.body2(
-                color: AppColor.Neutral400,
-                fontWeight: AppTextStyle.medium,
-              ),
-            ),
-            GestureDetector(
-              onTap: () => Get.offNamed(Routes.REGISTER),
-              child: Text(
-                " Register Here",
-                style: AppTextStyle.body2(
-                  color: AppColor.Primary500,
-                  fontWeight: AppTextStyle.bold,
-                ),
-              ),
-            ),
-          ],
+        padding: EdgeInsetsGeometry.symmetric(vertical: 42.h, horizontal: 16.w),
+        child: CustomButtonLarge.primarylarge(
+          text: "Submit",
+          onPressed: () {
+            controller.handleCompleteProfile();
+          },
         ),
       ),
     );

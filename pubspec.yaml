@@ -29,12 +29,17 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   cupertino_icons: ^1.0.8
+  dropdown_button2: ^2.3.9
+  dropdown_search: ^6.0.2
   flutter:
     sdk: flutter
+  flutter_dotenv: ^6.0.0
   flutter_launcher_icons: ^0.14.4
   flutter_screenutil: ^5.9.3
   get: ^4.7.3
   google_fonts: ^6.3.2
+  image_picker: ^1.2.1
+  supabase_flutter: ^2.10.3
 
 dev_dependencies:
   flutter_lints: ^6.0.0
@@ -56,8 +61,12 @@ flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/auth/icon/
+    - assets/auth/response/
+    - assets/auth/gender_icon/
+    - assets/auth/
     - assets/
-    - assets/icon/
+    - .env
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
   # For details regarding adding assets from package dependencies, see

@@ -8,9 +8,10 @@ class CustomButtonLarge {
 
   static Widget primarylarge({
     final void Function()? onPressed,
-    final String text = 'Button',
+    final String text = "Button",
     final Widget? prefixicon,
     final Widget? suffixicon,
+    final bool? isLoading = false,
   }) {
     return ElevatedButton(
       onPressed: onPressed,
@@ -41,13 +42,23 @@ class CustomButtonLarge {
           if (prefixicon != null)
             SizedBox(width: 24.w, height: 24.w, child: prefixicon),
 
-          Text(
-            text,
-            style: AppTextStyle.body2(
-              color: AppColor.Neutral100,
-              fontWeight: AppTextStyle.semiBold,
+          if (isLoading == true)
+            SizedBox(
+              width: 24.w,
+              height: 24.w,
+              child: CircularProgressIndicator(
+                strokeWidth: 2,
+                color: AppColor.Neutral100,
+              ),
             ),
-          ),
+          if (isLoading == false)
+            Text(
+              text,
+              style: AppTextStyle.body2(
+                color: AppColor.Neutral100,
+                fontWeight: AppTextStyle.semiBold,
+              ),
+            ),
           if (suffixicon != null)
             SizedBox(width: 24.w, height: 24.w, child: suffixicon),
         ],
@@ -62,7 +73,7 @@ class CustomButtonLarge {
     final Widget? suffixicon,
   }) {
     return OutlinedButton(
-      onPressed: () {},
+      onPressed: onPressed,
       style: OutlinedButton.styleFrom(
         side: BorderSide(color: AppColor.Neutral300),
         padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),

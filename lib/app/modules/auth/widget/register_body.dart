@@ -1,25 +1,25 @@
 import 'package:baca_app/app/core/color/app_color.dart';
 import 'package:baca_app/app/core/font/app_text_style.dart';
+import 'package:baca_app/app/core/utils/validator.dart';
 import 'package:baca_app/app/core/widget/button_large.dart';
 import 'package:baca_app/app/core/widget/textfield.dart';
 import 'package:baca_app/app/modules/auth/controllers/auth_controller.dart';
-import 'package:baca_app/app/core/utils/validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class LoginBody extends StatelessWidget {
+class RegisterBody extends StatelessWidget {
   final controller = Get.find<AuthController>();
-  final Validator validator = Validator();
-  LoginBody({super.key});
+  RegisterBody({super.key});
+  Validator validator = Validator();
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding: EdgeInsetsGeometry.symmetric(vertical: 40.h, horizontal: 16.w),
+        padding: EdgeInsets.symmetric(vertical: 40.h, horizontal: 16.w),
         child: Form(
-          key: controller.loginkey,
+          key: controller.registerkey,
           child: ListView(
             children: [
               Column(
@@ -30,7 +30,7 @@ class LoginBody extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Welcome back!",
+                        "Create your account",
                         style: AppTextStyle.heading3(
                           color: AppColor.Neutral900,
                           fontWeight: AppTextStyle.bold,
@@ -38,7 +38,7 @@ class LoginBody extends StatelessWidget {
                       ),
                       SizedBox(height: 8.h),
                       Text(
-                        "You can log into your account first to read many interesting books!",
+                        "Create a new account so you can read lots of insteresting books",
                         style: AppTextStyle.description2(
                           color: AppColor.Neutral400,
                           fontWeight: AppTextStyle.medium,
@@ -87,33 +87,47 @@ class LoginBody extends StatelessWidget {
                       validator: validator.validatorPassword,
                     ),
                   ),
-                  SizedBox(height: 40.h),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Forgot Your Password?",
-                        style: AppTextStyle.body2(
-                          color: AppColor.Neutral400,
-                          fontWeight: AppTextStyle.medium,
+                  SizedBox(height: 20.h),
+                  Obx(
+                    () => CustomTextfield.textFieldLarge(
+                      prefixicon: Image.asset(
+                        "assets/auth/icon/lock.png",
+                        width: 20.w,
+                      ),
+                      suffixicon: GestureDetector(
+                        onTap: () {
+                          controller.handleObsecure();
+                        },
+                        child: Image.asset(
+                          "assets/auth/icon/eye.png",
+                          width: 20.w,
                         ),
                       ),
-                      Text(
-                        " Reset Here",
-                        style: AppTextStyle.body2(
-                          color: AppColor.Primary500,
-                          fontWeight: AppTextStyle.bold,
-                        ),
-                      ),
-                    ],
+                      label: "Confirm password",
+                      hintText: "Input your password again",
+                      controller: controller.confirmpasswordController,
+                      isObsecureText: controller.isObsecureText.value,
+                      maxLines: 1,
+                      keyBoardType: TextInputType.visiblePassword,
+                      enabled: true,
+                      validator: (value) {
+                        return validator.validatorConfirmPassword(
+                          value,
+                          controller.passwordController.text,
+                        );
+                      },
+                    ),
                   ),
-                  SizedBox(height: 24.h),
-                  CustomButtonLarge.primarylarge(
-                    isLoading: controller.isLoading.value,
-                    text: "Login",
-                    onPressed: () {
-                      controller.handleLogin();
-                    },
+                  SizedBox(height: 40.h),
+
+                  Obx(
+                    () => CustomButtonLarge.primarylarge(
+                      isLoading: controller.isLoading.value,
+                      text: "Register",
+                      onPressed: () {
+                        controller.handleRegister();
+                      },
+                    ),
                   ),
                   SizedBox(height: 16.h),
 
@@ -122,7 +136,7 @@ class LoginBody extends StatelessWidget {
                       "assets/auth/icon/google.png",
                       width: 20.w,
                     ),
-                    text: "Login With Google",
+                    text: "Register With Google",
                     onPressed: () {},
                   ),
                 ],
