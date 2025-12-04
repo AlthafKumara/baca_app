@@ -110,7 +110,7 @@ class CompleteProfileBody extends StatelessWidget {
                       Expanded(
                         child: Obx(
                           () => genderOption(
-                            image: "assets/gender_icon/1.png",
+                            image: "assets/auth/gender_icon/1.png",
                             label: "Male",
                             value: "Male",
                             selected: controller.gender.value == "Male",
@@ -123,7 +123,7 @@ class CompleteProfileBody extends StatelessWidget {
                       Expanded(
                         child: Obx(
                           () => genderOption(
-                            image: "assets/gender_icon/2.png",
+                            image: "assets/auth/gender_icon/2.png",
                             label: "Female",
                             value: "Female",
                             selected: controller.gender.value == "Female",

@@ -9,13 +9,15 @@ class HomeController extends GetxController {
   final supabase = Supabase.instance.client;
 
   Rxn<Profile> profile = Rxn<Profile>();
+  var loaded = false.obs;
   Future<void> loadUser() async {
+    if (loaded.value) return;
+    loaded.value = true;
     try {
       final user = supabase.auth.currentUser;
 
       if (user == null) {
         CustomSnackbar.failedSnackbar("User not found");
-        Get.offAllNamed(Routes.LOGIN);
       }
 
       final response = await supabase
@@ -30,7 +32,6 @@ class HomeController extends GetxController {
       } else {
         final userProfile = Profile.fromMap(response);
         profile.value = userProfile;
-        Get.offAllNamed(Routes.HOME);
       }
     } catch (e) {
       CustomSnackbar.failedSnackbar(e.toString());

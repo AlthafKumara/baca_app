@@ -88,7 +88,7 @@ class AuthController extends GetxController {
         photoFile: selectedImage.value,
       );
       CustomBottomSheet.singleBottomSheet(
-        image: "assets/response/register_succes.png",
+        image: "assets/auth/response/register_succes.png",
         title: "Your account successfully created",
         message:
             "Your account has successfully created. You can go to login page first to login into your account!",
@@ -117,7 +117,21 @@ class AuthController extends GetxController {
       final user = authServices.supabase.auth.currentUser;
       if (user == null) throw "User not found after login";
 
-      Get.offAllNamed(Routes.SPLASH);
+      CustomSnackbar.succesSnackbar("Login success");
+
+      final profile = await profileServices.loadProfile(user.id);
+
+      if (profile == null) {
+        Get.offAllNamed(Routes.COMPLETE_PROFILE);
+      }
+
+      final role = profile?['role'];
+
+      if (role == 'admin') {
+        Get.offAllNamed(Routes.ADMIN_HOME);
+      } else {
+        Get.offAllNamed(Routes.HOME);
+      }
     } catch (e) {
       CustomSnackbar.failedSnackbar(e.toString());
     } finally {

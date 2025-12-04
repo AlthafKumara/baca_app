@@ -11,7 +11,7 @@ class CustomSnackbar {
       animationDuration: Duration(milliseconds: 300),
       duration: Duration(seconds: 2),
       snackPosition: SnackPosition.TOP,
-      borderRadius: 999.r,
+      borderRadius: 10.r,
       snackStyle: SnackStyle.FLOATING,
       "Success",
       message,

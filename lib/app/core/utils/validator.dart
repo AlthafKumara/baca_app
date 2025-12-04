@@ -2,14 +2,13 @@ import 'package:baca_app/app/modules/auth/utils/existing_email.dart';
 import 'package:get/get.dart';
 
 class Validator {
-
   ExistingEmail existingEmail = ExistingEmail();
   String? validatorEmail(String? value) {
     if (value == null || value.isEmpty) {
       return "Please enter your email";
     } else if (!GetUtils.isEmail(value)) {
       return "Please enter a valid email";
-    } 
+    }
     return null;
   }
 
@@ -38,9 +37,30 @@ class Validator {
     return null;
   }
 
-  String? validatorGender(String? value) {
+  String? validatorTitle(String? value) {
     if (value == null || value.isEmpty) {
-      return "Please enter your name";
+      return "Please enter your Title";
+    }
+    return null;
+  }
+
+  String? validatorSynopsis(String? value) {
+    if (value == null || value.isEmpty) {
+      return "Please enter your synopsis";
+    }
+    return null;
+  }
+
+  String? validatorAuthor(String? value) {
+    if (value == null || value.isEmpty) {
+      return "Please enter your author  ";
+    }
+    return null;
+  }
+
+  String? validatorStock(String? value) {
+    if (value == "0") {
+      return "Please enter the stock";
     }
     return null;
   }

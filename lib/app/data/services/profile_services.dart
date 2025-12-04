@@ -52,4 +52,22 @@ class ProfileServices {
       throw "Failed to create profile: $e";
     }
   }
+
+  Future<Map<String, dynamic>?> loadProfile(String userId) async {
+    try {
+      final profile = await supabase
+          .from('profiles')
+          .select()
+          .eq('id', userId)
+          .maybeSingle();
+
+      if (profile == null) {
+        throw "Profile not found";
+      }
+
+      return profile;
+    } catch (e) {
+      throw "Failed to load profile: $e";
+    }
+  }
 }

@@ -16,6 +16,7 @@ class CustomTextfield {
     final int? maxLines,
     final TextInputType? keyBoardType,
     final bool? enabled,
+    final TextAlign? textAlign = TextAlign.start,
     String? Function(String?)? validator,
   }) {
     return Column(
@@ -32,6 +33,9 @@ class CustomTextfield {
           ),
         SizedBox(height: 6.h),
         TextFormField(
+          textAlign: textAlign!,
+
+          maxLines: maxLines,
           controller: controller,
           keyboardType: keyBoardType,
           enabled: enabled,

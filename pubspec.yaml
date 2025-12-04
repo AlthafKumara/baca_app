@@ -65,7 +65,11 @@ flutter:
     - assets/auth/response/
     - assets/auth/gender_icon/
     - assets/auth/
+    - assets/home/
+    - assets/library/
     - assets/
+    - assets/appbar/
+    - assets/bottomnav/
     - .env
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
