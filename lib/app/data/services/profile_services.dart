@@ -53,12 +53,18 @@ class ProfileServices {
     }
   }
 
-  Future<Map<String, dynamic>?> loadProfile(String userId) async {
+  Future<Map<String, dynamic>?> loadProfile() async {
+    final user = supabase.auth.currentUser;
+    final id = user?.id;
+
+    if (id == null) {
+      throw "User not found";
+    }
     try {
       final profile = await supabase
           .from('profiles')
           .select()
-          .eq('id', userId)
+          .eq('id', id)
           .maybeSingle();
 
       if (profile == null) {

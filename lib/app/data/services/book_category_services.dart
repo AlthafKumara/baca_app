@@ -11,4 +11,13 @@ class BookCategoryServices {
     print(categoryList);
     return categoryList;
   }
+
+  Future<BookCategory> getCategoryBookById(int id) async {
+    final category = await supabase
+        .from('book_category')
+        .select()
+        .eq('id', id)
+        .maybeSingle();
+    return BookCategory.fromMap(category!);
+  }
 }

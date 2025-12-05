@@ -1,4 +1,9 @@
+import 'package:baca_app/app/modules/admin/admin_library/views/admin_detail_book_view.dart';
 import 'package:baca_app/app/modules/admin/admin_library/views/admin_formbook_view.dart';
+import 'package:baca_app/app/modules/admin/admin_profile/views/admin_account_setting_view.dart';
+import 'package:baca_app/app/modules/admin/admin_profile/views/admin_change_auth_view.dart';
+import 'package:baca_app/app/modules/user/profile/views/account_setting_view.dart';
+import 'package:baca_app/app/modules/user/profile/views/change_auth_view.dart';
 import 'package:get/get.dart';
 
 import '../modules/admin/admin_home/bindings/admin_home_binding.dart';
@@ -75,6 +80,17 @@ class AppPages {
       page: () => ProfileView(),
       binding: ProfileBinding(),
     ),
+    GetPage(
+      name: _Paths.ACCOUNT_SETTING,
+      page: () => AccountSettingView(),
+      binding: ProfileBinding(),
+    ),
+
+    GetPage(
+      name: _Paths.CHANGE_AUTH,
+      page: () => ChangeAuthView(),
+      binding: ProfileBinding(),
+    ),
 
     // ------------------------------------------- ADMIN--------------------------------------------
     GetPage(
@@ -88,6 +104,11 @@ class AppPages {
       binding: AdminLibraryBinding(),
     ),
     GetPage(
+      name: _Paths.ADMIN_DETAIL_BOOK,
+      page: () => AdminDetailBookView(),
+      binding: AdminLibraryBinding(),
+    ),
+    GetPage(
       name: _Paths.ADMIN_FORMBOOK,
       page: () => AdminFormbookView(),
       binding: AdminLibraryBinding(),
@@ -95,6 +116,18 @@ class AppPages {
     GetPage(
       name: _Paths.ADMIN_PROFILE,
       page: () => AdminProfileView(),
+      binding: AdminProfileBinding(),
+    ),
+
+    GetPage(
+      name: _Paths.ADMIN_ACCOUNT_SETTING,
+      page: () => AdminAccountSettingView(),
+      binding: AdminProfileBinding(),
+    ),
+
+    GetPage(
+      name: _Paths.ADMIN_CHANGE_AUTH,
+      page: () => AdminChangeAuthView(),
       binding: AdminProfileBinding(),
     ),
   ];

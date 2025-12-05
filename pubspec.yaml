@@ -67,6 +67,7 @@ flutter:
     - assets/auth/
     - assets/home/
     - assets/library/
+    - assets/profile/
     - assets/
     - assets/appbar/
     - assets/bottomnav/

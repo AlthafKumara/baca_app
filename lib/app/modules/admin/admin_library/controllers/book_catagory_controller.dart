@@ -7,11 +7,15 @@ class BookCatagoryController extends GetxController {
   BookCategoryServices services = BookCategoryServices();
 
   var categories = <BookCategory>[].obs;
+  Rxn<BookCategory> category = Rxn<BookCategory>();
+
+  var selectedCategoryId = Rx<int?>(null);
 
   var isLoading = false.obs;
   var selectedIndex = 0.obs;
 
   void getBookCategory() async {
+    isLoading.value = true;
     try {
       final result = await services.getCategoryBook();
       categories.assignAll(result);
@@ -22,8 +26,21 @@ class BookCatagoryController extends GetxController {
     }
   }
 
+  void getBookCategoryById(int id) async {
+    isLoading.value = true;
+    try {
+      final result = await services.getCategoryBookById(id);
+      category.value = result;
+    } catch (e) {
+      print(e);
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
   void onpress(int index) {
     selectedIndex.value = index;
+    selectedCategoryId.value = categories[index].id;
   }
 
   @override

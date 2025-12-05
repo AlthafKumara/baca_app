@@ -7,6 +7,7 @@ class CustomButtonMedium {
   CustomButtonMedium._();
 
   static Widget primaryMedium({
+    final Color color = AppColor.Primary500,
     final void Function()? onPressed,
     final String text = "Button",
     final Widget? prefixicon,
@@ -24,7 +25,7 @@ class CustomButtonMedium {
           if (states.contains(WidgetState.disabled)) {
             return AppColor.Neutral250;
           }
-          return AppColor.Primary500;
+          return color;
         }),
         foregroundColor: WidgetStateColor.resolveWith((states) {
           if (states.contains(WidgetState.disabled)) {

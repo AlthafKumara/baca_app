@@ -1,10 +1,11 @@
 import 'package:baca_app/app/core/color/app_color.dart';
 import 'package:baca_app/app/core/font/app_text_style.dart';
 import 'package:baca_app/app/core/utils/validator.dart';
-import 'package:baca_app/app/core/widget/bottom_sheet.dart';
+
 import 'package:baca_app/app/core/widget/button_large.dart';
 import 'package:baca_app/app/core/widget/chip.dart';
 import 'package:baca_app/app/core/widget/textfield.dart';
+import 'package:baca_app/app/data/model/book_model.dart';
 
 import 'package:baca_app/app/modules/admin/admin_library/controllers/book_catagory_controller.dart';
 import 'package:baca_app/app/modules/admin/admin_library/controllers/form_controller_controller.dart';
@@ -20,8 +21,11 @@ class AdminFormbookView extends GetView {
   final category = Get.find<BookCatagoryController>();
   Validator validator = Validator();
 
+  final book = Get.arguments as Book?;
+
   @override
   Widget build(BuildContext context) {
+    formC.loadBook(book);
     return Scaffold(
       backgroundColor: AppColor.Neutral100,
       appBar: AppBar(
@@ -64,9 +68,20 @@ class AdminFormbookView extends GetView {
                                   image: FileImage(image),
                                   fit: BoxFit.cover,
                                 )
-                              : null,
+                              : (formC.isEdit.value &&
+                                        formC.oldImageUrl.value.isNotEmpty
+                                    ? DecorationImage(
+                                        image: NetworkImage(
+                                          formC.oldImageUrl.value,
+                                        ),
+                                        fit: BoxFit.cover,
+                                      )
+                                    : null),
                         ),
-                        child: image == null
+                        child:
+                            (image == null &&
+                                !(formC.isEdit.value &&
+                                    formC.oldImageUrl.value.isNotEmpty))
                             ? Center(
                                 child: Icon(
                                   Icons.add_box,
@@ -132,7 +147,7 @@ class AdminFormbookView extends GetView {
                         ),
                       ],
                     ),
-                    SizedBox(height: 16.h),   
+                    SizedBox(height: 16.h),
                     Obx(() {
                       final list = category.categories;
 
@@ -143,7 +158,9 @@ class AdminFormbookView extends GetView {
                           (index) => CustomChip().filterChip(
                             onTap: () => category.onpress(index),
                             title: list[index].categoryName,
-                            selected: category.selectedIndex.value == index,
+                            selected:
+                                category.selectedCategoryId.value ==
+                                list[index].id,
                           ),
                         ),
                       );
@@ -194,7 +211,7 @@ class AdminFormbookView extends GetView {
         child: CustomButtonLarge.primarylarge(
           text: "Submit",
           onPressed: () {
-            formC.handleSubmit(category.selectedIndex.value);
+            formC.handleSubmit(category.selectedCategoryId.value!, book: book);
           },
         ),
       ),

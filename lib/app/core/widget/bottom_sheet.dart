@@ -64,6 +64,77 @@ class CustomBottomSheet {
     );
   }
 
+  static void doubleBottomSheet({
+    final int height = 400,
+    final image,
+    final String? title,
+    final String? message,
+    final String? primarybuttonText,
+    final String? secondarybuttonText,
+    final void Function()? onPressed,
+  }) {
+    Get.bottomSheet(
+      backgroundColor: AppColor.Neutral100,
+      isScrollControlled: true,
+      Container(
+        height: height.h,
+        alignment: Alignment.center,
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
+        child: Column(
+          children: [
+            SizedBox(
+              width: 42.w,
+              child: Divider(
+                color: AppColor.Neutral300,
+                thickness: 6.h,
+                radius: BorderRadius.circular(999),
+              ),
+            ),
+            SizedBox(height: 24.h),
+            Image.asset(image, width: 160.w),
+            SizedBox(height: 16.h),
+            Text(
+              title!,
+              style: AppTextStyle.heading5(
+                color: AppColor.Neutral900,
+                fontWeight: AppTextStyle.bold,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 8.h),
+            Text(
+              message!,
+              style: AppTextStyle.description2(
+                color: AppColor.Neutral400,
+                fontWeight: AppTextStyle.regular,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 16.h),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: CustomButtonLarge.outlinelarge(
+                    text: secondarybuttonText!,
+                    onPressed: () => Get.back(),
+                  ),
+                ),
+                SizedBox(width: 8.w),
+                Expanded(
+                  child: CustomButtonLarge.primarylarge(
+                    text: primarybuttonText!,
+                    onPressed: onPressed,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   static void doubleBottomSheetWidget({
     final String? title,
     final String? label,

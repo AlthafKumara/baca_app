@@ -11,6 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AuthController extends GetxController {
+  final adminchangeAuhtkey = GlobalKey<FormState>();
+  final changeAuhtkey = GlobalKey<FormState>();
   final registerkey = GlobalKey<FormState>();
   final loginkey = GlobalKey<FormState>();
   final completeprofilekey = GlobalKey<FormState>();
@@ -119,7 +121,7 @@ class AuthController extends GetxController {
 
       CustomSnackbar.succesSnackbar("Login success");
 
-      final profile = await profileServices.loadProfile(user.id);
+      final profile = await profileServices.loadProfile();
 
       if (profile == null) {
         Get.offAllNamed(Routes.COMPLETE_PROFILE);
@@ -132,6 +134,35 @@ class AuthController extends GetxController {
       } else {
         Get.offAllNamed(Routes.HOME);
       }
+    } catch (e) {
+      CustomSnackbar.failedSnackbar(e.toString());
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  Future<void> handleLogout() async {
+    try {
+      await authServices.logout();
+      CustomSnackbar.succesSnackbar("Logout success");
+      Get.offAllNamed(Routes.LOGIN);
+    } catch (e) {
+      CustomSnackbar.failedSnackbar(e.toString());
+    }
+  }
+
+  Future<void> handleUpdateEmailPassword() async {
+    if (!changeAuhtkey.currentState!.validate()) {
+      return;
+    }
+    try {
+      isLoading.value = true;
+      await authServices.updateEmailPassword(
+        emailController.text,
+        passwordController.text,
+      );
+      CustomSnackbar.succesSnackbar("Email and password successfully updated");
+      Get.offAllNamed(Routes.PROFILE);
     } catch (e) {
       CustomSnackbar.failedSnackbar(e.toString());
     } finally {

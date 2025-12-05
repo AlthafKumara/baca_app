@@ -12,18 +12,18 @@ class Validator {
     return null;
   }
 
+  String? validatorName(String? value) {
+    if (value == null || value.isEmpty) {
+      return "Please enter your name";
+    }
+    return null;
+  }
+
   String? validatorPassword(String? value) {
     if (value == null || value.isEmpty) {
       return "Please enter your password";
     } else if (value.length < 6) {
       return "Password must be at least 6 characters";
-    }
-    return null;
-  }
-
-  String? validatorName(String? value) {
-    if (value == null || value.isEmpty) {
-      return "Please enter your name";
     }
     return null;
   }
@@ -61,6 +61,20 @@ class Validator {
   String? validatorStock(String? value) {
     if (value == "0") {
       return "Please enter the stock";
+    }
+    return null;
+  }
+
+  String? validatorPasswordChangeAuth(String? value) {
+    if (value!.isNotEmpty && value.length < 6) {
+      return "Password must be at least 6 characters";
+    }
+    return null;
+  }
+
+  String? validatorConfirmPasswordChangeAuth(String? value, String? password) {
+    if (value != password) {
+      return "Password didn't match!";
     }
     return null;
   }

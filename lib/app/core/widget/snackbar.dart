@@ -15,7 +15,7 @@ class CustomSnackbar {
       snackStyle: SnackStyle.FLOATING,
       "Success",
       message,
-      backgroundColor: AppColor.Success500,
+      backgroundColor: AppColor.Success600,
       colorText: AppColor.Neutral100,
     );
   }

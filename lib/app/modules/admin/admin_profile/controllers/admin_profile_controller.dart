@@ -1,7 +1,20 @@
+import 'package:baca_app/app/core/widget/snackbar.dart';
+import 'package:baca_app/app/data/model/profiles_model.dart';
+import 'package:baca_app/app/data/services/profile_services.dart';
 import 'package:get/get.dart';
 
 class AdminProfileController extends GetxController {
-  //TODO: Implement AdminProfileController
+  Rxn<Profile> profile = Rxn<Profile>();
+  ProfileServices profileServices = ProfileServices();
+  Future<void> loadUser() async {
+    try {
+      await profileServices.loadProfile().then(
+        (value) => profile.value = Profile.fromMap(value!),
+      );
+    } catch (e) {
+      CustomSnackbar.failedSnackbar(e.toString());
+    }
+  }
 
   final count = 0.obs;
   @override
@@ -12,6 +25,7 @@ class AdminProfileController extends GetxController {
   @override
   void onReady() {
     super.onReady();
+    loadUser();
   }
 
   @override

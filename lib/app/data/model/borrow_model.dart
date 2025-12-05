@@ -1,8 +1,10 @@
+enum Status{pending,onBorrow, returned,rejected}
+
 class Borrow {
   final int id;
   final String userId;
   final int bookId;
-  final String status;
+  final Status status;
   final DateTime borrowDate;
   final DateTime returnDate;
   final DateTime createdAt;
