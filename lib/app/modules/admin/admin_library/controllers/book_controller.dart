@@ -15,6 +15,7 @@ class BookController extends GetxController {
     isLoading.value = true;
     try {
       final result = await bookServices.getBook();
+
       books.assignAll(result);
     } catch (e) {
       print(e);
@@ -26,7 +27,7 @@ class BookController extends GetxController {
   void getBookBorrowed() async {
     isLoading.value = true;
     try {
-      final result = await bookServices.getBookBorrow();
+      final result = await bookServices.getBookFilterStatus();
       booksBorrowed.assignAll(result);
     } catch (e) {
       print(e);

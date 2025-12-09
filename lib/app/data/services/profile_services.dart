@@ -76,4 +76,20 @@ class ProfileServices {
       throw "Failed to load profile: $e";
     }
   }
+
+  Future<void> updateProfile(
+    String userId,
+    String name,
+    String gender,
+    String photo,
+  ) async {
+    try {
+      await supabase
+          .from('profiles')
+          .update({"name": name, 'gender': gender, 'photo_profile': photo})
+          .eq('id', userId);
+    } catch (e) {
+      throw "Failed to update profile: $e";
+    }
+  }
 }

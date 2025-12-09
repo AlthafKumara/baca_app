@@ -1,16 +1,15 @@
-import 'package:baca_app/app/modules/admin/admin_library/views/admin_detail_book_view.dart';
-import 'package:baca_app/app/modules/admin/admin_library/views/admin_formbook_view.dart';
-import 'package:baca_app/app/modules/admin/admin_profile/views/admin_account_setting_view.dart';
-import 'package:baca_app/app/modules/admin/admin_profile/views/admin_change_auth_view.dart';
-import 'package:baca_app/app/modules/user/profile/views/account_setting_view.dart';
-import 'package:baca_app/app/modules/user/profile/views/change_auth_view.dart';
+import 'package:baca_app/app/modules/user/profile/views/personal_details_view.dart';
 import 'package:get/get.dart';
 
 import '../modules/admin/admin_home/bindings/admin_home_binding.dart';
 import '../modules/admin/admin_home/views/admin_home_view.dart';
 import '../modules/admin/admin_library/bindings/admin_library_binding.dart';
+import '../modules/admin/admin_library/views/admin_detail_book_view.dart';
+import '../modules/admin/admin_library/views/admin_formbook_view.dart';
 import '../modules/admin/admin_library/views/admin_library_view.dart';
 import '../modules/admin/admin_profile/bindings/admin_profile_binding.dart';
+import '../modules/admin/admin_profile/views/admin_account_setting_view.dart';
+import '../modules/admin/admin_profile/views/admin_change_auth_view.dart';
 import '../modules/admin/admin_profile/views/admin_profile_view.dart';
 import '../modules/auth/bindings/auth_binding.dart';
 import '../modules/auth/views/complete_profile_view.dart';
@@ -18,6 +17,8 @@ import '../modules/auth/views/login_view.dart';
 import '../modules/auth/views/onboarding_view.dart';
 import '../modules/auth/views/register_view.dart';
 import '../modules/auth/views/splash_view.dart';
+import '../modules/user/book_detail/bindings/book_detail_binding.dart';
+import '../modules/user/book_detail/views/book_detail_view.dart';
 import '../modules/user/feed/bindings/feed_binding.dart';
 import '../modules/user/feed/views/feed_view.dart';
 import '../modules/user/home/bindings/home_binding.dart';
@@ -25,6 +26,8 @@ import '../modules/user/home/views/home_view.dart';
 import '../modules/user/library/bindings/library_binding.dart';
 import '../modules/user/library/views/library_view.dart';
 import '../modules/user/profile/bindings/profile_binding.dart';
+import '../modules/user/profile/views/account_setting_view.dart';
+import '../modules/user/profile/views/change_auth_view.dart';
 import '../modules/user/profile/views/profile_view.dart';
 
 part 'app_routes.dart';
@@ -76,6 +79,11 @@ class AppPages {
       binding: LibraryBinding(),
     ),
     GetPage(
+      name: _Paths.DETAIL_BOOK,
+      page: () => BookDetailView(),
+      binding: BookDetailBinding(),
+    ),
+    GetPage(
       name: _Paths.PROFILE,
       page: () => ProfileView(),
       binding: ProfileBinding(),
@@ -89,6 +97,12 @@ class AppPages {
     GetPage(
       name: _Paths.CHANGE_AUTH,
       page: () => ChangeAuthView(),
+      binding: ProfileBinding(),
+    ),
+
+    GetPage(
+      name: _Paths.PERSONAL_DETAILS,
+      page: () => PersonalDetailsView(),
       binding: ProfileBinding(),
     ),
 

@@ -2,11 +2,13 @@ import 'package:baca_app/app/core/widget/snackbar.dart';
 import 'package:baca_app/app/data/model/profiles_model.dart';
 import 'package:baca_app/app/data/services/profile_services.dart';
 import 'package:baca_app/app/routes/app_pages.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class ProfileController extends GetxController {
   Rxn<Profile> profile = Rxn<Profile>();
   ProfileServices profileServices = ProfileServices();
+
   Future<void> loadUser() async {
     try {
       await profileServices.loadProfile().then(

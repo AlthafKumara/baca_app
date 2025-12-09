@@ -20,7 +20,7 @@ class BookTab extends StatelessWidget {
     List<String> chipsLabel = ["All Book", "Book Available", "On Borrow"];
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
-      child: ListView(
+      child: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -50,64 +50,68 @@ class BookTab extends StatelessWidget {
             ],
           ),
           SizedBox(height: 13.h),
-          Obx(() {
-            if (bookcontroller.isLoading.value == true) {
-              return SizedBox(
-                height: 630.h,
-                child: Center(
-                  child: CircularProgressIndicator(color: AppColor.Primary500),
-                ),
-              );
-            }
-            if (chipcontroller.selectedIndex.value == 0 &&
-                bookcontroller.books.isNotEmpty) {
-              final list = bookcontroller.books;
-              return _buildList(list);
-            } else if (chipcontroller.selectedIndex.value == 1 &&
-                bookcontroller.books.isNotEmpty) {
-              final list = bookcontroller.books
-                  .where((b) => b.stock > 0)
-                  .toList();
-              return _buildList(list);
-            } else if (chipcontroller.selectedIndex.value == 2 &&
-                bookcontroller.booksBorrowed.isNotEmpty) {
-              final list = bookcontroller.booksBorrowed;
-
-              return _buildList(list);
-            } else {
-              return SizedBox(
-                height: 630.h,
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        width: 160.w,
-                        height: 160.w,
-                        child: Image.asset("assets/library/ilustration.png"),
-                      ),
-                      SizedBox(height: 20.h),
-                      Text(
-                        "No book found",
-                        style: AppTextStyle.heading5(
-                          fontWeight: AppTextStyle.medium,
-                          color: AppColor.Neutral900,
-                        ),
-                      ),
-                      SizedBox(height: 8.h),
-                      Text(
-                        "Book data in this category is empty",
-                        style: AppTextStyle.description2(
-                          fontWeight: AppTextStyle.medium,
-                          color: AppColor.Neutral400,
-                        ),
-                      ),
-                    ],
+          Expanded(
+            child: Obx(() {
+              if (bookcontroller.isLoading.value == true) {
+                return SizedBox(
+                  height: 630.h,
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      color: AppColor.Primary500,
+                    ),
                   ),
-                ),
-              );
-            }
-          }),
+                );
+              }
+              if (chipcontroller.selectedIndex.value == 0 &&
+                  bookcontroller.books.isNotEmpty) {
+                final list = bookcontroller.books;
+                return _buildList(list);
+              } else if (chipcontroller.selectedIndex.value == 1 &&
+                  bookcontroller.books.isNotEmpty) {
+                final list = bookcontroller.books
+                    .where((b) => b.stock > 0)
+                    .toList();
+                return _buildList(list);
+              } else if (chipcontroller.selectedIndex.value == 2 &&
+                  bookcontroller.booksBorrowed.isNotEmpty) {
+                final list = bookcontroller.booksBorrowed;
+
+                return _buildList(list);
+              } else {
+                return SizedBox(
+                  height: 630.h,
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: 160.w,
+                          height: 160.w,
+                          child: Image.asset("assets/library/ilustration.png"),
+                        ),
+                        SizedBox(height: 20.h),
+                        Text(
+                          "No book found",
+                          style: AppTextStyle.heading5(
+                            fontWeight: AppTextStyle.medium,
+                            color: AppColor.Neutral900,
+                          ),
+                        ),
+                        SizedBox(height: 8.h),
+                        Text(
+                          "Book data in this category is empty",
+                          style: AppTextStyle.description2(
+                            fontWeight: AppTextStyle.medium,
+                            color: AppColor.Neutral400,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              }
+            }),
+          ),
         ],
       ),
     );
@@ -115,7 +119,7 @@ class BookTab extends StatelessWidget {
 
   Widget _buildList(List<Book> list) {
     return ListView.builder(
-      shrinkWrap: true,
+      scrollDirection: Axis.vertical,
       itemBuilder: (context, index) {
         final id = list[index].id;
         final imageUrl = list[index].coverUrl;

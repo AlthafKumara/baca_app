@@ -7,6 +7,7 @@ class Book {
   final String coverUrl;
   final DateTime createdAt;
   final int category;
+  final String name_category;
 
   Book({
     required this.id,
@@ -17,6 +18,7 @@ class Book {
     required this.coverUrl,
     required this.createdAt,
     required this.category,
+    required this.name_category,
   });
 
   factory Book.fromMap(Map<String, dynamic> map) {
@@ -29,6 +31,7 @@ class Book {
       coverUrl: map['cover_url'],
       createdAt: DateTime.parse(map['created_at']),
       category: map['category'],
+      name_category: map['name_category'],
     );
   }
 
@@ -42,6 +45,7 @@ class Book {
       'cover_url': coverUrl,
       'created_at': createdAt.toIso8601String(),
       'category': category,
+      'name_category': name_category,
     };
   }
 }

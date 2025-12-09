@@ -16,6 +16,7 @@ class CompleteProfileView extends GetView<AuthController> {
 
   CompleteProfileView({super.key});
   @override
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.Neutral100,

@@ -65,11 +65,20 @@ class BookServices {
     return bookList;
   }
 
-  Future<List<Book>> getBookBorrow() async {
+  Future<List<Book>> getBookFilterStatus() async {
     final book = await supabase
         .from('borrow')
         .select()
         .eq('status', 'OnBorrow');
+    final bookList = book.map((e) => Book.fromMap(e)).toList();
+    return bookList;
+  }
+
+  Future<List<Book>> getBookFilterCategory(int categoryid) async {
+    final book = await supabase
+        .from('book')
+        .select()
+        .eq('category', categoryid);
     final bookList = book.map((e) => Book.fromMap(e)).toList();
     return bookList;
   }

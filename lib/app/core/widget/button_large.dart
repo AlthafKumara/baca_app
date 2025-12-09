@@ -8,7 +8,7 @@ class CustomButtonLarge {
 
   static Widget primarylarge({
     final void Function()? onPressed,
-    final String text = "Button",
+    final String? text,
     final Widget? prefixicon,
     final Widget? suffixicon,
     final bool? isLoading = false,
@@ -52,13 +52,14 @@ class CustomButtonLarge {
               ),
             ),
           if (isLoading == false)
-            Text(
-              text,
-              style: AppTextStyle.body2(
-                color: AppColor.Neutral100,
-                fontWeight: AppTextStyle.semiBold,
+            if (text != null)
+              Text(
+                text,
+                style: AppTextStyle.body2(
+                  color: AppColor.Neutral100,
+                  fontWeight: AppTextStyle.semiBold,
+                ),
               ),
-            ),
           if (suffixicon != null)
             SizedBox(width: 24.w, height: 24.w, child: suffixicon),
         ],
@@ -68,7 +69,7 @@ class CustomButtonLarge {
 
   static Widget outlinelarge({
     final void Function()? onPressed,
-    final String text = 'Button',
+    final String? text,
     final Widget? prefixicon,
     final Widget? suffixicon,
   }) {
@@ -98,12 +99,13 @@ class CustomButtonLarge {
         children: [
           if (prefixicon != null)
             SizedBox(width: 24.w, height: 24.w, child: prefixicon),
-          SizedBox(width: 8.w),
-          Text(
-            text,
-            style: AppTextStyle.body2(fontWeight: AppTextStyle.semiBold),
-          ),
-          SizedBox(width: 8.w),
+          if (prefixicon != null && text != null) SizedBox(width: 8.w),
+          if (text != null)
+            Text(
+              text,
+              style: AppTextStyle.body2(fontWeight: AppTextStyle.semiBold),
+            ),
+          if (text != null && suffixicon != null) SizedBox(width: 8.w),
           if (suffixicon != null)
             SizedBox(width: 24.w, height: 24.w, child: suffixicon),
         ],

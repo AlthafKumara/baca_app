@@ -8,7 +8,6 @@ class BookCategoryServices {
     final category = await supabase.from('book_category').select();
 
     final categoryList = category.map((e) => BookCategory.fromMap(e)).toList();
-    print(categoryList);
     return categoryList;
   }
 

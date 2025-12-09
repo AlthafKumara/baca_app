@@ -1,12 +1,18 @@
 import 'package:baca_app/app/core/widget/snackbar.dart';
+import 'package:baca_app/app/data/model/book_model.dart';
 import 'package:baca_app/app/data/model/profiles_model.dart';
+import 'package:baca_app/app/data/services/book_services.dart';
 import 'package:baca_app/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-class HomeController extends GetxController {
+class HomeController extends GetxController with StateMixin<dynamic> {
   final supabase = Supabase.instance.client;
+
+  BookServices bookservices = BookServices();
+
+  
 
   Rxn<Profile> profile = Rxn<Profile>();
   var loaded = false.obs;
@@ -37,6 +43,8 @@ class HomeController extends GetxController {
       CustomSnackbar.failedSnackbar(e.toString());
     }
   }
+
+  
 
   final count = 0.obs;
   @override

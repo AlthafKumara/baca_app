@@ -9,6 +9,18 @@
 # packages, and plugins designed to encourage good coding practices.
 include: package:flutter_lints/flutter.yaml
 
+
+analyzer:
+  errors:
+    unused_import: false
+    unused_field: false
+    unused_local_variable: false
+    constant_identifier_names: false
+    avoid_print: false
+    must_be_immutable: false
+    unnecessary_overrides: false
+
+
 linter:
   # The lint rules applied to this project can be customized in the
   # section below to disable rules from the `package:flutter_lints/flutter.yaml`

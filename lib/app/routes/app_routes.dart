@@ -12,30 +12,20 @@ abstract class Routes {
   static const COMPLETE_PROFILE = _Paths.COMPLETE_PROFILE;
 
   // -------------------------------------------USER----------------------------
-  // ----------------------------------------DASHBOARD----------------------------
   static const HOME = _Paths.HOME;
-
-  // ----------------------------------------FEED----------------------------
   static const FEED = _Paths.FEED;
-
-  // ----------------------------------------LIBRARY----------------------------
   static const LIBRARY = _Paths.LIBRARY;
-
-  // ----------------------------------------PROFILE----------------------------
+  static const DETAIL_BOOK = _Paths.DETAIL_BOOK;
   static const PROFILE = _Paths.PROFILE;
   static const ACCOUNT_SETTING = _Paths.ACCOUNT_SETTING;
   static const CHANGE_AUTH = _Paths.CHANGE_AUTH;
+  static const PERSONAL_DETAILS = _Paths.PERSONAL_DETAILS;
 
   // ----------------------------------------ADMIN----------------------------
-  // ----------------------------------------HOME----------------------------
   static const ADMIN_HOME = _Paths.ADMIN_HOME;
-
-  // ----------------------------------------LIBRARY----------------------------
   static const ADMIN_LIBRARY = _Paths.ADMIN_LIBRARY;
   static const ADMIN_FORMBOOK = _Paths.ADMIN_FORMBOOK;
   static const ADMIN_DETAIL_BOOK = _Paths.ADMIN_DETAIL_BOOK;
-
-  // ----------------------------------------PROFILE----------------------------
   static const ADMIN_PROFILE = _Paths.ADMIN_PROFILE;
   static const ADMIN_ACCOUNT_SETTING = _Paths.ADMIN_ACCOUNT_SETTING;
   static const ADMIN_CHANGE_AUTH = _Paths.ADMIN_CHANGE_AUTH;
@@ -52,30 +42,21 @@ abstract class _Paths {
   static const COMPLETE_PROFILE = '/complete-profile';
 
   // ---------------------------------------------USER----------------------------
-  // ----------------------------------------HOME----------------------------
   static const HOME = '/home';
-
-  // ----------------------------------------FEED----------------------------
   static const FEED = '/feed';
-
-  // ----------------------------------------LIBRARY----------------------------
   static const LIBRARY = '/library';
-
-  // ----------------------------------------PROFILE----------------------------
+  static const DETAIL_BOOK = '/detail-book';
   static const PROFILE = '/profile';
   static const ACCOUNT_SETTING = '/account-setting';
   static const CHANGE_AUTH = '/change-auth';
+  static const PERSONAL_DETAILS = '/personal-details';
 
   // ----------------------------------------ADMIN----------------------------
-  // ----------------------------------------HOME----------------------------
   static const ADMIN_HOME = '/admin-home';
-
-  // ----------------------------------------LIBRARY----------------------------
   static const ADMIN_LIBRARY = '/admin-library';
   static const ADMIN_FORMBOOK = '/admin-formbook';
   static const ADMIN_DETAIL_BOOK = '/admin-detail-book';
 
-  // ----------------------------------------PROFILE----------------------------
   static const ADMIN_PROFILE = '/admin-profile';
   static const ADMIN_ACCOUNT_SETTING = '/admin-account-setting';
   static const ADMIN_CHANGE_AUTH = '/admin-change-auth';

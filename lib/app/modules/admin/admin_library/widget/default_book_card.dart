@@ -112,7 +112,7 @@ class DefaultBookCard extends StatelessWidget {
                     ),
                     SizedBox(height: 6.h),
                     Text(
-                      stock.toString(),
+                      "${stock.toString()} Stock",
                       style: AppTextStyle.body3(
                         fontWeight: AppTextStyle.medium,
                         color: AppColor.Primary500,
