@@ -1,10 +1,16 @@
 import 'package:baca_app/app/core/color/app_color.dart';
 import 'package:baca_app/app/core/font/app_text_style.dart';
 import 'package:baca_app/app/core/widget/bottom_nav.dart';
+import 'package:baca_app/app/core/widget/button_medium.dart';
 import 'package:baca_app/app/core/widget/chip.dart';
 
 import 'package:baca_app/app/modules/user/home/controllers/bottomnav_controller.dart';
 import 'package:baca_app/app/modules/user/library/controllers/chip_controller.dart';
+import 'package:baca_app/app/modules/user/library/controllers/saved_list_controller.dart';
+import 'package:baca_app/app/modules/user/library/widget/on_borrow_container.dart';
+import 'package:baca_app/app/modules/user/library/widget/returned_container.dart';
+import 'package:baca_app/app/modules/user/library/widget/saved_list_container.dart';
+import 'package:baca_app/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -15,6 +21,7 @@ import '../controllers/library_controller.dart';
 class LibraryView extends StatelessWidget {
   final controller = Get.find<LibraryController>();
   final chipcontroller = Get.find<ChipController>();
+  final savedController = Get.find<SavedListController>();
   LibraryView({super.key});
   @override
   Widget build(BuildContext context) {
@@ -31,15 +38,42 @@ class LibraryView extends StatelessWidget {
           ),
         ),
         actionsPadding: EdgeInsets.symmetric(horizontal: 16.w),
+
         actions: [
-          GestureDetector(
-            onTap: () {},
-            child: SizedBox(
-              width: 24.w,
-              height: 24.w,
-              child: Image.asset("assets/appbar/search.png"),
-            ),
-          ),
+          Obx(() {
+            return Row(
+              children: [
+                GestureDetector(
+                  onTap: () {},
+                  child: SizedBox(
+                    width: 24.w,
+                    height: 24.w,
+                    child: Image.asset("assets/appbar/search.png"),
+                  ),
+                ),
+
+                if (chipcontroller.selectedIndex.value == 0)
+                  Row(
+                    children: [
+                      SizedBox(width: 20.w),
+                      CustomButtonMedium.primaryMedium(
+                        color: AppColor.Primary500,
+                        text: "Add",
+                        prefixicon: Icon(
+                          Icons.add,
+                          color: Colors.white,
+                          size: 20.w,
+                        ),
+                        isLoading: false,
+                        onPressed: () {
+                          Get.toNamed(Routes.CREATE_SAVED_LIST);
+                        },
+                      ),
+                    ],
+                  ),
+              ],
+            );
+          }),
         ],
       ),
       body: Padding(
@@ -65,9 +99,37 @@ class LibraryView extends StatelessWidget {
                 }),
               ],
             ),
+            SizedBox(height: 16.h),
+
+            Obx(
+              () => chipcontroller.selectedIndex.value == 0
+                  ? Expanded(child: SavedListContainer())
+                  : chipcontroller.selectedIndex.value == 1
+                  ? Expanded(child: OnBorrowContainer())
+                  : chipcontroller.selectedIndex.value == 2
+                  ? Expanded(child: ReturnedContainer())
+                  : SizedBox(),
+            ),
           ],
         ),
       ),
+
+      floatingActionButton: Obx(() {
+        if (savedController.selectedItemId.value != null &&
+            chipcontroller.selectedIndex.value == 0) {
+          return FloatingActionButton(
+            backgroundColor: AppColor.Danger600,
+            onPressed: () {
+              savedController.handleDeleteSavedList(
+                listId: savedController.selectedItemId.value!,
+              );
+            },
+            child: Icon(Icons.delete, color: Colors.white),
+          );
+        }
+        return SizedBox.shrink();
+      }),
+
       bottomNavigationBar: CustomBottomNav(initialindex: 2),
     );
   }

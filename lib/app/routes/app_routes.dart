@@ -15,6 +15,7 @@ abstract class Routes {
   static const HOME = _Paths.HOME;
   static const FEED = _Paths.FEED;
   static const LIBRARY = _Paths.LIBRARY;
+  static const CREATE_SAVED_LIST = _Paths.CREATE_SAVED_LIST;
   static const DETAIL_BOOK = _Paths.DETAIL_BOOK;
   static const PROFILE = _Paths.PROFILE;
   static const ACCOUNT_SETTING = _Paths.ACCOUNT_SETTING;
@@ -29,6 +30,7 @@ abstract class Routes {
   static const ADMIN_PROFILE = _Paths.ADMIN_PROFILE;
   static const ADMIN_ACCOUNT_SETTING = _Paths.ADMIN_ACCOUNT_SETTING;
   static const ADMIN_CHANGE_AUTH = _Paths.ADMIN_CHANGE_AUTH;
+  static const ADMIN_PERSONAL_DETAILS = _Paths.ADMIN_PERSONAL_DETAILS;
 }
 
 abstract class _Paths {
@@ -45,6 +47,7 @@ abstract class _Paths {
   static const HOME = '/home';
   static const FEED = '/feed';
   static const LIBRARY = '/library';
+  static const CREATE_SAVED_LIST = '/create-saved-list';
   static const DETAIL_BOOK = '/detail-book';
   static const PROFILE = '/profile';
   static const ACCOUNT_SETTING = '/account-setting';
@@ -60,4 +63,5 @@ abstract class _Paths {
   static const ADMIN_PROFILE = '/admin-profile';
   static const ADMIN_ACCOUNT_SETTING = '/admin-account-setting';
   static const ADMIN_CHANGE_AUTH = '/admin-change-auth';
+  static const ADMIN_PERSONAL_DETAILS = '/admin-personal-details';
 }

@@ -7,6 +7,7 @@ import 'package:baca_app/app/modules/user/book_detail/controllers/similar_book_c
 import 'package:baca_app/app/modules/user/book_detail/widget/description_book_container.dart';
 import 'package:baca_app/app/modules/user/book_detail/widget/image_container.dart';
 import 'package:baca_app/app/modules/user/book_detail/widget/review_container.dart';
+import 'package:baca_app/app/modules/user/book_detail/widget/saved_bottom_sheet.dart';
 import 'package:baca_app/app/modules/user/book_detail/widget/similar_book_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -148,10 +149,15 @@ class BookDetailView extends GetView<BookDetailController> {
         padding: EdgeInsets.fromLTRB(16.w, 5.h, 16.w, 20.h),
         child: Row(
           children: [
-            SizedBox(
-              width: 88.w,
-              child: CustomButtonLarge.outlinelarge(
-                suffixicon: Image.asset("assets/home/save.png"),
+            GestureDetector(
+              onTap: () {
+                SavedBottomSheet().savedBottomsheet(bookId: book.id);
+              },
+              child: SizedBox(
+                width: 88.w,
+                child: CustomButtonLarge.outlinelarge(
+                  suffixicon: Image.asset("assets/home/save.png"),
+                ),
               ),
             ),
             SizedBox(width: 12.w),

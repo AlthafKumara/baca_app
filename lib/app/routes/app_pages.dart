@@ -1,3 +1,5 @@
+import 'package:baca_app/app/modules/admin/admin_profile/views/admin_personal_detail_view.dart';
+import 'package:baca_app/app/modules/user/library/views/create_saved_list_view.dart';
 import 'package:baca_app/app/modules/user/profile/views/personal_details_view.dart';
 import 'package:get/get.dart';
 
@@ -79,6 +81,11 @@ class AppPages {
       binding: LibraryBinding(),
     ),
     GetPage(
+      name: _Paths.CREATE_SAVED_LIST,
+      page: () => CreateSavedListView(),
+      binding: LibraryBinding(),
+    ),
+    GetPage(
       name: _Paths.DETAIL_BOOK,
       page: () => BookDetailView(),
       binding: BookDetailBinding(),
@@ -142,6 +149,11 @@ class AppPages {
     GetPage(
       name: _Paths.ADMIN_CHANGE_AUTH,
       page: () => AdminChangeAuthView(),
+      binding: AdminProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADMIN_PERSONAL_DETAILS,
+      page: () => AdminPersonalDetailView(),
       binding: AdminProfileBinding(),
     ),
   ];

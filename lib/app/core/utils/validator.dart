@@ -78,4 +78,11 @@ class Validator {
     }
     return null;
   }
+
+  String? validatorListName(String? value) {
+    if (value == null || value.isEmpty) {
+      return "Please enter the saved list name";
+    }
+    return null;
+  }
 }

@@ -76,6 +76,10 @@ class AdminProfileBody extends StatelessWidget {
             ),
             SizedBox(height: 22.h),
             GestureDetector(
+              onTap: () => Get.toNamed(
+                Routes.ADMIN_PERSONAL_DETAILS,
+                arguments: profile,
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

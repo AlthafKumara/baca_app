@@ -137,7 +137,7 @@ class CustomBottomSheet {
 
   static void doubleBottomSheetWidget({
     final String? title,
-    final String? label,
+
     final Widget? child,
     final int? height,
 

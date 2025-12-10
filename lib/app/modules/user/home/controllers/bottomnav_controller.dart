@@ -1,3 +1,4 @@
+import 'package:baca_app/app/data/model/profiles_model.dart';
 import 'package:baca_app/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
@@ -18,8 +19,6 @@ class BottomnavController extends GetxController {
     }
   }
 
-  
-
   @override
   void onInit() {
     super.onInit();
@@ -34,6 +33,4 @@ class BottomnavController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  
 }

@@ -12,8 +12,6 @@ class HomeController extends GetxController with StateMixin<dynamic> {
 
   BookServices bookservices = BookServices();
 
-  
-
   Rxn<Profile> profile = Rxn<Profile>();
   var loaded = false.obs;
   Future<void> loadUser() async {
@@ -43,8 +41,6 @@ class HomeController extends GetxController with StateMixin<dynamic> {
       CustomSnackbar.failedSnackbar(e.toString());
     }
   }
-
-  
 
   final count = 0.obs;
   @override

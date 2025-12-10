@@ -1,4 +1,5 @@
 import 'package:baca_app/app/modules/user/library/controllers/chip_controller.dart';
+import 'package:baca_app/app/modules/user/library/controllers/saved_list_controller.dart';
 import 'package:get/get.dart';
 
 import 'package:baca_app/app/modules/user/home/controllers/bottomnav_controller.dart';
@@ -11,5 +12,6 @@ class LibraryBinding extends Bindings {
     Get.lazyPut<ChipController>(() => ChipController());
     Get.lazyPut<LibraryController>(() => LibraryController());
     Get.lazyPut<BottomnavController>(() => BottomnavController());
+    Get.lazyPut<SavedListController>(() => SavedListController());
   }
 }

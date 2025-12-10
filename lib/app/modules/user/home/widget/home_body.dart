@@ -31,7 +31,7 @@ class HomeBody extends StatelessWidget {
         SizedBox(height: 20.h),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: CustomTextfield.textFieldLarge(
+          child: CustomTextfield.textFieldRounded(
             controller: TextEditingController(),
             enabled: false,
             hintText: "Search any books",
