@@ -3,21 +3,22 @@ import 'package:baca_app/app/core/font/app_text_style.dart';
 import 'package:baca_app/app/data/model/book_model.dart';
 import 'package:baca_app/app/data/model/borrow_model.dart';
 import 'package:baca_app/app/modules/user/library/controllers/borrow_controller.dart';
-
 import 'package:baca_app/app/modules/user/library/widget/card_status_container.dart';
 import 'package:baca_app/app/modules/user/library/widget/empty_container.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class OnBorrowContainer extends StatelessWidget {
+class PendingContainer extends StatelessWidget {
   final borrowC = Get.find<BorrowController>();
-  OnBorrowContainer({super.key});
+  PendingContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
     return borrowC.obx(
       (state) {
-        final list = state?.where((e) => e.status == Status.onBorrow).toList();
+        final list = state?.where((e) => e.status == Status.pending).toList();
 
         if (list!.isEmpty) {
           return EmptyContainer();
@@ -27,14 +28,22 @@ class OnBorrowContainer extends StatelessWidget {
           itemBuilder: (context, index) {
             final book = list[index].book as Book;
             return CardStatusContainer(
-              status: "On Borrow",
+              status: "Pending",
               borrow: list,
               index: index,
             );
           },
         );
       },
-      onEmpty: EmptyContainer(),
+      onEmpty: Center(
+        child: Text(
+          "No Pending Book",
+          style: AppTextStyle.body1(
+            color: AppColor.Neutral900,
+            fontWeight: AppTextStyle.regular,
+          ),
+        ),
+      ),
       onError: (error) {
         print(error);
         return Center(

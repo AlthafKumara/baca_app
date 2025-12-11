@@ -1,8 +1,10 @@
 import 'package:baca_app/app/core/color/app_color.dart';
 import 'package:baca_app/app/core/font/app_text_style.dart';
+import 'package:baca_app/app/core/widget/bottom_sheet.dart';
 import 'package:baca_app/app/core/widget/button_large.dart';
 import 'package:baca_app/app/data/model/book_model.dart';
 import 'package:baca_app/app/modules/user/book_detail/controllers/book_category_controller.dart';
+import 'package:baca_app/app/modules/user/book_detail/controllers/handle_borrow_controller.dart';
 import 'package:baca_app/app/modules/user/book_detail/controllers/similar_book_controller.dart';
 import 'package:baca_app/app/modules/user/book_detail/widget/description_book_container.dart';
 import 'package:baca_app/app/modules/user/book_detail/widget/image_container.dart';
@@ -18,6 +20,8 @@ import '../controllers/book_detail_controller.dart';
 
 class BookDetailView extends GetView<BookDetailController> {
   final categoryC = Get.find<BookCategoryController>();
+  final borrowC = Get.find<HandleBorrowController>();
+  final userC = Get.find<BookDetailController>();
   BookDetailView({super.key});
 
   final Book book = Get.arguments as Book;
@@ -163,7 +167,22 @@ class BookDetailView extends GetView<BookDetailController> {
             SizedBox(width: 12.w),
             Expanded(
               child: CustomButtonLarge.primarylarge(
-                onPressed: () {},
+                onPressed: () {
+                  CustomBottomSheet.doubleBottomSheet(
+                    image: "assets/library/ilustration_borrow.png",
+                    title: "Borrow This Book Now?",
+                    primarybuttonText: "Yes, Borrow",
+                    secondarybuttonText: "Cancel",
+                    message:
+                        "Are you sure to borrow this book? Once you borrow, you must scan the QR to the librarian!",
+                    onPressed: () {
+                      borrowC.handleBorrow(
+                        userId: userC.profile.value!.id,
+                        bookId: book.id,
+                      );
+                    },
+                  );
+                },
                 text: "Borrow Now",
               ),
             ),

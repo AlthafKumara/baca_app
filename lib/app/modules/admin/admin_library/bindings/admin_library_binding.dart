@@ -1,3 +1,4 @@
+import 'package:baca_app/app/modules/admin/admin_library/controllers/borrow_controller.dart';
 import 'package:get/get.dart';
 
 import 'package:baca_app/app/modules/admin/admin_library/controllers/book_catagory_controller.dart';
@@ -19,5 +20,6 @@ class AdminLibraryBinding extends Bindings {
     Get.lazyPut<ChipController>(() => ChipController());
     Get.put<TabPageController>(TabPageController(), permanent: true);
     Get.lazyPut<AdminLibraryController>(() => AdminLibraryController());
+    Get.lazyPut<BorrowController>(() => BorrowController());
   }
 }

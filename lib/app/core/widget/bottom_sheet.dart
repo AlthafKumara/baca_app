@@ -135,6 +135,65 @@ class CustomBottomSheet {
     );
   }
 
+  static void singleBottomSheetWidget({
+    final String? title,
+
+    final Widget? child,
+    final int? height,
+
+    final String? buttonText,
+    final void Function()? onPressed,
+  }) {
+    Get.bottomSheet(
+      backgroundColor: AppColor.Neutral100,
+      isScrollControlled: true,
+      Container(
+        height: height!.h,
+        alignment: Alignment.center,
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
+        child: Column(
+          children: [
+            SizedBox(
+              width: 42.w,
+              child: Divider(
+                color: AppColor.Neutral300,
+                thickness: 6.h,
+                radius: BorderRadius.circular(999),
+              ),
+            ),
+            SizedBox(height: 12.h),
+            if (title != null)
+              Text(
+                title,
+                style: AppTextStyle.body1(
+                  color: AppColor.Neutral900,
+                  fontWeight: AppTextStyle.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+
+            SizedBox(height: 16.h),
+
+            child!,
+            SizedBox(height: 45.h),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: CustomButtonLarge.outlinelarge(
+                    text: buttonText!,
+                    onPressed: onPressed,
+                  ),
+                ),
+                SizedBox(width: 8.w),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   static void doubleBottomSheetWidget({
     final String? title,
 
@@ -163,14 +222,15 @@ class CustomBottomSheet {
               ),
             ),
             SizedBox(height: 12.h),
-            Text(
-              title!,
-              style: AppTextStyle.body1(
-                color: AppColor.Neutral900,
-                fontWeight: AppTextStyle.bold,
+            if (title != null)
+              Text(
+                title,
+                style: AppTextStyle.body1(
+                  color: AppColor.Neutral900,
+                  fontWeight: AppTextStyle.bold,
+                ),
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
-            ),
 
             SizedBox(height: 16.h),
 

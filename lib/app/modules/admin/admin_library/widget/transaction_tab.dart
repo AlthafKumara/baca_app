@@ -2,14 +2,19 @@ import 'package:baca_app/app/core/color/app_color.dart';
 import 'package:baca_app/app/core/font/app_text_style.dart';
 import 'package:baca_app/app/core/widget/chip.dart';
 import 'package:baca_app/app/modules/admin/admin_library/controllers/book_controller.dart';
+import 'package:baca_app/app/modules/admin/admin_library/controllers/borrow_controller.dart';
 import 'package:baca_app/app/modules/admin/admin_library/controllers/chip_controller.dart';
+import 'package:baca_app/app/modules/admin/admin_library/widget/book_borrow_card.dart';
+import 'package:baca_app/app/modules/admin/admin_library/widget/transaction_all.dart';
+import 'package:baca_app/app/modules/admin/admin_library/widget/transaction_borrow.dart';
+import 'package:baca_app/app/modules/admin/admin_library/widget/transaction_returned.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class TransactionTab extends StatelessWidget {
   final chipcontroller = Get.find<ChipController>();
-  final bookcontroller = Get.find<BookController>();
+  final borrowC = Get.find<BorrowController>();
   TransactionTab({super.key});
 
   @override
@@ -21,7 +26,7 @@ class TransactionTab extends StatelessWidget {
     ];
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
-      child: ListView(
+      child: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -51,36 +56,14 @@ class TransactionTab extends StatelessWidget {
             ],
           ),
           SizedBox(height: 13.h),
-          SizedBox(
-            height: 630.h,
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: 160.w,
-                    height: 160.w,
-                    child: Image.asset("assets/library/ilustration.png"),
-                  ),
-                  SizedBox(height: 20.h),
-                  Text(
-                    "No book found",
-                    style: AppTextStyle.heading5(
-                      fontWeight: AppTextStyle.medium,
-                      color: AppColor.Neutral900,
-                    ),
-                  ),
-                  SizedBox(height: 8.h),
-                  Text(
-                    "Book data in this category is empty",
-                    style: AppTextStyle.description2(
-                      fontWeight: AppTextStyle.medium,
-                      color: AppColor.Neutral400,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+          Obx(
+            () => chipcontroller.selectedIndex.value == 0
+                ? Expanded(child: TransactionAll())
+                : chipcontroller.selectedIndex.value == 1
+                ? Expanded(child: TransactionBorrow())
+                : chipcontroller.selectedIndex.value == 2
+                ? Expanded(child: TransactionReturned())
+                : SizedBox(),
           ),
         ],
       ),

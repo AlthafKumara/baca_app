@@ -8,6 +8,8 @@ import 'package:baca_app/app/modules/user/home/controllers/bottomnav_controller.
 import 'package:baca_app/app/modules/user/library/controllers/chip_controller.dart';
 import 'package:baca_app/app/modules/user/library/controllers/saved_list_controller.dart';
 import 'package:baca_app/app/modules/user/library/widget/on_borrow_container.dart';
+import 'package:baca_app/app/modules/user/library/widget/pending_container.dart';
+import 'package:baca_app/app/modules/user/library/widget/rejected_container.dart';
 import 'package:baca_app/app/modules/user/library/widget/returned_container.dart';
 import 'package:baca_app/app/modules/user/library/widget/saved_list_container.dart';
 import 'package:baca_app/app/routes/app_pages.dart';
@@ -25,7 +27,13 @@ class LibraryView extends StatelessWidget {
   LibraryView({super.key});
   @override
   Widget build(BuildContext context) {
-    List<String> chipsLabel = ["Saved List", "On Borrow", "Returned"];
+    List<String> chipsLabel = [
+      "Saved List",
+      "Pending",
+      "On Borrow",
+      "Returned",
+      "Rejected",
+    ];
     return Scaffold(
       backgroundColor: AppColor.Neutral100,
       appBar: AppBar(
@@ -80,24 +88,27 @@ class LibraryView extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 16.w),
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Obx(() {
-                  return Wrap(
-                    spacing: 8.w,
-                    children: List<Widget>.generate(
-                      chipsLabel.length,
-                      (index) => CustomChip().filterChip(
-                        onTap: () => chipcontroller.onpress(index),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Obx(() {
+                    return Wrap(
+                      spacing: 8.w,
+                      children: List<Widget>.generate(
+                        chipsLabel.length,
+                        (index) => CustomChip().filterChip(
+                          onTap: () => chipcontroller.onpress(index),
 
-                        title: chipsLabel[index],
-                        selected: chipcontroller.selectedIndex.value == index,
+                          title: chipsLabel[index],
+                          selected: chipcontroller.selectedIndex.value == index,
+                        ),
                       ),
-                    ),
-                  );
-                }),
-              ],
+                    );
+                  }),
+                ],
+              ),
             ),
             SizedBox(height: 16.h),
 
@@ -105,9 +116,13 @@ class LibraryView extends StatelessWidget {
               () => chipcontroller.selectedIndex.value == 0
                   ? Expanded(child: SavedListContainer())
                   : chipcontroller.selectedIndex.value == 1
-                  ? Expanded(child: OnBorrowContainer())
+                  ? Expanded(child: PendingContainer())
                   : chipcontroller.selectedIndex.value == 2
+                  ? Expanded(child: OnBorrowContainer())
+                  : chipcontroller.selectedIndex.value == 3
                   ? Expanded(child: ReturnedContainer())
+                  : chipcontroller.selectedIndex.value == 4
+                  ? Expanded(child: RejectedContainer())
                   : SizedBox(),
             ),
           ],

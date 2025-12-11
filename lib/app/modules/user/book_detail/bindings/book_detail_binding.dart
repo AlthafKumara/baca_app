@@ -1,4 +1,5 @@
 import 'package:baca_app/app/modules/user/book_detail/controllers/book_category_controller.dart';
+import 'package:baca_app/app/modules/user/book_detail/controllers/handle_borrow_controller.dart';
 import 'package:baca_app/app/modules/user/book_detail/controllers/saved_list_controller.dart';
 import 'package:baca_app/app/modules/user/book_detail/controllers/similar_book_controller.dart';
 import 'package:baca_app/app/modules/user/library/controllers/library_controller.dart';
@@ -18,5 +19,6 @@ class BookDetailBinding extends Bindings {
 
     Get.lazyPut<SavedController>(() => SavedController());
     Get.lazyPut<LibraryController>(() => LibraryController());
+    Get.lazyPut<HandleBorrowController>(() => HandleBorrowController());
   }
 }

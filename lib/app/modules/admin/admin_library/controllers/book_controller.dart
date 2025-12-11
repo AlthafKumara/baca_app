@@ -1,13 +1,18 @@
 import 'package:baca_app/app/core/widget/snackbar.dart';
 import 'package:baca_app/app/data/model/book_model.dart';
+import 'package:baca_app/app/data/model/borrow_model.dart';
 import 'package:baca_app/app/data/services/book_services.dart';
+import 'package:baca_app/app/data/services/borrow_services.dart';
 import 'package:get/get.dart';
 
-class BookController extends GetxController {
+class BookController extends GetxController
+    with StateMixin<Map<String, dynamic>> {
   BookServices bookServices = BookServices();
+  BorrowServices borrowServices = BorrowServices();
 
   var books = <Book>[].obs;
   var booksBorrowed = <Book>[].obs;
+  
 
   var isLoading = false.obs;
 
@@ -24,17 +29,7 @@ class BookController extends GetxController {
     }
   }
 
-  void getBookBorrowed() async {
-    isLoading.value = true;
-    try {
-      final result = await bookServices.getBookFilterStatus();
-      booksBorrowed.assignAll(result);
-    } catch (e) {
-      print(e);
-    } finally {
-      isLoading.value = false;
-    }
-  }
+  
 
   Future<void> deleteSelectBooks(List<int> bookids) async {
     try {

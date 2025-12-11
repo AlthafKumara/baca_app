@@ -34,7 +34,7 @@ class SavedController extends GetxController
       } else {
         for (var list in listbook) {
           if (list.bookId != null) {
-            list.books = await bookServices.getBookById(list.bookId!);
+            list.books = (await bookServices.getBookById([list.bookId!])).first;
           }
         }
 

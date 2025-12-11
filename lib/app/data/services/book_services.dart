@@ -74,10 +74,10 @@ class BookServices {
     return bookList;
   }
 
-  Future<Book> getBookById(int id) async {
-    final book = await supabase.from('book').select().eq('id', id).single();
+  Future<List<Book>> getBookById(List<int> ids) async {
+    final book = await supabase.from('book').select().inFilter('id', ids);
 
-    return Book.fromMap(book);
+    return book.map((e) => Book.fromMap(e)).toList();
   }
 
   Future<void> deleteListBook(List<int> bookIds) async {

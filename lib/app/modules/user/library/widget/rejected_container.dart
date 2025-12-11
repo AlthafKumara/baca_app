@@ -6,18 +6,18 @@ import 'package:baca_app/app/modules/user/library/controllers/borrow_controller.
 
 import 'package:baca_app/app/modules/user/library/widget/card_status_container.dart';
 import 'package:baca_app/app/modules/user/library/widget/empty_container.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
-class OnBorrowContainer extends StatelessWidget {
+class RejectedContainer extends StatelessWidget {
   final borrowC = Get.find<BorrowController>();
-  OnBorrowContainer({super.key});
+  RejectedContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
     return borrowC.obx(
       (state) {
-        final list = state?.where((e) => e.status == Status.onBorrow).toList();
+        final list = state?.where((e) => e.status == Status.rejected).toList();
 
         if (list!.isEmpty) {
           return EmptyContainer();
@@ -27,7 +27,7 @@ class OnBorrowContainer extends StatelessWidget {
           itemBuilder: (context, index) {
             final book = list[index].book as Book;
             return CardStatusContainer(
-              status: "On Borrow",
+              status: "Rejected",
               borrow: list,
               index: index,
             );
