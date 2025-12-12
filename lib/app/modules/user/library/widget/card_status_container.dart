@@ -3,30 +3,29 @@ import 'package:baca_app/app/core/font/app_text_style.dart';
 import 'package:baca_app/app/data/model/borrow_model.dart';
 import 'package:baca_app/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class CardStatusContainer extends StatelessWidget {
-  String status;
-  List<Borrow> borrow;
-  int index;
-  CardStatusContainer({
-    super.key,
-    required this.status,
-    required this.borrow,
-    required this.index,
-  });
+  Status status;
+  Borrow borrow;
+
+  CardStatusContainer({super.key, required this.status, required this.borrow});
 
   @override
   Widget build(BuildContext context) {
-    final book = borrow[index].book;
-    final borrows = borrow[index];
+    final book = borrow.book;
+
+    final raw = borrow.status.toString().split('.').last.toUpperCase();
+
+    final statusName = raw[0].toUpperCase() + raw.substring(1).toLowerCase();
+
     return GestureDetector(
       onTap: () {
         Get.toNamed(
           Routes.BOOK_BORROW_DETAIL,
-          arguments: {"borrow": borrows, "status": status},
+          arguments: {"borrow": borrow, "status": status},
         );
       },
       child: Container(
@@ -89,23 +88,47 @@ class CardStatusContainer extends StatelessWidget {
                   SizedBox(height: 12.h),
                   Row(
                     children: [
-                      Icon(Icons.circle, color: AppColor.Warning600, size: 6.w),
+                      Icon(
+                        Icons.circle,
+                        color: status == Status.returned
+                            ? AppColor.Success600
+                            : status == Status.pending
+                            ? AppColor.Warning600
+                            : status == Status.onBorrow
+                            ? AppColor.Primary600
+                            : status == Status.rejected
+                            ? AppColor.Danger600
+                            : null,
+                        size: 6.w,
+                      ),
                       SizedBox(width: 6.w),
                       Text(
-                        status,
+                        statusName,
                         style: AppTextStyle.body3(
-                          color: status == "Returned"
+                          color: status == Status.returned
                               ? AppColor.Success600
-                              : status == "Pending"
+                              : status == Status.pending
                               ? AppColor.Warning600
-                              : status == "On Borrow"
+                              : status == Status.onBorrow
                               ? AppColor.Primary600
-                              : status == "Rejected"
+                              : status == Status.rejected
                               ? AppColor.Danger600
                               : null,
                           fontWeight: AppTextStyle.medium,
                         ),
                       ),
+                      if (borrow.status == Status.returned &&
+                          borrow.isReviewed == false) ...[
+                        SizedBox(width: 6.w),
+                        Text(
+                          "Need Review",
+                          style: AppTextStyle.body3(
+                            color: AppColor.Warning600,
+
+                            fontWeight: AppTextStyle.medium,
+                          ),
+                        ),
+                      ],
                     ],
                   ),
                 ],

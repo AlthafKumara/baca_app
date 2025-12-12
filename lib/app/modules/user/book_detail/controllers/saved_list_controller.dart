@@ -18,6 +18,7 @@ class SavedController extends GetxController
   void onInit() {
     super.onInit();
     ever(profile.profile, (profile) {
+      print(profile);
       if (profile != null) {
         getSavedList(profile.id);
       }

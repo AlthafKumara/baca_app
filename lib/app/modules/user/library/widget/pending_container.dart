@@ -27,11 +27,8 @@ class PendingContainer extends StatelessWidget {
           itemCount: list.length,
           itemBuilder: (context, index) {
             final book = list[index].book as Book;
-            return CardStatusContainer(
-              status: "Pending",
-              borrow: list,
-              index: index,
-            );
+            final borrow = list[index];
+            return CardStatusContainer(status: Status.pending, borrow: borrow);
           },
         );
       },

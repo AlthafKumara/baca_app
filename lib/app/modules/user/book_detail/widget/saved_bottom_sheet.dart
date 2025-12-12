@@ -11,6 +11,8 @@ import 'package:get/get.dart';
 class SavedBottomSheet {
   final savedC = Get.find<SavedController>();
   void savedBottomsheet({required int bookId}) {
+    savedC.getSavedList(savedC.profile.profile.value!.id);
+
     return CustomBottomSheet.doubleBottomSheetWidget(
       height: 520,
       title: "Add to my save list",

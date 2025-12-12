@@ -27,6 +27,7 @@ abstract class Routes {
   static const ADMIN_HOME = _Paths.ADMIN_HOME;
   static const ADMIN_LIBRARY = _Paths.ADMIN_LIBRARY;
   static const ADMIN_FORMBOOK = _Paths.ADMIN_FORMBOOK;
+  static const ADMIN_BOOK_BORROW_DETAIL = _Paths.ADMIN_BOOK_BORROW_DETAIL;
   static const ADMIN_DETAIL_BOOK = _Paths.ADMIN_DETAIL_BOOK;
   static const ADMIN_PROFILE = _Paths.ADMIN_PROFILE;
   static const ADMIN_ACCOUNT_SETTING = _Paths.ADMIN_ACCOUNT_SETTING;
@@ -34,6 +35,7 @@ abstract class Routes {
   static const ADMIN_PERSONAL_DETAILS = _Paths.ADMIN_PERSONAL_DETAILS;
   static const BORROW = _Paths.BORROW;
   static const BOOK_BORROW_DETAIL = _Paths.BOOK_BORROW_DETAIL;
+  static const ADMIN_SCAN = _Paths.ADMIN_SCAN;
 }
 
 abstract class _Paths {
@@ -63,11 +65,12 @@ abstract class _Paths {
   static const ADMIN_LIBRARY = '/admin-library';
   static const ADMIN_FORMBOOK = '/admin-formbook';
   static const ADMIN_DETAIL_BOOK = '/admin-detail-book';
-
+  static const ADMIN_BOOK_BORROW_DETAIL = '/admin-book-borrow-detail';
   static const ADMIN_PROFILE = '/admin-profile';
   static const ADMIN_ACCOUNT_SETTING = '/admin-account-setting';
   static const ADMIN_CHANGE_AUTH = '/admin-change-auth';
   static const ADMIN_PERSONAL_DETAILS = '/admin-personal-details';
   static const BORROW = '/borrow';
   static const BOOK_BORROW_DETAIL = '/book-borrow-detail';
+  static const ADMIN_SCAN = '/admin-scan';
 }

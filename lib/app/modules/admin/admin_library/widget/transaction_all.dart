@@ -16,12 +16,13 @@ class TransactionAll extends StatelessWidget {
       (state) {
         return ListView.builder(
           shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
+          scrollDirection: Axis.vertical,
+          physics: ScrollPhysics(),
           itemCount: state!.length,
           itemBuilder: (context, index) {
             final list = state[index];
 
-            return BookBorrowCard(borrow: state, index: index);
+            return BookBorrowCard(borrow: list);
           },
         );
       },

@@ -4,7 +4,12 @@ import 'package:baca_app/app/core/widget/qr_code.dart';
 import 'package:baca_app/app/core/widget/bottom_sheet.dart';
 import 'package:baca_app/app/core/widget/button_large.dart';
 import 'package:baca_app/app/data/model/borrow_model.dart';
+import 'package:baca_app/app/modules/user/book_borrow_detail/widget/bottom_nav_review.dart';
+import 'package:baca_app/app/modules/user/book_borrow_detail/widget/bottom_nav_scan.dart';
 import 'package:baca_app/app/modules/user/book_borrow_detail/widget/card_status_container.dart';
+import 'package:baca_app/app/modules/user/book_borrow_detail/widget/user_body_onborrow.dart';
+import 'package:baca_app/app/modules/user/book_borrow_detail/widget/user_body_pending.dart';
+import 'package:baca_app/app/modules/user/book_borrow_detail/widget/user_body_returned.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -19,7 +24,10 @@ class BookBorrowDetailView extends GetView<BookBorrowDetailController> {
   Widget build(BuildContext context) {
     final arguments = Get.arguments;
     final borrow = arguments["borrow"] as Borrow;
-    final status = arguments["status"];
+    final status = arguments["status"] as Status;
+    final raw = borrow.status.toString().split('.').last.toUpperCase();
+
+    final statusName = raw[0].toUpperCase() + raw.substring(1).toLowerCase();
     return Scaffold(
       backgroundColor: AppColor.Neutral100,
       appBar: AppBar(
@@ -38,17 +46,17 @@ class BookBorrowDetailView extends GetView<BookBorrowDetailController> {
           Container(
             alignment: Alignment.center,
             padding: EdgeInsets.symmetric(vertical: 16.h),
-            color: status == "Returned"
+            color: status == Status.returned
                 ? AppColor.Success600
-                : status == "Pending"
+                : status == Status.pending
                 ? AppColor.Warning600
-                : status == "On Borrow"
+                : status == Status.onBorrow
                 ? AppColor.Primary600
-                : status == "Rejected"
+                : status == Status.rejected
                 ? AppColor.Danger600
                 : null,
             child: Text(
-              status,
+              statusName,
               style: AppTextStyle.body2(
                 color: AppColor.Neutral100,
                 fontWeight: AppTextStyle.medium,
@@ -56,73 +64,26 @@ class BookBorrowDetailView extends GetView<BookBorrowDetailController> {
             ),
           ),
           SizedBox(height: 24.h),
-          status == "Pending"
-              ? CardStatusContainer(status: status, borrow: borrow)
+          status == Status.pending
+              ? UserBodyPending(borrow: borrow, status: status)
+              : status == Status.onBorrow
+              ? UserBodyOnborrow(status: status, borrow: borrow)
+              : status == Status.returned
+              ? UserBodyReturned(status: status, borrow: borrow)
+              : status == Status.rejected
+              ? UserBodyReturned(status: status, borrow: borrow)
               : Container(),
         ],
       ),
       bottomNavigationBar: Padding(
         padding: EdgeInsetsGeometry.symmetric(horizontal: 16.w, vertical: 20.h),
-        child: CustomButtonLarge.primarylarge(
-          onPressed: () {
-            CustomBottomSheet.singleBottomSheetWidget(
-              height: 520,
-              buttonText: "Close",
-              onPressed: () => Get.back(),
-              child: Column(
-                children: [
-                  Container(
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.symmetric(vertical: 16.h),
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(24.r),
-                      border: Border.all(
-                        color: AppColor.Primary500,
-                        width: 2.w,
-                      ),
-                    ),
-                    child: CustomQrCode.generateQrCode(qrText: borrow.qrText),
-                  ),
-                  SizedBox(height: 16.h),
-                  Container(
-                    width: double.infinity,
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 14.w,
-                      vertical: 14.h,
-                    ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12.r),
-                      color: AppColor.Neutral250,
-                    ),
-
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.info,
-                          color: AppColor.Primary500,
-                          size: 20.w,
-                        ),
-                        SizedBox(width: 12.w),
-                        Expanded(
-                          child: Text(
-                            "Please show this QR to the librarian to update status of this book.",
-                            style: AppTextStyle.body3(
-                              color: AppColor.Neutral500,
-                              fontWeight: AppTextStyle.regular,
-                            ),
-                            maxLines: 2,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            );
-          },
-          text: "Show QR",
-        ),
+        child: status == Status.pending || status == Status.onBorrow
+            ? BottomNavScan(qrText: borrow.qrText)
+            : status == Status.returned
+            ? borrow.isReviewed == false
+                  ? BottomNavReview(borrow: borrow)
+                  : null
+            : null,
       ),
     );
   }

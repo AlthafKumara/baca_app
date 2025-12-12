@@ -29,7 +29,7 @@ class TransactionReturned extends StatelessWidget {
           itemBuilder: (context, index) {
             final list = finalstate[index];
 
-            return BookBorrowCard(borrow: finalstate, index: index);
+            return BookBorrowCard(borrow: list);
           },
         );
       },

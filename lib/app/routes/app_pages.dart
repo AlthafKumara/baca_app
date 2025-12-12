@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/admin/admin_book_borrow_detail/bindings/admin_book_borrow_detail_binding.dart';
+import '../modules/admin/admin_book_borrow_detail/views/admin_book_borrow_detail_view.dart';
 import '../modules/admin/admin_home/bindings/admin_home_binding.dart';
 import '../modules/admin/admin_home/views/admin_home_view.dart';
 import '../modules/admin/admin_library/bindings/admin_library_binding.dart';
@@ -11,6 +13,8 @@ import '../modules/admin/admin_profile/views/admin_account_setting_view.dart';
 import '../modules/admin/admin_profile/views/admin_change_auth_view.dart';
 import '../modules/admin/admin_profile/views/admin_personal_detail_view.dart';
 import '../modules/admin/admin_profile/views/admin_profile_view.dart';
+import '../modules/admin/admin_scan/bindings/admin_scan_binding.dart';
+import '../modules/admin/admin_scan/views/admin_scan_view.dart';
 import '../modules/auth/bindings/auth_binding.dart';
 import '../modules/auth/views/complete_profile_view.dart';
 import '../modules/auth/views/login_view.dart';
@@ -26,7 +30,6 @@ import '../modules/user/feed/views/feed_view.dart';
 import '../modules/user/home/bindings/home_binding.dart';
 import '../modules/user/home/views/home_view.dart';
 import '../modules/user/library/bindings/library_binding.dart';
-
 import '../modules/user/library/views/create_saved_list_view.dart';
 import '../modules/user/library/views/library_view.dart';
 import '../modules/user/profile/bindings/profile_binding.dart';
@@ -168,6 +171,16 @@ class AppPages {
       name: _Paths.ADMIN_PERSONAL_DETAILS,
       page: () => AdminPersonalDetailView(),
       binding: AdminProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADMIN_BOOK_BORROW_DETAIL,
+      page: () => const AdminBookBorrowDetailView(),
+      binding: AdminBookBorrowDetailBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADMIN_SCAN,
+      page: () => const AdminScanView(),
+      binding: AdminScanBinding(),
     ),
   ];
 }

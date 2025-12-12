@@ -26,11 +26,8 @@ class ReturnedContainer extends StatelessWidget {
           itemCount: list.length,
           itemBuilder: (context, index) {
             final book = list[index].book as Book;
-            return CardStatusContainer(
-              status: "Returned",
-              borrow: list,
-              index: index,
-            );
+            final borrow = list[index];
+            return CardStatusContainer(status: Status.returned, borrow: borrow);
           },
         );
       },

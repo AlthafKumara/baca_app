@@ -1,14 +1,17 @@
 import 'package:baca_app/app/core/color/app_color.dart';
 import 'package:baca_app/app/core/font/app_text_style.dart';
 import 'package:baca_app/app/data/model/borrow_model.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CardStatusContainer extends StatelessWidget {
-  Status status;
+class AdminCardStatusContainer extends StatelessWidget {
+  String status;
   Borrow borrow;
-
-  CardStatusContainer({super.key, required this.status, required this.borrow});
+  AdminCardStatusContainer({
+    super.key,
+    required this.status,
+    required this.borrow,
+  });
 
   @override
   Widget build(BuildContext context) {

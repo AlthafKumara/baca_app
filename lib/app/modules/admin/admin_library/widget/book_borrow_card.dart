@@ -3,31 +3,35 @@ import 'dart:math';
 import 'package:baca_app/app/core/color/app_color.dart';
 import 'package:baca_app/app/core/font/app_text_style.dart';
 import 'package:baca_app/app/data/model/borrow_model.dart';
+import 'package:baca_app/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class BookBorrowCard extends StatelessWidget {
-  String status = "";
-  List<Borrow> borrow;
-  int index;
-  void Function()? onpress;
-  BookBorrowCard({super.key, required this.borrow, required this.index});
+  final Borrow borrow;
+
+  const BookBorrowCard({super.key, required this.borrow});
 
   @override
   Widget build(BuildContext context) {
-    final book = borrow[index].book;
+    final book = borrow.book;
 
-    if (borrow.every((e) => e.status == Status.pending)) {
-      status = "Pending";
-    } else if (borrow.every((e) => e.status == Status.onBorrow)) {
-      status = "On Borrow";
-    } else if (borrow.every((e) => e.status == Status.returned)) {
-      status = "Returned";
-    } else if (borrow.every((e) => e.status == Status.rejected)) {
-      status = "Rejected";
-    }
+    // Tentukan status per item, bukan seluruh list
+    String status = switch (borrow.status) {
+      Status.pending => "Pending",
+      Status.onBorrow => "On Borrow",
+      Status.returned => "Returned",
+      Status.rejected => "Rejected",
+    };
+
     return GestureDetector(
-      onTap: onpress ?? () {},
+      onTap: () {
+        Get.toNamed(
+          Routes.ADMIN_BOOK_BORROW_DETAIL,
+          arguments: {"borrow": borrow, "status": status},
+        );
+      },
       child: Container(
         margin: EdgeInsets.only(bottom: 16.h),
         padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 4.h),
@@ -43,14 +47,12 @@ class BookBorrowCard extends StatelessWidget {
               width: 353.w,
               height: 140.h,
               padding: EdgeInsets.only(top: 12.h),
-
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12.r),
                 color: AppColor.Neutral250,
               ),
               alignment: Alignment.center,
               child: Container(
-                clipBehavior: Clip.none,
                 width: 120.w,
                 height: 177.h,
                 decoration: BoxDecoration(

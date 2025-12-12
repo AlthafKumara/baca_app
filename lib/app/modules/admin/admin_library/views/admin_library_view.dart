@@ -31,57 +31,84 @@ class AdminLibraryView extends GetView<AdminLibraryController> {
         preferredSize: Size.fromHeight(100.h),
         child: Obx(() {
           final selectedMode = cardController.selectedMode.value;
+          final index = tabController.currentindex.value;
           return AppBar(
             backgroundColor: AppColor.Neutral100,
             actions: [
-              GestureDetector(
-                child: SizedBox(
-                  height: 24.w,
-                  width: 24.w,
-                  child: Image.asset("assets/appbar/search.png"),
-                ),
-              ),
-              SizedBox(width: 16.w),
-              CustomButtonMedium.primaryMedium(
-                color: selectedMode ? AppColor.Danger600 : AppColor.Primary500,
-                isLoading: false,
-                onPressed: () {
-                  if (selectedMode == false) {
-                    Get.toNamed(Routes.ADMIN_FORMBOOK);
-                  }
-                  if (selectedMode == true) {
-                    cardController.selectedList.isNotEmpty
-                        ? CustomBottomSheet.doubleBottomSheet(
-                            height: 375,
-                            image: "assets/library/ilustration_delete.png",
-                            message:
-                                "Are you sure want to delete ${cardController.selectedList.length} selected book ? You will not be able to maintain this book",
-                            primarybuttonText: "Delete",
-                            secondarybuttonText: "Cancel",
-                            onPressed: () {
-                              print(cardController.getSelectedIds());
-                              bookcontroller.deleteSelectBooks(
-                                cardController.getSelectedIds(),
-                              );
-                              Get.back();
-                              cardController.selectedMode.value = false;
-                              cardController.selectedList.clear();
-                            },
-                            title: "Delete Book",
-                          )
-                        : null;
-                  }
-                },
-                text: selectedMode ? "Delete" : "Add Book",
-                prefixicon: SizedBox(
-                  width: 20.w,
-                  height: 20.w,
-                  child: selectedMode
-                      ? Image.asset("assets/appbar/delete.png")
-                      : Image.asset("assets/appbar/add.png"),
-                ),
-              ),
-              SizedBox(width: 16.w),
+              index == 0
+                  ? Row(
+                      children: [
+                        GestureDetector(
+                          child: SizedBox(
+                            height: 24.w,
+                            width: 24.w,
+                            child: Image.asset("assets/appbar/search.png"),
+                          ),
+                        ),
+                        SizedBox(width: 16.w),
+                        CustomButtonMedium.primaryMedium(
+                          color: selectedMode
+                              ? AppColor.Danger600
+                              : AppColor.Primary500,
+                          isLoading: false,
+                          onPressed: () {
+                            if (selectedMode == false) {
+                              Get.toNamed(Routes.ADMIN_FORMBOOK);
+                            }
+                            if (selectedMode == true) {
+                              cardController.selectedList.isNotEmpty
+                                  ? CustomBottomSheet.doubleBottomSheet(
+                                      height: 375,
+                                      image:
+                                          "assets/library/ilustration_delete.png",
+                                      message:
+                                          "Are you sure want to delete ${cardController.selectedList.length} selected book ? You will not be able to maintain this book",
+                                      primarybuttonText: "Delete",
+                                      secondarybuttonText: "Cancel",
+                                      onPressed: () {
+                                        print(cardController.getSelectedIds());
+                                        bookcontroller.deleteSelectBooks(
+                                          cardController.getSelectedIds(),
+                                        );
+                                        Get.back();
+                                        cardController.selectedMode.value =
+                                            false;
+                                        cardController.selectedList.clear();
+                                      },
+                                      title: "Delete Book",
+                                    )
+                                  : null;
+                            }
+                          },
+                          text: selectedMode ? "Delete" : "Add Book",
+                          prefixicon: SizedBox(
+                            width: 20.w,
+                            height: 20.w,
+                            child: selectedMode
+                                ? Image.asset("assets/appbar/delete.png")
+                                : Image.asset("assets/appbar/add.png"),
+                          ),
+                        ),
+                        SizedBox(width: 16.w),
+                      ],
+                    )
+                  : index == 1
+                  ? Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Get.toNamed(Routes.ADMIN_SCAN);
+                          },
+                          child: SizedBox(
+                            width: 24.w,
+                            height: 24.w,
+                            child: Image.asset("assets/home/scan.png"),
+                          ),
+                        ),
+                        SizedBox(width: 16.w),
+                      ],
+                    )
+                  : Container(),
             ],
 
             title: Text(

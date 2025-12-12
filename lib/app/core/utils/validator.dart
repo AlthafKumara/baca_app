@@ -85,4 +85,8 @@ class Validator {
     }
     return null;
   }
+
+  String? validatorDescriptionReview(String? value) {
+    return null;
+  }
 }
