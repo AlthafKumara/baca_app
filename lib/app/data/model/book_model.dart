@@ -1,3 +1,5 @@
+import 'package:baca_app/app/data/model/book_review.dart';
+
 class Book {
   final int id;
   final String title;
@@ -8,6 +10,7 @@ class Book {
   final DateTime createdAt;
   final int category;
   final String name_category;
+  double? avgratings;
 
   Book({
     required this.id,
@@ -19,6 +22,7 @@ class Book {
     required this.createdAt,
     required this.category,
     required this.name_category,
+    this.avgratings = 0.0,
   });
 
   factory Book.fromMap(Map<String, dynamic> map) {

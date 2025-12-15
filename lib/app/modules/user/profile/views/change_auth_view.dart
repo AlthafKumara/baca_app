@@ -1,4 +1,5 @@
 import 'package:baca_app/app/core/color/app_color.dart';
+import 'package:baca_app/app/core/constant/asset_constant.dart';
 import 'package:baca_app/app/core/font/app_text_style.dart';
 import 'package:baca_app/app/core/utils/validator.dart';
 import 'package:baca_app/app/core/widget/button_large.dart';
@@ -48,7 +49,7 @@ class ChangeAuthView extends StatelessWidget {
             children: [
               CustomTextfield.textFieldLarge(
                 prefixicon: Image.asset(
-                  "assets/auth/icon/email.png",
+                  Assets.Assets_auth_icon_email,
                   width: 20.w,
                 ),
                 label: "Email",
@@ -64,14 +65,17 @@ class ChangeAuthView extends StatelessWidget {
               Obx(
                 () => CustomTextfield.textFieldLarge(
                   prefixicon: Image.asset(
-                    "assets/auth/icon/lock.png",
+                    Assets.Assets_auth_icon_lock,
                     width: 20.w,
                   ),
                   suffixicon: GestureDetector(
                     onTap: () {
                       authC.handleObsecure();
                     },
-                    child: Image.asset("assets/auth/icon/eye.png", width: 20.w),
+                    child: Image.asset(
+                      Assets.Assets_auth_icon_eye,
+                      width: 20.w,
+                    ),
                   ),
                   label: "Password",
                   hintText: "Input Your Password",
@@ -87,14 +91,17 @@ class ChangeAuthView extends StatelessWidget {
               Obx(
                 () => CustomTextfield.textFieldLarge(
                   prefixicon: Image.asset(
-                    "assets/auth/icon/lock.png",
+                    Assets.Assets_auth_icon_lock,
                     width: 20.w,
                   ),
                   suffixicon: GestureDetector(
                     onTap: () {
                       authC.handleObsecure();
                     },
-                    child: Image.asset("assets/auth/icon/eye.png", width: 20.w),
+                    child: Image.asset(
+                      Assets.Assets_auth_icon_eye,
+                      width: 20.w,
+                    ),
                   ),
                   label: "Confirm password",
                   hintText: "Input your password again",

@@ -1,4 +1,5 @@
 import 'package:baca_app/app/core/color/app_color.dart';
+import 'package:baca_app/app/core/constant/asset_constant.dart';
 import 'package:baca_app/app/core/font/app_text_style.dart';
 import 'package:baca_app/app/core/widget/button_medium.dart';
 import 'package:baca_app/app/core/widget/textfield.dart';
@@ -99,7 +100,7 @@ class PersonalDetailsView extends StatelessWidget {
                 Expanded(
                   child: Obx(
                     () => genderOption(
-                      image: "assets/auth/gender_icon/1.png",
+                      image: Assets.Assets_auth_gendericon_male,
                       label: "Male",
                       value: "Male",
                       selected: controller.profile.value!.gender == "Male",
@@ -111,7 +112,7 @@ class PersonalDetailsView extends StatelessWidget {
                 Expanded(
                   child: Obx(
                     () => genderOption(
-                      image: "assets/auth/gender_icon/2.png",
+                      image: Assets.Assets_auth_gendericon_female,
                       label: "Female",
                       value: "Female",
                       selected: controller.profile.value!.gender == "Female",

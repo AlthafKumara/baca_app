@@ -1,4 +1,5 @@
 import 'package:baca_app/app/core/color/app_color.dart';
+import 'package:baca_app/app/core/constant/asset_constant.dart';
 import 'package:baca_app/app/core/font/app_text_style.dart';
 import 'package:baca_app/app/core/utils/validator.dart';
 
@@ -179,7 +180,7 @@ class AdminFormbookView extends GetView {
                         child: SizedBox(
                           width: 20.w,
                           height: 20.w,
-                          child: Image.asset("assets/library/minus.png"),
+                          child: Image.asset(Assets.Assets_library_minus),
                         ),
                       ),
                       suffixicon: GestureDetector(
@@ -187,7 +188,7 @@ class AdminFormbookView extends GetView {
                         child: SizedBox(
                           width: 20.w,
                           height: 20.w,
-                          child: Image.asset("assets/library/add.png"),
+                          child: Image.asset(Assets.Assets_library_add),
                         ),
                       ),
                       controller: formC.stockcontroller,

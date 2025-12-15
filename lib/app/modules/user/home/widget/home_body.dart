@@ -1,4 +1,5 @@
 import 'package:baca_app/app/core/color/app_color.dart';
+import 'package:baca_app/app/core/constant/asset_constant.dart';
 import 'package:baca_app/app/core/font/app_text_style.dart';
 import 'package:baca_app/app/core/widget/textfield.dart';
 import 'package:baca_app/app/data/model/book_model.dart';
@@ -23,7 +24,7 @@ class HomeBody extends StatelessWidget {
           height: 160.h,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/home/ilustration.png"),
+              image: AssetImage(Assets.Assets_home_ilustration),
               fit: BoxFit.cover,
             ),
           ),
@@ -31,17 +32,22 @@ class HomeBody extends StatelessWidget {
         SizedBox(height: 20.h),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: CustomTextfield.textFieldRounded(
-            controller: TextEditingController(),
-            enabled: false,
-            hintText: "Search any books",
-            prefixicon: SizedBox(
-              height: 20.w,
-              width: 20.w,
-              child: Image.asset("assets/appbar/search.png"),
+          child: GestureDetector(
+            onTap: () {
+              Get.toNamed(Routes.SEARCH);
+            },
+            child: CustomTextfield.textFieldRounded(
+              controller: TextEditingController(),
+              enabled: false,
+              hintText: "Search any books",
+              prefixicon: SizedBox(
+                height: 20.w,
+                width: 20.w,
+                child: Image.asset(Assets.Assets_appbar_search),
+              ),
+              isObsecureText: false,
+              textAlign: TextAlign.start,
             ),
-            isObsecureText: false,
-            textAlign: TextAlign.start,
           ),
         ),
         SizedBox(height: 32.h),

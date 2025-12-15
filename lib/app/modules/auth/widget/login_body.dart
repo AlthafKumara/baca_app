@@ -1,4 +1,5 @@
 import 'package:baca_app/app/core/color/app_color.dart';
+import 'package:baca_app/app/core/constant/asset_constant.dart';
 import 'package:baca_app/app/core/font/app_text_style.dart';
 import 'package:baca_app/app/core/widget/button_large.dart';
 import 'package:baca_app/app/core/widget/textfield.dart';
@@ -49,7 +50,7 @@ class LoginBody extends StatelessWidget {
                   SizedBox(height: 32.h),
                   CustomTextfield.textFieldLarge(
                     prefixicon: Image.asset(
-                      "assets/auth/icon/email.png",
+                      Assets.Assets_auth_icon_email,
                       width: 20.w,
                     ),
                     label: "Email",
@@ -65,7 +66,7 @@ class LoginBody extends StatelessWidget {
                   Obx(
                     () => CustomTextfield.textFieldLarge(
                       prefixicon: Image.asset(
-                        "assets/auth/icon/lock.png",
+                        Assets.Assets_auth_icon_lock,
                         width: 20.w,
                       ),
                       suffixicon: GestureDetector(
@@ -73,7 +74,7 @@ class LoginBody extends StatelessWidget {
                           controller.handleObsecure();
                         },
                         child: Image.asset(
-                          "assets/auth/icon/eye.png",
+                          Assets.Assets_auth_icon_eye,
                           width: 20.w,
                         ),
                       ),
@@ -119,7 +120,7 @@ class LoginBody extends StatelessWidget {
 
                   CustomButtonLarge.outlinelarge(
                     prefixicon: Image.asset(
-                      "assets/auth/icon/google.png",
+                      Assets.Assets_auth_icon_google,
                       width: 20.w,
                     ),
                     text: "Login With Google",

@@ -1,3 +1,5 @@
+import 'package:baca_app/app/data/model/profiles_model.dart';
+
 class BookReview {
   final int id;
   final String userId;
@@ -5,6 +7,7 @@ class BookReview {
   final String reviewText;
   final int rating;
   final DateTime createdAt;
+  Profile? profile;
 
   BookReview({
     required this.id,
@@ -13,6 +16,7 @@ class BookReview {
     required this.reviewText,
     required this.rating,
     required this.createdAt,
+    this.profile,
   });
 
   factory BookReview.fromMap(Map<String, dynamic> map) {

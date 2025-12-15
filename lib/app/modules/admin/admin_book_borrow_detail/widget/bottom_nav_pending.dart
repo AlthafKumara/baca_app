@@ -1,3 +1,4 @@
+import 'package:baca_app/app/core/constant/asset_constant.dart';
 import 'package:baca_app/app/core/widget/bottom_sheet.dart';
 import 'package:baca_app/app/core/widget/button_large.dart';
 import 'package:baca_app/app/modules/admin/admin_book_borrow_detail/controllers/update_borrow_controller.dart';
@@ -21,7 +22,7 @@ class BottomNavPending extends StatelessWidget {
             onPressed: () {
               CustomBottomSheet.doubleBottomSheet(
                 height: 400,
-                image: "assets/library/ilustration_delete.png",
+                image:  Assets.Assets_library_ilustration_delete,
                 title: "Reject this request?",
                 message:
                     "If you reject this request, the user will not be able to borrow the book.",
@@ -41,7 +42,7 @@ class BottomNavPending extends StatelessWidget {
             onPressed: () {
               CustomBottomSheet.doubleBottomSheet(
                 height: 400,
-                image: "assets/library/ilustration_borrow.png",
+                image: Assets.Assets_library_ilustration_borrow,
                 title: "Accept this request?",
                 message:
                     "If you accept this request, the user will be able to borrow the book.",

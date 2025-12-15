@@ -1,4 +1,5 @@
 import 'package:baca_app/app/core/color/app_color.dart';
+import 'package:baca_app/app/core/constant/asset_constant.dart';
 import 'package:baca_app/app/core/font/app_text_style.dart';
 import 'package:baca_app/app/core/utils/validator.dart';
 import 'package:baca_app/app/core/widget/button_large.dart';
@@ -32,7 +33,7 @@ class CompleteProfileView extends GetView<AuthController> {
               height: 26.w,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assets/Logo.png"),
+                  image: AssetImage(Assets.Assets_logo),
                   fit: BoxFit.cover,
                 ),
               ),

@@ -1,4 +1,5 @@
 import 'package:baca_app/app/core/color/app_color.dart';
+import 'package:baca_app/app/core/constant/asset_constant.dart';
 import 'package:baca_app/app/core/font/app_text_style.dart';
 import 'package:baca_app/app/core/widget/bottom_nav.dart';
 import 'package:baca_app/app/core/widget/button_medium.dart';
@@ -52,11 +53,13 @@ class LibraryView extends StatelessWidget {
             return Row(
               children: [
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Get.toNamed(Routes.SEARCH);
+                  },
                   child: SizedBox(
                     width: 24.w,
                     height: 24.w,
-                    child: Image.asset("assets/appbar/search.png"),
+                    child: Image.asset(Assets.Assets_appbar_search),
                   ),
                 ),
 

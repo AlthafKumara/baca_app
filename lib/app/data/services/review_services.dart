@@ -37,4 +37,19 @@ class ReviewServices {
       throw e;
     }
   }
+
+  Future<List<BookReview>> getAllBookRatings() async {
+    final data = await supabase.from('book_review').select('book_id, rating');
+
+    return data.map<BookReview>((e) {
+      return BookReview(
+        id: 0,
+        userId: '',
+        bookId: e['book_id'],
+        reviewText: '',
+        rating: e['rating'],
+        createdAt: DateTime.now(),
+      );
+    }).toList();
+  }
 }

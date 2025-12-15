@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:baca_app/app/data/model/profiles_model.dart';
 import 'package:baca_app/app/modules/auth/controllers/auth_controller.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -90,6 +91,18 @@ class ProfileServices {
           .eq('id', userId);
     } catch (e) {
       throw "Failed to update profile: $e";
+    }
+  }
+
+  Future<List<Profile>> getProfileById(List<String> userIds) async {
+    try {
+      final profile = await supabase
+          .from('profiles')
+          .select()
+          .inFilter("id", userIds);
+      return profile.map((e) => Profile.fromMap(e)).toList();
+    } catch (e) {
+      throw "Failed to get profile: $e";
     }
   }
 }

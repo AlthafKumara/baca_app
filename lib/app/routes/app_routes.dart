@@ -36,6 +36,8 @@ abstract class Routes {
   static const BORROW = _Paths.BORROW;
   static const BOOK_BORROW_DETAIL = _Paths.BOOK_BORROW_DETAIL;
   static const ADMIN_SCAN = _Paths.ADMIN_SCAN;
+  static const ADMIN_SEARCH = _Paths.ADMIN_SEARCH;
+  static const SEARCH = _Paths.SEARCH;
 }
 
 abstract class _Paths {
@@ -59,6 +61,7 @@ abstract class _Paths {
   static const ACCOUNT_SETTING = '/account-setting';
   static const CHANGE_AUTH = '/change-auth';
   static const PERSONAL_DETAILS = '/personal-details';
+  static const SEARCH = '/search';
 
   // ----------------------------------------ADMIN----------------------------
   static const ADMIN_HOME = '/admin-home';
@@ -73,4 +76,5 @@ abstract class _Paths {
   static const BORROW = '/borrow';
   static const BOOK_BORROW_DETAIL = '/book-borrow-detail';
   static const ADMIN_SCAN = '/admin-scan';
+  static const ADMIN_SEARCH = '/admin-search';
 }

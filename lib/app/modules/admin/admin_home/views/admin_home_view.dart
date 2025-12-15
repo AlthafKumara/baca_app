@@ -1,4 +1,5 @@
 import 'package:baca_app/app/core/color/app_color.dart';
+import 'package:baca_app/app/core/constant/asset_constant.dart';
 import 'package:baca_app/app/core/font/app_text_style.dart';
 import 'package:baca_app/app/core/widget/admin_bottom_nav.dart';
 import 'package:baca_app/app/modules/admin/admin_home/widget/quick_actions.dart';
@@ -27,7 +28,7 @@ class AdminHomeView extends GetView<AdminHomeController> {
               height: 26.w,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assets/Logo.png"),
+                  image: AssetImage(Assets.Assets_logo),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -40,7 +41,7 @@ class AdminHomeView extends GetView<AdminHomeController> {
             height: 20.w,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/appbar/notification.png"),
+                image: AssetImage(Assets.Assets_appbar_notification),
                 fit: BoxFit.cover,
               ),
             ),
@@ -55,7 +56,7 @@ class AdminHomeView extends GetView<AdminHomeController> {
             height: 160.h,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/home/ilustration.png"),
+                image: AssetImage(Assets.Assets_home_ilustration),
                 fit: BoxFit.cover,
               ),
             ),

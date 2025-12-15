@@ -1,4 +1,5 @@
 import 'package:baca_app/app/core/color/app_color.dart';
+import 'package:baca_app/app/core/constant/asset_constant.dart';
 import 'package:baca_app/app/core/font/app_text_style.dart';
 import 'package:baca_app/app/core/widget/bottom_sheet.dart';
 import 'package:baca_app/app/data/model/profiles_model.dart';
@@ -41,7 +42,7 @@ class AdminAccountSettingView extends StatelessWidget {
         child: ListView(
           children: [
             cardController(
-              image: "assets/profile/email.png",
+              image: Assets.Assets_profile_email,
               message: "If you want to switch to a new email or password.",
               title: "Change Auth",
               onTap: () {
@@ -50,12 +51,12 @@ class AdminAccountSettingView extends StatelessWidget {
             ),
             SizedBox(height: 16.h),
             cardController(
-              image: "assets/profile/logout.png",
+              image: Assets.Assets_profile_logout,
               message: "Sign out of your currently connected account in Baca.",
               title: "Logout",
               onTap: () {
                 CustomBottomSheet.doubleBottomSheet(
-                  image: "assets/profile/logout_ilustration.png",
+                  image: Assets.Assets_profile_logout_ilustration,
                   title: "Logout from this account?",
                   primarybuttonText: "Yes, Logout",
                   secondarybuttonText: "No, Cancel",

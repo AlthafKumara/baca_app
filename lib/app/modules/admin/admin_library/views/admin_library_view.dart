@@ -1,4 +1,5 @@
 import 'package:baca_app/app/core/color/app_color.dart';
+import 'package:baca_app/app/core/constant/asset_constant.dart';
 import 'package:baca_app/app/core/font/app_text_style.dart';
 import 'package:baca_app/app/core/widget/admin_bottom_nav.dart';
 import 'package:baca_app/app/core/widget/bottom_sheet.dart';
@@ -39,10 +40,11 @@ class AdminLibraryView extends GetView<AdminLibraryController> {
                   ? Row(
                       children: [
                         GestureDetector(
+                          onTap: () => Get.toNamed(Routes.ADMIN_SEARCH),
                           child: SizedBox(
                             height: 24.w,
                             width: 24.w,
-                            child: Image.asset("assets/appbar/search.png"),
+                            child: Image.asset(Assets.Assets_appbar_search),
                           ),
                         ),
                         SizedBox(width: 16.w),
@@ -59,8 +61,8 @@ class AdminLibraryView extends GetView<AdminLibraryController> {
                               cardController.selectedList.isNotEmpty
                                   ? CustomBottomSheet.doubleBottomSheet(
                                       height: 375,
-                                      image:
-                                          "assets/library/ilustration_delete.png",
+                                      image: Assets
+                                          .Assets_library_ilustration_delete,
                                       message:
                                           "Are you sure want to delete ${cardController.selectedList.length} selected book ? You will not be able to maintain this book",
                                       primarybuttonText: "Delete",
@@ -85,8 +87,8 @@ class AdminLibraryView extends GetView<AdminLibraryController> {
                             width: 20.w,
                             height: 20.w,
                             child: selectedMode
-                                ? Image.asset("assets/appbar/delete.png")
-                                : Image.asset("assets/appbar/add.png"),
+                                ? Image.asset(Assets.Assets_appbar_delete)
+                                : Image.asset(Assets.Assets_appbar_add),
                           ),
                         ),
                         SizedBox(width: 16.w),
@@ -102,7 +104,7 @@ class AdminLibraryView extends GetView<AdminLibraryController> {
                           child: SizedBox(
                             width: 24.w,
                             height: 24.w,
-                            child: Image.asset("assets/home/scan.png"),
+                            child: Image.asset(Assets.Assets_home_scan),
                           ),
                         ),
                         SizedBox(width: 16.w),

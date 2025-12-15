@@ -1,3 +1,4 @@
+import 'package:baca_app/app/core/constant/asset_constant.dart';
 import 'package:baca_app/app/core/widget/bottom_sheet.dart';
 import 'package:baca_app/app/core/widget/button_large.dart';
 import 'package:baca_app/app/modules/admin/admin_book_borrow_detail/controllers/update_borrow_controller.dart';
@@ -19,7 +20,7 @@ class BottomNavBorrow extends StatelessWidget {
             onPressed: () {
               CustomBottomSheet.doubleBottomSheet(
                 height: 400,
-                image: "assets/library/ilustration_borrow.png",
+                image: Assets.Assets_library_ilustration_borrow,
                 title: "Update as Return book?",
                 message:
                     "If you accept this request, the user status borrowed will change to return this book.",

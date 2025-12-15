@@ -1,4 +1,5 @@
 import 'package:baca_app/app/core/color/app_color.dart';
+import 'package:baca_app/app/core/constant/asset_constant.dart';
 import 'package:baca_app/app/core/font/app_text_style.dart';
 import 'package:baca_app/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,7 @@ class QuickActions extends StatelessWidget {
               SizedBox(
                 width: 25.w,
                 height: 25.w,
-                child: Image.asset("assets/home/add.png"),
+                child: Image.asset(Assets.Assets_home_add),
               ),
               SizedBox(height: 6.h),
               Text(
@@ -48,7 +49,7 @@ class QuickActions extends StatelessWidget {
               SizedBox(
                 width: 25.w,
                 height: 25.w,
-                child: Image.asset("assets/home/book.png"),
+                child: Image.asset(Assets.Assets_home_book),
               ),
               SizedBox(height: 6.h),
               Text(
@@ -72,7 +73,7 @@ class QuickActions extends StatelessWidget {
               SizedBox(
                 width: 25.w,
                 height: 25.w,
-                child: Image.asset("assets/home/transaction.png"),
+                child: Image.asset(Assets.Assets_home_transaction),
               ),
               SizedBox(height: 6.h),
               Text(
@@ -96,7 +97,7 @@ class QuickActions extends StatelessWidget {
               SizedBox(
                 width: 25.w,
                 height: 25.w,
-                child: Image.asset("assets/home/scan.png"),
+                child: Image.asset(Assets.Assets_home_scan),
               ),
               SizedBox(height: 6.h),
               Text(

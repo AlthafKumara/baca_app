@@ -32,4 +32,40 @@ class CustomChip {
       ),
     );
   }
+
+  Widget reviewChip({required int review}) {
+    final reviewString = review.toString();
+    return Chip(
+      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
+      labelPadding: EdgeInsets.zero,
+      visualDensity: VisualDensity.compact,
+      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+
+      backgroundColor: AppColor.Neutral200,
+      side: BorderSide(
+        color: AppColor.Neutral300,
+        style: BorderStyle.solid,
+        width: 1.w,
+      ),
+
+      labelStyle: AppTextStyle.body3(
+        fontWeight: AppTextStyle.medium,
+        color: AppColor.Neutral900,
+      ),
+      label: Row(
+        children: [
+          Icon(Icons.star_rounded, color: AppColor.Warning400, size: 16.w),
+          SizedBox(width: 4.w),
+          Text(
+            "$reviewString/5",
+            style: AppTextStyle.body3(
+              fontWeight: AppTextStyle.medium,
+              color: AppColor.Neutral900,
+            ),
+          ),
+        ],
+      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(999.r)),
+    );
+  }
 }

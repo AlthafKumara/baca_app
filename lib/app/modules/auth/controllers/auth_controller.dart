@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:baca_app/app/core/constant/asset_constant.dart';
 import 'package:baca_app/app/core/utils/image_picker.dart';
 import 'package:baca_app/app/core/widget/bottom_sheet.dart';
 import 'package:baca_app/app/core/widget/snackbar.dart';
@@ -90,7 +91,7 @@ class AuthController extends GetxController {
         photoFile: selectedImage.value,
       );
       CustomBottomSheet.singleBottomSheet(
-        image: "assets/auth/response/register_succes.png",
+        image: Assets.Assets_auth_response_registerSuccess,
         title: "Your account successfully created",
         message:
             "Your account has successfully created. You can go to login page first to login into your account!",

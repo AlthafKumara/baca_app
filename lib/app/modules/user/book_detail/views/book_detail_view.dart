@@ -1,4 +1,5 @@
 import 'package:baca_app/app/core/color/app_color.dart';
+import 'package:baca_app/app/core/constant/asset_constant.dart';
 import 'package:baca_app/app/core/font/app_text_style.dart';
 import 'package:baca_app/app/core/widget/bottom_sheet.dart';
 import 'package:baca_app/app/core/widget/button_large.dart';
@@ -143,7 +144,7 @@ class BookDetailView extends GetView<BookDetailController> {
               ),
             ),
             Divider(color: AppColor.Neutral250, thickness: 8.h),
-            ReviewContainer(),
+            ReviewContainer(bookId: book.id),
             Divider(color: AppColor.Neutral250, thickness: 8.h),
             SimilarBookContainer(),
           ],
@@ -160,7 +161,7 @@ class BookDetailView extends GetView<BookDetailController> {
               child: SizedBox(
                 width: 88.w,
                 child: CustomButtonLarge.outlinelarge(
-                  suffixicon: Image.asset("assets/home/save.png"),
+                  suffixicon: Image.asset(Assets.Assets_home_save),
                 ),
               ),
             ),
@@ -169,7 +170,7 @@ class BookDetailView extends GetView<BookDetailController> {
               child: CustomButtonLarge.primarylarge(
                 onPressed: () {
                   CustomBottomSheet.doubleBottomSheet(
-                    image: "assets/library/ilustration_borrow.png",
+                    image: Assets.Assets_library_ilustration_borrow,
                     title: "Borrow This Book Now?",
                     primarybuttonText: "Yes, Borrow",
                     secondarybuttonText: "Cancel",

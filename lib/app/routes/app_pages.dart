@@ -15,12 +15,16 @@ import '../modules/admin/admin_profile/views/admin_personal_detail_view.dart';
 import '../modules/admin/admin_profile/views/admin_profile_view.dart';
 import '../modules/admin/admin_scan/bindings/admin_scan_binding.dart';
 import '../modules/admin/admin_scan/views/admin_scan_view.dart';
+import '../modules/admin/admin_search/bindings/admin_search_binding.dart';
+import '../modules/admin/admin_search/views/admin_search_view.dart';
 import '../modules/auth/bindings/auth_binding.dart';
 import '../modules/auth/views/complete_profile_view.dart';
 import '../modules/auth/views/login_view.dart';
 import '../modules/auth/views/onboarding_view.dart';
 import '../modules/auth/views/register_view.dart';
 import '../modules/auth/views/splash_view.dart';
+import '../modules/user/search/bindings/search_binding.dart';
+import '../modules/user/search/views/search_view.dart';
 import '../modules/user/book_borrow_detail/bindings/book_borrow_detail_binding.dart';
 import '../modules/user/book_borrow_detail/views/book_borrow_detail_view.dart';
 import '../modules/user/book_detail/bindings/book_detail_binding.dart';
@@ -181,6 +185,16 @@ class AppPages {
       name: _Paths.ADMIN_SCAN,
       page: () => const AdminScanView(),
       binding: AdminScanBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADMIN_SEARCH,
+      page: () => AdminSearchView(),
+      binding: AdminSearchBinding(),
+    ),
+    GetPage(
+      name: _Paths.SEARCH,
+      page: () => SearchView(),
+      binding: SearchBinding(),
     ),
   ];
 }

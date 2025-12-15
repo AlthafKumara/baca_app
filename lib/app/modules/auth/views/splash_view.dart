@@ -1,4 +1,5 @@
 import 'package:baca_app/app/core/color/app_color.dart';
+import 'package:baca_app/app/core/constant/asset_constant.dart';
 import 'package:baca_app/app/modules/auth/controllers/splash_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,7 +19,7 @@ class SplashView extends GetView<SplashController> {
           height: 100.h,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/Logo.png"),
+              image: AssetImage(Assets.Assets_logo),
               fit: BoxFit.cover,
             ),
           ),

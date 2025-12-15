@@ -1,4 +1,5 @@
 import 'package:baca_app/app/core/color/app_color.dart';
+import 'package:baca_app/app/core/constant/asset_constant.dart';
 import 'package:baca_app/app/core/font/app_text_style.dart';
 import 'package:baca_app/app/core/widget/snackbar.dart';
 import 'package:baca_app/app/modules/admin/admin_profile/controllers/admin_profile_controller.dart';
@@ -88,7 +89,7 @@ class AdminProfileBody extends StatelessWidget {
                       SizedBox(
                         width: 16.w,
                         height: 16.w,
-                        child: Image.asset("assets/profile/user.png"),
+                        child: Image.asset(Assets.Assets_profile_user),
                       ),
                       SizedBox(width: 8.w),
                       Text(
@@ -119,7 +120,7 @@ class AdminProfileBody extends StatelessWidget {
                       SizedBox(
                         width: 16.w,
                         height: 16.w,
-                        child: Image.asset("assets/profile/notification.png"),
+                        child: Image.asset(Assets.Assets_profile_notification),
                       ),
                       SizedBox(width: 8.w),
                       Text(
@@ -157,7 +158,7 @@ class AdminProfileBody extends StatelessWidget {
                       SizedBox(
                         width: 16.w,
                         height: 16.w,
-                        child: Image.asset("assets/profile/setting.png"),
+                        child: Image.asset(Assets.Assets_profile_setting),
                       ),
                       SizedBox(width: 8.w),
                       Text(
@@ -201,7 +202,7 @@ class AdminProfileBody extends StatelessWidget {
                       SizedBox(
                         width: 16.w,
                         height: 16.w,
-                        child: Image.asset("assets/profile/user.png"),
+                        child: Image.asset(Assets.Assets_profile_user),
                       ),
                       SizedBox(width: 8.w),
                       Text(
@@ -232,7 +233,7 @@ class AdminProfileBody extends StatelessWidget {
                       SizedBox(
                         width: 16.w,
                         height: 16.w,
-                        child: Image.asset("assets/profile/notification.png"),
+                        child: Image.asset(Assets.Assets_profile_notification),
                       ),
                       SizedBox(width: 8.w),
                       Text(
@@ -263,7 +264,7 @@ class AdminProfileBody extends StatelessWidget {
                       SizedBox(
                         width: 16.w,
                         height: 16.w,
-                        child: Image.asset("assets/profile/setting.png"),
+                        child: Image.asset(Assets.Assets_profile_setting),
                       ),
                       SizedBox(width: 8.w),
                       Text(

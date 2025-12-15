@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:baca_app/app/core/constant/asset_constant.dart';
 import 'package:baca_app/app/modules/user/home/controllers/bottomnav_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -47,7 +48,7 @@ class CustomBottomNav extends StatelessWidget {
                   SizedBox(
                     width: 20.w,
                     height: 20.w,
-                    child: Image.asset("assets/bottomnav/book_inactive.png"),
+                    child: Image.asset(Assets.Assets_bottomnav_book_inactive),
                   ),
                   SizedBox(height: 6.h),
                 ],
@@ -58,7 +59,7 @@ class CustomBottomNav extends StatelessWidget {
                   SizedBox(
                     width: 20.w,
                     height: 20.w,
-                    child: Image.asset("assets/bottomnav/book_active.png"),
+                    child: Image.asset(Assets.Assets_bottomnav_book_active),
                   ),
                   SizedBox(height: 6.h),
                 ],
@@ -108,7 +109,7 @@ class CustomBottomNav extends StatelessWidget {
                   SizedBox(
                     width: 20.w,
                     height: 20.w,
-                    child: Image.asset("assets/bottomnav/library_active.png"),
+                    child: Image.asset(Assets.Assets_bottomnav_library_active),
                   ),
                   SizedBox(height: 6.h),
                 ],
@@ -121,7 +122,9 @@ class CustomBottomNav extends StatelessWidget {
                   SizedBox(
                     width: 20.w,
                     height: 20.w,
-                    child: Image.asset("assets/bottomnav/profile_inactive.png"),
+                    child: Image.asset(
+                      Assets.Assets_bottomnav_profile_inactive,
+                    ),
                   ),
                   SizedBox(height: 6.h),
                 ],
@@ -131,7 +134,7 @@ class CustomBottomNav extends StatelessWidget {
                   SizedBox(
                     width: 20.w,
                     height: 20.w,
-                    child: Image.asset("assets/bottomnav/profile_active.png"),
+                    child: Image.asset(Assets.Assets_bottomnav_profile_active),
                   ),
                   SizedBox(height: 6.h),
                 ],

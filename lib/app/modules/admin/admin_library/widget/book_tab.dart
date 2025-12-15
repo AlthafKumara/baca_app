@@ -1,4 +1,5 @@
 import 'package:baca_app/app/core/color/app_color.dart';
+import 'package:baca_app/app/core/constant/asset_constant.dart';
 import 'package:baca_app/app/core/font/app_text_style.dart';
 import 'package:baca_app/app/core/widget/chip.dart';
 import 'package:baca_app/app/data/model/book_model.dart';
@@ -44,7 +45,7 @@ class BookTab extends StatelessWidget {
                 child: SizedBox(
                   width: 24.w,
                   height: 24.w,
-                  child: Image.asset("assets/library/filter.png"),
+                  child: Image.asset(Assets.Assets_library_filter),
                 ),
               ),
             ],

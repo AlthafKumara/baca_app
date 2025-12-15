@@ -1,4 +1,5 @@
 import 'package:baca_app/app/core/color/app_color.dart';
+import 'package:baca_app/app/core/constant/asset_constant.dart';
 import 'package:baca_app/app/core/font/app_text_style.dart';
 import 'package:baca_app/app/core/widget/bottom_nav.dart';
 import 'package:baca_app/app/core/widget/textfield.dart';
@@ -35,7 +36,7 @@ class HomeView extends StatelessWidget {
               height: 26.w,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assets/Logo.png"),
+                  image: AssetImage(Assets.Assets_logo),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -48,7 +49,7 @@ class HomeView extends StatelessWidget {
             height: 20.w,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/appbar/notification.png"),
+                image: AssetImage(Assets.Assets_appbar_notification),
                 fit: BoxFit.cover,
               ),
             ),
