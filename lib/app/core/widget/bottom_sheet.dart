@@ -137,58 +137,68 @@ class CustomBottomSheet {
 
   static void singleBottomSheetWidget({
     final String? title,
-
     final Widget? child,
     final int? height,
-
+    final int? buttongap,
     final String? buttonText,
     final void Function()? onPressed,
   }) {
     Get.bottomSheet(
       backgroundColor: AppColor.Neutral100,
       isScrollControlled: true,
-      Container(
-        height: height!.h,
-        alignment: Alignment.center,
-        padding: EdgeInsets.symmetric(horizontal: 16.w),
-        child: Column(
-          children: [
-            SizedBox(
-              width: 42.w,
-              child: Divider(
-                color: AppColor.Neutral300,
-                thickness: 6.h,
-                radius: BorderRadius.circular(999),
+      SafeArea(
+        top: false,
+        child: SizedBox(
+          height: height!.h,
+          child: SingleChildScrollView(
+            physics: const ClampingScrollPhysics(),
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minHeight: height.h),
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SizedBox(
+                      width: 42.w,
+                      child: Divider(
+                        color: AppColor.Neutral300,
+                        thickness: 6.h,
+                        radius: BorderRadius.circular(999),
+                      ),
+                    ),
+                    if (title != null) SizedBox(height: 12.h),
+                    if (title != null)
+                      Text(
+                        title,
+                        style: AppTextStyle.body1(
+                          color: AppColor.Neutral900,
+                          fontWeight: AppTextStyle.bold,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+
+                    SizedBox(height: 16.h),
+
+                    child ?? const SizedBox(),
+
+                    SizedBox(height: buttongap?.h ?? 45.h),
+
+                    Row(
+                      children: [
+                        Expanded(
+                          child: CustomButtonLarge.outlinelarge(
+                            text: buttonText ?? "Close",
+                            onPressed: onPressed,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
-            SizedBox(height: 12.h),
-            if (title != null)
-              Text(
-                title,
-                style: AppTextStyle.body1(
-                  color: AppColor.Neutral900,
-                  fontWeight: AppTextStyle.bold,
-                ),
-                textAlign: TextAlign.center,
-              ),
-
-            SizedBox(height: 16.h),
-
-            child!,
-            SizedBox(height: 45.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: CustomButtonLarge.outlinelarge(
-                    text: buttonText!,
-                    onPressed: onPressed,
-                  ),
-                ),
-                SizedBox(width: 8.w),
-              ],
-            ),
-          ],
+          ),
         ),
       ),
     );

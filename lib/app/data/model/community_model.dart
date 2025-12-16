@@ -1,3 +1,5 @@
+import 'package:baca_app/app/data/model/profiles_model.dart';
+
 class Community {
   final int id;
   final String userId;
@@ -5,6 +7,7 @@ class Community {
   final int bookId;
   final String messageText;
   final DateTime createdAt;
+  Profile? profile;
 
   Community({
     required this.id,
@@ -13,6 +16,7 @@ class Community {
     required this.bookId,
     required this.messageText,
     required this.createdAt,
+    this.profile,
   });
 
   factory Community.fromMap(Map<String, dynamic> map) {

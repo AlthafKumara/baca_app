@@ -1,9 +1,24 @@
+import 'package:baca_app/app/core/widget/snackbar.dart';
+import 'package:baca_app/app/data/model/profiles_model.dart';
+import 'package:baca_app/app/data/services/profile_services.dart';
 import 'package:get/get.dart';
 
 class FeedController extends GetxController {
-  //TODO: Implement FeedController
+  Rxn<Profile> profile = Rxn<Profile>();
+  ProfileServices profileServices = ProfileServices();
 
-  final count = 0.obs;
+  Future<void> loadUser() async {
+    try {
+      await profileServices.loadProfile().then(
+        (value) => profile.value = Profile.fromMap(value!),
+      );
+    } catch (e) {
+      CustomSnackbar.failedSnackbar(e.toString());
+    }
+  }
+
+  
+
   @override
   void onInit() {
     super.onInit();
@@ -12,12 +27,11 @@ class FeedController extends GetxController {
   @override
   void onReady() {
     super.onReady();
+    loadUser();
   }
 
   @override
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

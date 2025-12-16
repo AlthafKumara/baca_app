@@ -90,7 +90,19 @@ class BookBorrowCard extends StatelessWidget {
                   SizedBox(height: 12.h),
                   Row(
                     children: [
-                      Icon(Icons.circle, color: AppColor.Warning600, size: 6.w),
+                      Icon(
+                        Icons.circle,
+                        color: status == "Returned"
+                            ? AppColor.Success600
+                            : status == "Pending"
+                            ? AppColor.Warning600
+                            : status == "On Borrow"
+                            ? AppColor.Primary600
+                            : status == "Rejected"
+                            ? AppColor.Danger600
+                            : null,
+                        size: 6.w,
+                      ),
                       SizedBox(width: 6.w),
                       Text(
                         status,

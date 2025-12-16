@@ -38,6 +38,7 @@ class LibraryView extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColor.Neutral100,
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         backgroundColor: AppColor.Neutral100,
         title: Text(
           'Library',

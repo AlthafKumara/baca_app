@@ -31,22 +31,24 @@ class ReviewContainer extends StatelessWidget {
                   fontWeight: AppTextStyle.medium,
                 ),
               ),
-              Text.rich(
-                TextSpan(
-                  text: "${reviewC.listreview.length}",
-                  style: AppTextStyle.body3(
-                    color: AppColor.Neutral900,
-                    fontWeight: AppTextStyle.medium,
-                  ),
-                  children: [
-                    TextSpan(
-                      text: "(Mostly Positive)",
-                      style: AppTextStyle.body3(
-                        color: AppColor.Neutral500,
-                        fontWeight: AppTextStyle.regular,
-                      ),
+              Obx(
+                () => Text.rich(
+                  TextSpan(
+                    text: "${reviewC.listreview.length}",
+                    style: AppTextStyle.body3(
+                      color: AppColor.Neutral900,
+                      fontWeight: AppTextStyle.medium,
                     ),
-                  ],
+                    children: [
+                      TextSpan(
+                        text: "(Mostly Positive)",
+                        style: AppTextStyle.body3(
+                          color: AppColor.Neutral500,
+                          fontWeight: AppTextStyle.regular,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
@@ -122,14 +124,21 @@ class ReviewContainer extends StatelessWidget {
                       ],
                     ),
                     SizedBox(height: 10.h),
-                    Text(
-                      review.reviewText,
-                      style: AppTextStyle.description2(
-                        fontWeight: AppTextStyle.regular,
-                        color: AppColor.Neutral500,
-                      ),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Text(
+                            review.reviewText,
+                            style: AppTextStyle.description2(
+                              fontWeight: AppTextStyle.regular,
+                              color: AppColor.Neutral500,
+                            ),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
                     ),
                     SizedBox(height: 12.h),
                     Row(
