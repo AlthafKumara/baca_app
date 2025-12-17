@@ -5,6 +5,7 @@ import 'package:baca_app/app/core/widget/bottom_nav.dart';
 import 'package:baca_app/app/core/widget/button_medium.dart';
 import 'package:baca_app/app/core/widget/textfield.dart';
 import 'package:baca_app/app/modules/user/feed/controllers/get_feed_controller.dart';
+import 'package:baca_app/app/modules/user/feed/widget/feed_message_card.dart';
 import 'package:baca_app/app/modules/user/home/controllers/bottomnav_controller.dart';
 import 'package:baca_app/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,7 @@ import '../controllers/feed_controller.dart';
 
 class FeedView extends GetView<FeedController> {
   final feedmessageC = Get.find<GetFeedController>();
+  final profileC = Get.find<FeedController>();
   FeedView({super.key});
   @override
   Widget build(BuildContext context) {
@@ -24,6 +26,7 @@ class FeedView extends GetView<FeedController> {
       resizeToAvoidBottomInset: false,
       backgroundColor: AppColor.Neutral100,
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         backgroundColor: AppColor.Neutral100,
         title: Text(
           'Feed',
@@ -47,38 +50,56 @@ class FeedView extends GetView<FeedController> {
         ],
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 16.w),
+        padding: EdgeInsets.symmetric(vertical: 8.h),
         child: Column(
           children: [
-            CustomTextfield.textFieldRounded(
-              controller: TextEditingController(),
-              enabled: true,
-              hintText: "Search Feeds",
-              isObsecureText: false,
-              textAlign: TextAlign.start,
-              keyBoardType: TextInputType.text,
-              prefixicon: SizedBox(
-                width: 18.w,
-                height: 18.w,
-                child: Image.asset(Assets.Assets_appbar_search),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: CustomTextfield.textFieldRounded(
+                controller: TextEditingController(),
+                enabled: true,
+                hintText: "Search Feeds",
+                isObsecureText: false,
+                textAlign: TextAlign.start,
+                keyBoardType: TextInputType.text,
+                prefixicon: SizedBox(
+                  width: 18.w,
+                  height: 18.w,
+                  child: Image.asset(Assets.Assets_appbar_search),
+                ),
+                validator: null,
               ),
-              validator: null,
             ),
             SizedBox(height: 24.h),
-            Container(
-              height: 500.h,
-              child: feedmessageC.obx((state) {
-                return ListView.builder(
-                  itemBuilder: (context, index) {
-                    return Container(
-                      height: 100.h,
-                      width: 120.w,
-                      color: AppColor.Warning400,
-                    );
-                  },
-                  itemCount: state!.length,
-                );
-              }),
+            Expanded(
+              child: feedmessageC.obx(
+                (state) {
+                  return ListView.builder(
+                    itemBuilder: (context, index) {
+                      final community = state[index];
+                      final profile = profileC.profile.value;
+                      return FeedMessageCard(
+                        community: community,
+                        profile: profile!,
+                      );
+                    },
+                    itemCount: state!.length,
+                  );
+                },
+                onEmpty: Center(
+                  child: Text(
+                    "No Feed",
+                    style: AppTextStyle.body1(
+                      color: AppColor.Neutral500,
+                      fontWeight: AppTextStyle.regular,
+                    ),
+                  ),
+                ),
+                onError: (error) => Center(child: Text(error.toString())),
+                onLoading: Center(
+                  child: CircularProgressIndicator(color: AppColor.Primary500),
+                ),
+              ),
             ),
           ],
         ),

@@ -1,22 +1,26 @@
+import 'package:baca_app/app/data/model/book_model.dart';
 import 'package:baca_app/app/data/model/profiles_model.dart';
 
 class Community {
   final int id;
   final String userId;
   final int? parentId;
-  final int bookId;
+  final int? bookId;
   final String messageText;
   final DateTime createdAt;
   Profile? profile;
+  Book? book;
+  List<Community> replies = [];
 
   Community({
     required this.id,
     required this.userId,
     this.parentId,
-    required this.bookId,
+    this.bookId,
     required this.messageText,
     required this.createdAt,
     this.profile,
+    this.book,
   });
 
   factory Community.fromMap(Map<String, dynamic> map) {
