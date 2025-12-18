@@ -1,6 +1,3 @@
-import 'package:baca_app/app/modules/user/feed/views/add_feed_view.dart';
-import 'package:baca_app/app/modules/user/feed/views/detail_feed_view.dart';
-import 'package:baca_app/app/modules/user/feed/views/reply_feed_view.dart';
 import 'package:get/get.dart';
 
 import '../modules/admin/admin_book_borrow_detail/bindings/admin_book_borrow_detail_binding.dart';
@@ -26,14 +23,17 @@ import '../modules/auth/views/login_view.dart';
 import '../modules/auth/views/onboarding_view.dart';
 import '../modules/auth/views/register_view.dart';
 import '../modules/auth/views/splash_view.dart';
-import '../modules/user/search/bindings/search_binding.dart';
-import '../modules/user/search/views/search_view.dart';
+import '../modules/notification/bindings/notification_binding.dart';
+import '../modules/notification/views/notification_view.dart';
 import '../modules/user/book_borrow_detail/bindings/book_borrow_detail_binding.dart';
 import '../modules/user/book_borrow_detail/views/book_borrow_detail_view.dart';
 import '../modules/user/book_detail/bindings/book_detail_binding.dart';
 import '../modules/user/book_detail/views/book_detail_view.dart';
 import '../modules/user/feed/bindings/feed_binding.dart';
+import '../modules/user/feed/views/add_feed_view.dart';
+import '../modules/user/feed/views/detail_feed_view.dart';
 import '../modules/user/feed/views/feed_view.dart';
+import '../modules/user/feed/views/reply_feed_view.dart';
 import '../modules/user/home/bindings/home_binding.dart';
 import '../modules/user/home/views/home_view.dart';
 import '../modules/user/library/bindings/library_binding.dart';
@@ -44,6 +44,8 @@ import '../modules/user/profile/views/account_setting_view.dart';
 import '../modules/user/profile/views/change_auth_view.dart';
 import '../modules/user/profile/views/personal_details_view.dart';
 import '../modules/user/profile/views/profile_view.dart';
+import '../modules/user/search/bindings/search_binding.dart';
+import '../modules/user/search/views/search_view.dart';
 
 part 'app_routes.dart';
 
@@ -213,6 +215,11 @@ class AppPages {
       name: _Paths.SEARCH,
       page: () => SearchView(),
       binding: SearchBinding(),
+    ),
+    GetPage(
+      name: _Paths.NOTIFICATION,
+      page: () => const NotificationView(),
+      binding: NotificationBinding(),
     ),
   ];
 }

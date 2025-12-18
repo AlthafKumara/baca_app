@@ -52,4 +52,19 @@ class NotificationModel {
       'created_at': createdAt.toIso8601String(),
     };
   }
+
+  NotificationModel copyWith({bool? isRead}) {
+    return NotificationModel(
+      id: id,
+      userId: userId,
+      title: title,
+      message: message,
+      type: type,
+      isRead: isRead ?? this.isRead,
+      createdAt: createdAt,
+      borrowId: borrowId,
+      communityId: communityId,
+    );
+  }
+
 }

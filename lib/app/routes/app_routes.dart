@@ -41,6 +41,7 @@ abstract class Routes {
   static const ADMIN_SCAN = _Paths.ADMIN_SCAN;
   static const ADMIN_SEARCH = _Paths.ADMIN_SEARCH;
   static const SEARCH = _Paths.SEARCH;
+  static const NOTIFICATION = _Paths.NOTIFICATION;
 }
 
 abstract class _Paths {
@@ -83,4 +84,5 @@ abstract class _Paths {
   static const BOOK_BORROW_DETAIL = '/book-borrow-detail';
   static const ADMIN_SCAN = '/admin-scan';
   static const ADMIN_SEARCH = '/admin-search';
+  static const NOTIFICATION = '/notification';
 }

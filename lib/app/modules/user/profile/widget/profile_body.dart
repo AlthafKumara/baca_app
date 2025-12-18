@@ -110,6 +110,7 @@ class ProfileBody extends StatelessWidget {
             ),
             SizedBox(height: 18.h),
             GestureDetector(
+              onTap: () => Get.toNamed(Routes.NOTIFICATION),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

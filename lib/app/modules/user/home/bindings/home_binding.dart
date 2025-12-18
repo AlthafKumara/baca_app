@@ -1,3 +1,4 @@
+import 'package:baca_app/app/modules/notification/controllers/notification_controller.dart';
 import 'package:get/get.dart';
 
 import 'package:baca_app/app/modules/user/home/controllers/book_controller.dart';
@@ -17,5 +18,6 @@ class HomeBinding extends Bindings {
     Get.lazyPut<HomeController>(
       () => HomeController(),
     );
+    Get.put(NotificationController(), permanent: true);
   }
 }

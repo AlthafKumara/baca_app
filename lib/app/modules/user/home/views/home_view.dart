@@ -10,6 +10,7 @@ import 'package:baca_app/app/modules/user/home/controllers/bottomnav_controller.
 import 'package:baca_app/app/modules/user/home/controllers/home_controller.dart';
 import 'package:baca_app/app/modules/user/home/widget/book_card.dart';
 import 'package:baca_app/app/modules/user/home/widget/home_body.dart';
+import 'package:baca_app/app/routes/app_pages.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -44,13 +45,16 @@ class HomeView extends StatelessWidget {
           ],
         ),
         actions: [
-          Container(
-            width: 20.w,
-            height: 20.w,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(Assets.Assets_appbar_notification),
-                fit: BoxFit.cover,
+          GestureDetector(
+            onTap: () => Get.toNamed(Routes.NOTIFICATION),
+            child: Container(
+              width: 20.w,
+              height: 20.w,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(Assets.Assets_appbar_notification),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),

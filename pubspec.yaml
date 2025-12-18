@@ -69,6 +69,7 @@ flutter:
     - assets/auth/gender_icon/
     - assets/auth/
     - assets/home/
+    - assets/notification/
     - assets/library/
     - assets/profile/
     - assets/

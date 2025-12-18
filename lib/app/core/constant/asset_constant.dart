@@ -65,4 +65,6 @@ class Assets {
       "assets/profile/notification.png";
   static const String Assets_profile_setting = "assets/profile/setting.png";
   static const String Assets_profile_user = "assets/profile/user.png";
+
+  static const String Assets_Notification_broadcast = "assets/notification/broadcast.png";
 }
