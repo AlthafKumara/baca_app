@@ -47,6 +47,7 @@ class Assets {
 
   static const String Assets_library_add = "assets/library/add.png";
   static const String Assets_library_link = "assets/library/link.png";
+  static const String Assets_library_message = "assets/library/message.png";
   static const String Assets_library_filter = "assets/library/filter.png";
   static const String Assets_library_ilustration_borrow =
       "assets/library/ilustration_borrow.png";

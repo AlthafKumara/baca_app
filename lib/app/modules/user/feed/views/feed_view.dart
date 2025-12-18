@@ -3,6 +3,7 @@ import 'package:baca_app/app/core/constant/asset_constant.dart';
 import 'package:baca_app/app/core/font/app_text_style.dart';
 import 'package:baca_app/app/core/widget/bottom_nav.dart';
 import 'package:baca_app/app/core/widget/button_medium.dart';
+import 'package:baca_app/app/core/widget/snackbar.dart';
 import 'package:baca_app/app/core/widget/textfield.dart';
 import 'package:baca_app/app/modules/user/feed/controllers/get_feed_controller.dart';
 import 'package:baca_app/app/modules/user/feed/widget/feed_message_card.dart';
@@ -44,6 +45,11 @@ class FeedView extends GetView<FeedController> {
             prefixicon: Icon(Icons.edit, color: Colors.white, size: 20.w),
             isLoading: false,
             onPressed: () {
+              final profile = controller.profile.value;
+
+              if (profile == null) {
+                CustomSnackbar.succesSnackbar("Profile sedang di load");
+              }
               Get.toNamed(Routes.ADD_FEED, arguments: controller.profile.value);
             },
           ),
@@ -78,9 +84,24 @@ class FeedView extends GetView<FeedController> {
                     itemBuilder: (context, index) {
                       final community = state[index];
                       final profile = profileC.profile.value;
+
+                      if (profile == null) {
+                        return CircularProgressIndicator(
+                          color: AppColor.Primary500,
+                        );
+                      }
                       return FeedMessageCard(
+                        ontap: () {
+                          Get.toNamed(
+                            Routes.DETAIL_FEED,
+                            arguments: {
+                              "community": community,
+                              "profile": profile,
+                            },
+                          );
+                        },
                         community: community,
-                        profile: profile!,
+                        profile: profile,
                       );
                     },
                     itemCount: state!.length,

@@ -15,6 +15,8 @@ abstract class Routes {
   static const HOME = _Paths.HOME;
   static const FEED = _Paths.FEED;
   static const ADD_FEED = _Paths.ADD_FEED;
+  static const REPLY_FEED = _Paths.REPLY_FEED;
+  static const DETAIL_FEED = _Paths.DETAIL_FEED;
   static const LIBRARY = _Paths.LIBRARY;
   static const CREATE_SAVED_LIST = _Paths.CREATE_SAVED_LIST;
   static const DETAIL_BOOK = _Paths.DETAIL_BOOK;
@@ -55,6 +57,8 @@ abstract class _Paths {
   static const HOME = '/home';
   static const FEED = '/feed';
   static const ADD_FEED = '/add-feed';
+  static const REPLY_FEED = '/reply-feed';
+  static const DETAIL_FEED = '/detail-feed';
   static const LIBRARY = '/library';
   static const CREATE_SAVED_LIST = '/create-saved-list';
   static const DETAIL_BOOK = '/detail-book';

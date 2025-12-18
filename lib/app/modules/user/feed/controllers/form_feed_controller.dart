@@ -34,6 +34,25 @@ class FormFeedController extends GetxController {
     }
   }
 
+  void handleReplyFeed({required int communityId}) async {
+    try {
+      await communityServices.replyMessage(
+        messageText: messageText.value,
+        userId: profileC.profile.value!.id,
+        parentId: communityId,
+        bookId: selectedBookId,
+      );
+
+      messageController.clear();
+      messageText.value = "";
+
+      CustomSnackbar.succesSnackbar("Succesfully replyed");
+      Get.offAllNamed(Routes.FEED);
+    } catch (e) {
+      CustomSnackbar.failedSnackbar(e.toString());
+    }
+  }
+
   @override
   void onInit() {
     super.onInit();

@@ -13,7 +13,7 @@ class GetFeedController extends GetxController
   var childFeed = <Community>[].obs;
   var parentFeed = <Community>[].obs;
 
-  void getParrentFeed() async {
+  void getFeed() async {
     try {
       final feed = await communityServices.getCommunity();
 
@@ -23,14 +23,11 @@ class GetFeedController extends GetxController
       }
 
       final parentFeed = feed.where((e) => e.parentId == null).toList();
+      final childFeed = feed.where((e) => e.parentId != null).toList();
 
-      if (parentFeed.isEmpty) {
-        change([], status: RxStatus.empty());
-        return;
-      }
-
-      final userIds = parentFeed.map((e) => e.userId).toSet().toList();
-      final List<int> bookIds = parentFeed
+      // ================== BOOK ==================
+      // ================== BOOK ==================
+      final bookIds = feed
           .where((e) => e.bookId != null)
           .map((e) => e.bookId!)
           .toSet()
@@ -40,39 +37,47 @@ class GetFeedController extends GetxController
         final books = await bookServices.getBookById(bookIds);
         final bookMap = {for (var b in books) b.id: b};
 
-        for (var item in parentFeed) {
-          if (item.bookId != null && bookMap.containsKey(item.bookId)) {
+        for (var item in feed) {
+          if (item.bookId != null) {
             item.book = bookMap[item.bookId];
           }
         }
       }
 
+      // ================== PROFILE ==================
+      final userIds = feed.map((e) => e.userId).toSet().toList();
       final profiles = await profileServices.getProfileById(userIds);
       final profileMap = {for (var p in profiles) p.id: p};
 
-      for (var item in parentFeed) {
-        final profile = profileMap[item.userId];
-
-        if (profile == null) {
-          throw Exception('Profile not found for userId ${item.userId}');
-        }
-
-        item.profile = profile;
+      for (var item in feed) {
+        item.profile = profileMap[item.userId];
       }
 
-      final safeFeed = parentFeed.where((e) => e.profile != null).toList();
+      // ================== CHILD MAP ==================
+      final Map<int, List<Community>> childMap = {};
 
-      change(safeFeed, status: RxStatus.success());
+      for (var child in childFeed) {
+        final parentId = child.parentId;
+        if (parentId == null) continue;
+
+        childMap.putIfAbsent(parentId, () => []);
+        childMap[parentId]!.add(child);
+      }
+
+      // ================== ASSIGN KE PARENT 🔥 ==================
+      for (var parent in parentFeed) {
+        parent.replies = childMap[parent.id] ?? [];
+      }
+
+      change(parentFeed, status: RxStatus.success());
     } catch (e) {
       change(null, status: RxStatus.error(e.toString()));
     }
   }
 
-  void getChildFeed() async {}
-
   @override
   void onInit() {
     super.onInit();
-    getParrentFeed();
+    getFeed();
   }
 }

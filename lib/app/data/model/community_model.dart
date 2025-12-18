@@ -10,7 +10,7 @@ class Community {
   final DateTime createdAt;
   Profile? profile;
   Book? book;
-  List<Community> replies = [];
+  List<Community> replies;
 
   Community({
     required this.id,
@@ -21,9 +21,25 @@ class Community {
     required this.createdAt,
     this.profile,
     this.book,
-  });
+    List<Community>? replies,
+  }) : replies = replies ?? [];
 
   factory Community.fromMap(Map<String, dynamic> map) {
+    final raw = map['created_at'];
+
+    final parsedUtc = DateTime.parse(raw);
+
+    final fixedLocal = DateTime(
+      parsedUtc.year,
+      parsedUtc.month,
+      parsedUtc.day,
+      parsedUtc.hour,
+      parsedUtc.minute,
+      parsedUtc.second,
+      parsedUtc.millisecond,
+      parsedUtc.microsecond,
+    );
+
     return Community(
       id: map['id'],
       userId: map['user_id'],

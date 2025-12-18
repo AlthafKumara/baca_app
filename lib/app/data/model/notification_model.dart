@@ -1,3 +1,5 @@
+import 'package:baca_app/app/data/utils/enum_helper.dart';
+
 enum NotificationType { borrow_status, community, general }
 
 class NotificationModel {
@@ -32,7 +34,7 @@ class NotificationModel {
       isRead: map['is_read'],
       borrowId: map['borrow_id'],
       communityId: map['community_id'],
-      type: NotificationType.values.byName(map['type']),
+      type: fromString(map['type']),
       createdAt: DateTime.parse(map['created_at']),
     );
   }

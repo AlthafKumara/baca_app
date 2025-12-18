@@ -1,4 +1,6 @@
 import 'package:baca_app/app/modules/user/feed/views/add_feed_view.dart';
+import 'package:baca_app/app/modules/user/feed/views/detail_feed_view.dart';
+import 'package:baca_app/app/modules/user/feed/views/reply_feed_view.dart';
 import 'package:get/get.dart';
 
 import '../modules/admin/admin_book_borrow_detail/bindings/admin_book_borrow_detail_binding.dart';
@@ -89,6 +91,16 @@ class AppPages {
     GetPage(
       name: _Paths.ADD_FEED,
       page: () => AddFeedView(),
+      binding: FeedBinding(),
+    ),
+    GetPage(
+      name: _Paths.REPLY_FEED,
+      page: () => ReplyFeedView(),
+      binding: FeedBinding(),
+    ),
+    GetPage(
+      name: _Paths.DETAIL_FEED,
+      page: () => DetailFeedView(),
       binding: FeedBinding(),
     ),
     GetPage(

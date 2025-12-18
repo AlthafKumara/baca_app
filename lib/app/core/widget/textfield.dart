@@ -128,11 +128,11 @@ class CustomTextfield {
     final TextAlign? textAlign = TextAlign.start,
     String? Function(String?)? validator,
   }) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        if (label != null)
+    if (label != null) {
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
           Text(
             label,
             style: AppTextStyle.body2(
@@ -140,87 +140,162 @@ class CustomTextfield {
               fontWeight: AppTextStyle.medium,
             ),
           ),
-        SizedBox(height: 6.h),
-        TextFormField(
-          textAlign: textAlign!,
+          SizedBox(height: 6.h),
+          TextFormField(
+            textAlign: textAlign!,
 
-          maxLines: maxLines,
-          controller: controller,
-          keyboardType: keyBoardType,
-          enabled: enabled,
-          obscureText: isObsecureText!,
-          style: AppTextStyle.body2(
-            color: AppColor.Neutral900,
-            fontWeight: AppTextStyle.regular,
-          ),
-          decoration: InputDecoration(
-            filled: true,
-            fillColor: AppColor.Neutral100,
-
-            hintText: hintText,
-            hintStyle: AppTextStyle.body2(
-              color: AppColor.Neutral400,
+            maxLines: maxLines,
+            controller: controller,
+            keyboardType: keyBoardType,
+            enabled: enabled,
+            obscureText: isObsecureText!,
+            style: AppTextStyle.body2(
+              color: AppColor.Neutral900,
               fontWeight: AppTextStyle.regular,
             ),
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: AppColor.Neutral100,
 
-            errorStyle: AppTextStyle.body2(
-              color: AppColor.Danger600,
-              fontWeight: AppTextStyle.regular,
-            ),
+              hintText: hintText,
+              hintStyle: AppTextStyle.body2(
+                color: AppColor.Neutral400,
+                fontWeight: AppTextStyle.regular,
+              ),
 
-            prefixIcon: prefixicon != null
-                ? Padding(
-                    padding: EdgeInsets.only(left: 12, right: 8),
-                    child: prefixicon,
-                  )
-                : null,
-            prefixIconConstraints: BoxConstraints(
-              minWidth: 18.w,
-              minHeight: 18.w,
-            ),
-            suffixIcon: suffixicon != null
-                ? Padding(
-                    padding: EdgeInsets.only(left: 8, right: 12),
-                    child: suffixicon,
-                  )
-                : null,
-            suffixIconConstraints: BoxConstraints(
-              minWidth: 18.w,
-              minHeight: 18.w,
-            ),
+              errorStyle: AppTextStyle.body2(
+                color: AppColor.Danger600,
+                fontWeight: AppTextStyle.regular,
+              ),
 
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(999.r),
-              borderSide: BorderSide(color: AppColor.Primary400),
+              prefixIcon: prefixicon != null
+                  ? Padding(
+                      padding: EdgeInsets.only(left: 12, right: 8),
+                      child: prefixicon,
+                    )
+                  : null,
+              prefixIconConstraints: BoxConstraints(
+                minWidth: 18.w,
+                minHeight: 18.w,
+              ),
+              suffixIcon: suffixicon != null
+                  ? Padding(
+                      padding: EdgeInsets.only(left: 8, right: 12),
+                      child: suffixicon,
+                    )
+                  : null,
+              suffixIconConstraints: BoxConstraints(
+                minWidth: 18.w,
+                minHeight: 18.w,
+              ),
+
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(999.r),
+                borderSide: BorderSide(color: AppColor.Primary400),
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(999.r),
+                borderSide: BorderSide(color: AppColor.Neutral300),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(999.r),
+                borderSide: BorderSide(color: AppColor.Neutral300),
+              ),
+              focusedErrorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(999.r),
+                borderSide: BorderSide(color: AppColor.Danger500),
+              ),
+              errorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(999.r),
+                borderSide: BorderSide(color: AppColor.Danger500),
+              ),
             ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(999.r),
-              borderSide: BorderSide(color: AppColor.Neutral300),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(999.r),
-              borderSide: BorderSide(color: AppColor.Neutral300),
-            ),
-            focusedErrorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(999.r),
-              borderSide: BorderSide(color: AppColor.Danger500),
-            ),
-            errorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(999.r),
-              borderSide: BorderSide(color: AppColor.Danger500),
-            ),
+            validator: (value) {
+              if (validator != null) {
+                return validator(value);
+              }
+              if (value == null || value.trim().isEmpty) {
+                return 'This field is required';
+              }
+              return null;
+            },
           ),
-          validator: (value) {
-            if (validator != null) {
-              return validator(value);
-            }
-            if (value == null || value.trim().isEmpty) {
-              return 'This field is required';
-            }
-            return null;
-          },
+        ],
+      );
+    }
+
+    return TextFormField(
+      textAlign: textAlign!,
+
+      maxLines: maxLines,
+      controller: controller,
+      keyboardType: keyBoardType,
+      enabled: enabled,
+      obscureText: isObsecureText!,
+      style: AppTextStyle.body2(
+        color: AppColor.Neutral900,
+        fontWeight: AppTextStyle.regular,
+      ),
+      decoration: InputDecoration(
+        filled: true,
+        fillColor: AppColor.Neutral100,
+
+        hintText: hintText,
+        hintStyle: AppTextStyle.body2(
+          color: AppColor.Neutral400,
+          fontWeight: AppTextStyle.regular,
         ),
-      ],
+
+        errorStyle: AppTextStyle.body2(
+          color: AppColor.Danger600,
+          fontWeight: AppTextStyle.regular,
+        ),
+
+        prefixIcon: prefixicon != null
+            ? Padding(
+                padding: EdgeInsets.only(left: 12, right: 8),
+                child: prefixicon,
+              )
+            : null,
+        prefixIconConstraints: BoxConstraints(minWidth: 18.w, minHeight: 18.w),
+        suffixIcon: suffixicon != null
+            ? Padding(
+                padding: EdgeInsets.only(left: 8, right: 12),
+                child: suffixicon,
+              )
+            : null,
+        suffixIconConstraints: BoxConstraints(minWidth: 18.w, minHeight: 18.w),
+
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(999.r),
+          borderSide: BorderSide(color: AppColor.Primary400),
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(999.r),
+          borderSide: BorderSide(color: AppColor.Neutral300),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(999.r),
+          borderSide: BorderSide(color: AppColor.Neutral300),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(999.r),
+          borderSide: BorderSide(color: AppColor.Danger500),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(999.r),
+          borderSide: BorderSide(color: AppColor.Danger500),
+        ),
+      ),
+      validator: (value) {
+        if (validator != null) {
+          return validator(value);
+        }
+        if (value == null || value.trim().isEmpty) {
+          return 'This field is required';
+        }
+        return null;
+      },
     );
   }
 
