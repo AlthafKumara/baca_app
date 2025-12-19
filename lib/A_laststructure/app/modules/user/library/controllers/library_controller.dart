@@ -1,0 +1,36 @@
+import 'package:baca_app/A_laststructure/app/core/widget/snackbar.dart';
+import 'package:baca_app/A_laststructure/app/data/model/profiles_model.dart';
+import 'package:baca_app/A_laststructure/app/data/services/profile_services.dart';
+import 'package:get/get.dart';
+
+class LibraryController extends GetxController {
+  Rxn<Profile> profile = Rxn<Profile>();
+  ProfileServices profileServices = ProfileServices();
+
+
+  Future<void> loadUser() async {
+    try {
+      await profileServices.loadProfile().then(
+        (value) => profile.value = Profile.fromMap(value!),
+      );
+    } catch (e) {
+      CustomSnackbar.failedSnackbar(e.toString());
+    }
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    loadUser();
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+  }
+}
