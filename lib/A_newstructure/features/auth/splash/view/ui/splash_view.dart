@@ -10,6 +10,7 @@ class SplashView extends GetView<SplashController> {
 
   @override
   Widget build(BuildContext context) {
+    final c = controller;
     return Scaffold(
       backgroundColor: AppColor.Neutral100,
       body: Center(

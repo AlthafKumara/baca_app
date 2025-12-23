@@ -1,6 +1,6 @@
 import 'package:baca_app/A_newstructure/utils/enums/profiles_enum.dart';
 
-class Profile {
+class ProfileModel {
   final String id;
   final String name;
   final Role role;
@@ -9,7 +9,7 @@ class Profile {
   final String? gender;
   final DateTime createdAt;
 
-  Profile({
+  ProfileModel({
     required this.id,
     required this.name,
     required this.role,
@@ -19,8 +19,8 @@ class Profile {
     required this.createdAt,
   });
 
-  factory Profile.fromMap(Map<String, dynamic> map) {
-    return Profile(
+  factory ProfileModel.fromMap(Map<String, dynamic> map) {
+    return ProfileModel(
       id: map['id'],
       name: map['name'],
       role: _parseRole(map['role']),

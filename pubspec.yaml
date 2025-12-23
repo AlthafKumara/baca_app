@@ -75,6 +75,10 @@ flutter:
     - assets/
     - assets/appbar/
     - assets/bottomnav/
+
+    - assets/icon/
+    - assets/image/
+    - assets/ilustration/
     - .env
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

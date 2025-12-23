@@ -7,8 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class SplashView extends GetView<SplashController> {
-  final controller = Get.find<SplashController>();
-  SplashView({super.key});
+  const SplashView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

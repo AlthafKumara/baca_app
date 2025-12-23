@@ -1,7 +1,7 @@
 class Assets {
   Assets._();
   // -------------------------------LOGO--------------------------------------
-  static const String Assets_logo = "assets/icon/Logo.png";
+  static const String Assets_logo = "assets/Logo.png";
 
   // -------------------------------ICONS--------------------------------------
   static const String Icon_add = "assets/icon/add.png";

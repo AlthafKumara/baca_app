@@ -1,4 +1,5 @@
 import 'package:baca_app/A_newstructure/constants/assets_constant.dart';
+import 'package:baca_app/A_newstructure/features/auth/login/constants/login_constant.dart';
 import 'package:baca_app/A_newstructure/features/auth/login/controllers/login_controller.dart';
 import 'package:baca_app/A_newstructure/shared/styles/app_color.dart';
 import 'package:baca_app/A_newstructure/shared/styles/app_text_style.dart';
@@ -31,7 +32,7 @@ class LoginBody extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Welcome back!",
+                        Login.logintitle,
                         style: AppTextStyle.heading3(
                           color: AppColor.Neutral900,
                           fontWeight: AppTextStyle.bold,
@@ -39,7 +40,7 @@ class LoginBody extends StatelessWidget {
                       ),
                       SizedBox(height: 8.h),
                       Text(
-                        "You can log into your account first to read many interesting books!",
+                        Login.logindescription,
                         style: AppTextStyle.description2(
                           color: AppColor.Neutral400,
                           fontWeight: AppTextStyle.medium,
@@ -50,8 +51,8 @@ class LoginBody extends StatelessWidget {
                   SizedBox(height: 32.h),
                   CustomTextfield.textFieldLarge(
                     prefixicon: Image.asset(Assets.Icon_email, width: 20.w),
-                    label: "Email",
-                    hintText: "youremail@gmail.com",
+                    label: Login.labelemail,
+                    hintText: Login.hintemail,
                     controller: controller.emailController,
                     isObsecureText: false,
                     maxLines: 1,
@@ -69,8 +70,8 @@ class LoginBody extends StatelessWidget {
                         },
                         child: Image.asset(Assets.Icon_eye, width: 20.w),
                       ),
-                      label: "Password",
-                      hintText: "Input Your Password",
+                      label: Login.labelpassword,
+                      hintText: Login.hintpassword,
                       controller: controller.passwordController,
                       isObsecureText: controller.isObsecureText.value,
                       maxLines: 1,
@@ -84,14 +85,14 @@ class LoginBody extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Forgot Your Password?",
+                        Login.forgotPassword,
                         style: AppTextStyle.body2(
                           color: AppColor.Neutral400,
                           fontWeight: AppTextStyle.medium,
                         ),
                       ),
                       Text(
-                        " Reset Here",
+                        Login.resetPassword,
                         style: AppTextStyle.body2(
                           color: AppColor.Primary500,
                           fontWeight: AppTextStyle.bold,
@@ -101,15 +102,16 @@ class LoginBody extends StatelessWidget {
                   ),
                   SizedBox(height: 24.h),
                   CustomButtonLarge.primarylarge(
-                    isLoading: controller.isLoading.value,
-                    text: "Login",
-                    onPressed: () {},
+                    text: Login.loginbutton,
+                    onPressed: () {
+                      controller.handleLogin();
+                    },
                   ),
                   SizedBox(height: 16.h),
 
                   CustomButtonLarge.outlinelarge(
                     prefixicon: Image.asset(Assets.Image_google, width: 20.w),
-                    text: "Login With Google",
+                    text: Login.loginGoogle,
                     onPressed: () {},
                   ),
                 ],
