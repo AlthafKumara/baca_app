@@ -17,6 +17,7 @@ class UserDetailFeedView extends StatelessWidget {
   Widget build(BuildContext context) {
     final CommunityModel? community = Get.arguments["community"];
     final ProfileModel? profile = Get.arguments["profile"];
+
     if (community == null) {
       return Scaffold(
         body: Center(

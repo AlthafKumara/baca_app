@@ -37,7 +37,7 @@ class UserHomeBody extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           child: GestureDetector(
             onTap: () {
-              Get.offNamed(Routes.USER_SEARCH);
+              Get.toNamed(Routes.USER_SEARCH);
             },
             child: CustomTextfield.textFieldRounded(
               controller: TextEditingController(),

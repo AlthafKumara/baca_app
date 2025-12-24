@@ -13,15 +13,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class ReplyFeedView extends GetView {
+class UserReplyFeedView extends GetView {
   final formC = Get.find<UserFormFeedController>();
   final bookC = Get.find<GetBookFeedController>();
-  ReplyFeedView({super.key});
+  UserReplyFeedView({super.key});
 
-  final profile = Get.arguments["profile"] as ProfileModel;
-  final community = Get.arguments["community"] as CommunityModel;
   @override
   Widget build(BuildContext context) {
+    final ProfileModel profile = Get.arguments['profile'];
+    final CommunityModel community = Get.arguments['community'];
+
+    print(profile.runtimeType);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: AppColor.Neutral100,

@@ -35,6 +35,7 @@ import 'package:baca_app/A_newstructure/features/user/user_feed/bindings/user_fe
 import 'package:baca_app/A_newstructure/features/user/user_feed/view/ui/user_add_feed_view.dart';
 import 'package:baca_app/A_newstructure/features/user/user_feed/view/ui/user_detail_feed_view.dart';
 import 'package:baca_app/A_newstructure/features/user/user_feed/view/ui/user_feed_view.dart';
+import 'package:baca_app/A_newstructure/features/user/user_feed/view/ui/user_reply_feed_view.dart';
 import 'package:baca_app/A_newstructure/features/user/user_home/bindings/user_home_binding.dart';
 import 'package:baca_app/A_newstructure/features/user/user_home/view/ui/user_home_view.dart';
 import 'package:baca_app/A_newstructure/features/user/user_library/bindings/user_library_binding.dart';
@@ -109,7 +110,7 @@ class CustomPage {
     ),
     GetPage(
       name: Routes.USER_REPLY_FEED,
-      page: () => UserAddFeedView(),
+      page: () => UserReplyFeedView(),
       binding: UserFeedBinding(),
     ),
     GetPage(
