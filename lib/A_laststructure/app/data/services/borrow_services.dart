@@ -35,7 +35,6 @@ class BorrowServices {
 
   Future<List<Borrow>> getBookBorrow() async {
     try {
-      print("Fungsii dijalankan");
       final borrow = await supabase.from("borrow").select();
 
       final borrowlist = borrow.map((e) => Borrow.fromMap(e)).toList();

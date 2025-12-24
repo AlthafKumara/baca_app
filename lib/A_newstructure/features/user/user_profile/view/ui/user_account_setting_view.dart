@@ -1,5 +1,6 @@
 import 'package:baca_app/A_newstructure/configs/routes/route.dart';
 import 'package:baca_app/A_newstructure/constants/assets_constant.dart';
+import 'package:baca_app/A_newstructure/features/user/user_profile/controllers/user_profile_controller.dart';
 import 'package:baca_app/A_newstructure/shared/controllers/auth_controller.dart';
 import 'package:baca_app/A_newstructure/shared/models/profile_model.dart';
 import 'package:baca_app/A_newstructure/shared/styles/app_color.dart';
@@ -9,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class UserAccountSettingView extends StatelessWidget {
+class UserAccountSettingView extends GetView<UserProfileController> {
   final authC = Get.find<AuthController>();
   UserAccountSettingView({super.key});
   final ProfileModel? profile = Get.arguments;
@@ -44,7 +45,7 @@ class UserAccountSettingView extends StatelessWidget {
               message: "If you want to switch to a new email or password.",
               title: "Change Auth",
               onTap: () {
-                Get.toNamed(Routes.USER_CHANGE_AUTH, arguments: profile);
+                controller.toChangeAuth(profile: profile);
               },
             ),
             SizedBox(height: 16.h),

@@ -1,6 +1,20 @@
 import 'package:baca_app/A_newstructure/configs/routes/route.dart';
+import 'package:baca_app/A_newstructure/features/admin/admin_book_detail/bindings/admin_book_detail_binding.dart';
+import 'package:baca_app/A_newstructure/features/admin/admin_book_detail/view/ui/admin_book_detail_view.dart';
+import 'package:baca_app/A_newstructure/features/admin/admin_book_detail/view/ui/admin_form_book_view.dart';
+import 'package:baca_app/A_newstructure/features/admin/admin_borrow_detail/bindings/admin_borrow_detail_binding.dart';
+import 'package:baca_app/A_newstructure/features/admin/admin_borrow_detail/view/ui/admin_borrow_detail_view.dart';
 import 'package:baca_app/A_newstructure/features/admin/admin_home/bindings/admin_home_binding.dart';
 import 'package:baca_app/A_newstructure/features/admin/admin_home/view/ui/admin_home_view.dart';
+import 'package:baca_app/A_newstructure/features/admin/admin_library/bindings/admin_library_binding.dart';
+import 'package:baca_app/A_newstructure/features/admin/admin_library/view/ui/admin_library_view.dart';
+import 'package:baca_app/A_newstructure/features/admin/admin_profile/bindings/admin_profile_binding.dart';
+import 'package:baca_app/A_newstructure/features/admin/admin_profile/view/ui/admin_account_setting_view.dart';
+import 'package:baca_app/A_newstructure/features/admin/admin_profile/view/ui/admin_change_auth_view.dart';
+import 'package:baca_app/A_newstructure/features/admin/admin_profile/view/ui/admin_personal_detail_view.dart';
+import 'package:baca_app/A_newstructure/features/admin/admin_profile/view/ui/admin_profile_view.dart';
+import 'package:baca_app/A_newstructure/features/admin/admin_scan/bindings/admin_scan_binding.dart';
+import 'package:baca_app/A_newstructure/features/admin/admin_scan/view/ui/admin_scan_view.dart';
 import 'package:baca_app/A_newstructure/features/auth/complete_profile/bindings/complete_profile_binding.dart';
 import 'package:baca_app/A_newstructure/features/auth/complete_profile/view/ui/complete_profile_view.dart';
 import 'package:baca_app/A_newstructure/features/auth/login/bindings/login_binding.dart';
@@ -33,6 +47,7 @@ import 'package:baca_app/A_newstructure/features/user/user_profile/view/ui/user_
 import 'package:baca_app/A_newstructure/features/user/user_profile/view/ui/user_profile_view.dart';
 import 'package:baca_app/A_newstructure/features/user/user_search/bindings/user_search_binding.dart';
 import 'package:baca_app/A_newstructure/features/user/user_search/view/ui/user_search_view.dart';
+import 'package:baca_app/A_newstructure/shared/bindings/admin_binding.dart';
 import 'package:baca_app/A_newstructure/shared/bindings/user_binding.dart';
 import 'package:get/get.dart';
 
@@ -147,7 +162,55 @@ class CustomPage {
     GetPage(
       name: Routes.ADMIN_HOME,
       page: () => AdminHomeView(),
-      binding: AdminHomeBinding(),
+      bindings: [AdminHomeBinding(), AdminBinding()],
+    ),
+    GetPage(
+      name: Routes.ADMIN_LIBRARY,
+      page: () => AdminLibraryView(),
+      bindings: [AdminLibraryBinding(), AdminBinding()],
+    ),
+    GetPage(
+      name: Routes.ADMIN_PROFILE,
+      page: () => AdminProfileView(),
+      bindings: [AdminProfileBinding(), AdminBinding()],
+    ),
+    GetPage(
+      name: Routes.ADMIN_PERSONAL_DETAIL,
+      page: () => AdminPersonalDetailView(),
+      binding: AdminProfileBinding(),
+    ),
+    GetPage(
+      name: Routes.ADMIN_CHANGE_AUTH,
+      page: () => AdminChangeAuthView(),
+      binding: AdminProfileBinding(),
+    ),
+    GetPage(
+      name: Routes.ADMIN_ACCOUNT_SETTING,
+      page: () => AdminAccountSettingView(),
+      binding: AdminProfileBinding(),
+    ),
+
+    GetPage(
+      name: Routes.ADMIN_BOOK_BORROW_DETAIL,
+      page: () => AdminBorrowDetailView(),
+      binding: AdminBorrowDetailBinding(),
+    ),
+
+    GetPage(
+      name: Routes.ADMIN_BOOK_DETAIL,
+      page: () => AdminBookDetailView(),
+      binding: AdminBookDetailBinding(),
+    ),
+
+    GetPage(
+      name: Routes.ADMIN_FORMBOOK,
+      page: () => AdminFormBookView(),
+      binding: AdminBookDetailBinding(),
+    ),
+    GetPage(
+      name: Routes.ADMIN_SCAN,
+      page: () => AdminScanView(),
+      binding: AdminScanBinding(),
     ),
 
     // ======================= NOTIFICATION ======================== //

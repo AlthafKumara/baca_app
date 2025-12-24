@@ -1,4 +1,5 @@
 import 'package:baca_app/A_newstructure/features/notification/models/notification_model.dart';
+import 'package:baca_app/A_newstructure/utils/enums/profiles_enum.dart';
 import 'package:baca_app/A_newstructure/utils/enums/status_enum.dart';
 
 Status parseStatus(String value) {
@@ -25,5 +26,15 @@ NotificationType fromString(String value) {
     case 'general':
     default:
       return NotificationType.general;
+  }
+}
+
+Role parseRole(String value) {
+  switch (value) {
+    case 'admin':
+      return Role.admin;
+    case 'user':
+    default:
+      return Role.user;
   }
 }

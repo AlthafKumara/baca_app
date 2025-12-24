@@ -1,3 +1,4 @@
+import 'package:baca_app/A_newstructure/utils/enums/enum_helper.dart';
 import 'package:baca_app/A_newstructure/utils/enums/profiles_enum.dart';
 
 class ProfileModel {
@@ -23,7 +24,7 @@ class ProfileModel {
     return ProfileModel(
       id: map['id'],
       name: map['name'],
-      role: _parseRole(map['role']),
+      role: parseRole(map['role']),
       email: map['email'],
       photoProfile: map['photo_profile'],
       gender: map['gender'],
@@ -41,13 +42,5 @@ class ProfileModel {
       'gender': gender,
       'created_at': createdAt.toIso8601String(),
     };
-  }
-
-  static Role _parseRole(String? value) {
-    if (value == null) return Role.user;
-    return Role.values.firstWhere(
-      (e) => e.name.toLowerCase() == value.toLowerCase(),
-      orElse: () => Role.user,
-    );
   }
 }

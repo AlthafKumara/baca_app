@@ -1,3 +1,4 @@
+import 'package:baca_app/A_newstructure/configs/routes/route.dart';
 import 'package:baca_app/A_newstructure/constants/assets_constant.dart';
 import 'package:baca_app/A_newstructure/features/user/user_home/constants/user_home_constant.dart';
 import 'package:baca_app/A_newstructure/features/user/user_home/controllers/user_home_controller.dart';
@@ -35,7 +36,9 @@ class UserHomeBody extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           child: GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Get.offNamed(Routes.USER_SEARCH);
+            },
             child: CustomTextfield.textFieldRounded(
               controller: TextEditingController(),
               enabled: false,

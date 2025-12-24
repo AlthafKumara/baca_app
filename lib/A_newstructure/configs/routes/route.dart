@@ -29,6 +29,17 @@ abstract class Routes {
 
   static const ADMIN_HOME = _Paths.ADMIN_HOME;
 
+  static const ADMIN_PROFILE = _Paths.ADMIN_PROFILE;
+  static const ADMIN_LIBRARY = _Paths.ADMIN_LIBRARY;
+  static const ADMIN_BOOK_DETAIL = _Paths.ADMIN_BOOK_DETAIL;
+  static const ADMIN_BOOK_BORROW_DETAIL = _Paths.ADMIN_BORROW_DETAIL;
+  static const ADMIN_SEARCH = _Paths.ADMIN_SEARCH;
+  static const ADMIN_PERSONAL_DETAIL = _Paths.ADMIN_PERSONAL_DETAIL;
+  static const ADMIN_CHANGE_AUTH = _Paths.ADMIN_CHANGE_AUTH;
+  static const ADMIN_ACCOUNT_SETTING = _Paths.ADMIN_ACCOUNT_SETTING;
+  static const ADMIN_FORMBOOK = _Paths.ADMIN_FORMBOOK;
+  static const ADMIN_SCAN = _Paths.ADMIN_SCAN;
+
   // ============================ GLOBAL ==========================;
   static const NOTIFICATION = _Paths.NOTIFICATION;
 }
@@ -63,7 +74,16 @@ abstract class _Paths {
   // ----------------------------------------ADMIN----------------------------
 
   static const ADMIN_HOME = '/admin_home';
-
+  static const ADMIN_LIBRARY = '/admin_library';
+  static const ADMIN_PROFILE = '/admin_profile';
+  static const ADMIN_BORROW_DETAIL = '/admin_borrow_detail';
+  static const ADMIN_BOOK_DETAIL = '/admin_book_detail';
+  static const ADMIN_SEARCH = '/admin_search';
+  static const ADMIN_PERSONAL_DETAIL = '/admin_personal_detail';
+  static const ADMIN_CHANGE_AUTH = '/admin_change_auth';
+  static const ADMIN_ACCOUNT_SETTING = '/admin_account_setting';
+  static const ADMIN_FORMBOOK = '/admin_formbook';
+  static const ADMIN_SCAN = '/admin_scan';
   // ============================ GLOBAL ==========================;
   static const NOTIFICATION = '/notification';
 }

@@ -51,7 +51,7 @@ class LoginController extends GetxController {
 
       final role = profile?['role'];
 
-      if (role == Role.admin) {
+      if (role == Role.admin.name) {
         toHomeAdmin();
       } else {
         toHomeUser();
