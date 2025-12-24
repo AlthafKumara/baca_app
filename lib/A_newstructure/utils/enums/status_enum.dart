@@ -1,0 +1,1 @@
+enum Status { pending, onBorrow, returned, rejected }

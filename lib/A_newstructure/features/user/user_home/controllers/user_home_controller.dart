@@ -6,4 +6,6 @@ class UserHomeController extends GetxController {
   // ============== NAVIGATOR ============== //
   void toBookDetail({required BookModel book}) =>
       Get.toNamed(Routes.USER_BOOK_DETAIL, arguments: book);
+
+  void toNotification() => Get.toNamed(Routes.NOTIFICATION);
 }

@@ -42,10 +42,10 @@ class CommunityRepository {
     }
   }
 
-  Future<List<Community>> getCommunity() async {
+  Future<List<CommunityModel>> getCommunity() async {
     try {
       final community = await supabase.from('community').select();
-      return community.map((e) => Community.fromMap(e)).toList();
+      return community.map((e) => CommunityModel.fromMap(e)).toList();
     } catch (e) {
       throw "Failed to get community: $e";
     }

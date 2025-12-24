@@ -37,7 +37,7 @@ class UserHomeView extends GetView<UserHomeController> {
         ),
         actions: [
           GestureDetector(
-            onTap: () {},
+            onTap: () => controller.toNotification(),
             child: Container(
               width: 20.w,
               height: 20.w,

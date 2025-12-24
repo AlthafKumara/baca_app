@@ -1,7 +1,7 @@
 import 'package:baca_app/A_newstructure/shared/models/book_model.dart';
 import 'package:baca_app/A_newstructure/shared/models/profile_model.dart';
 
-class Community {
+class CommunityModel {
   final int id;
   final String userId;
   final int? parentId;
@@ -10,9 +10,9 @@ class Community {
   final DateTime createdAt;
   ProfileModel? profile;
   BookModel? book;
-  List<Community> replies;
+  List<CommunityModel> replies;
 
-  Community({
+  CommunityModel({
     required this.id,
     required this.userId,
     this.parentId,
@@ -21,10 +21,10 @@ class Community {
     required this.createdAt,
     this.profile,
     this.book,
-    List<Community>? replies,
+    List<CommunityModel>? replies,
   }) : replies = replies ?? [];
 
-  factory Community.fromMap(Map<String, dynamic> map) {
+  factory CommunityModel.fromMap(Map<String, dynamic> map) {
     final raw = map['created_at'];
 
     final parsedUtc = DateTime.parse(raw);
@@ -40,7 +40,7 @@ class Community {
       parsedUtc.microsecond,
     );
 
-    return Community(
+    return CommunityModel(
       id: map['id'],
       userId: map['user_id'],
       parentId: map['parent_id'],
