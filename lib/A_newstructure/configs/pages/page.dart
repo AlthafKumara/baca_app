@@ -15,6 +15,8 @@ import 'package:baca_app/A_newstructure/features/admin/admin_profile/view/ui/adm
 import 'package:baca_app/A_newstructure/features/admin/admin_profile/view/ui/admin_profile_view.dart';
 import 'package:baca_app/A_newstructure/features/admin/admin_scan/bindings/admin_scan_binding.dart';
 import 'package:baca_app/A_newstructure/features/admin/admin_scan/view/ui/admin_scan_view.dart';
+import 'package:baca_app/A_newstructure/features/admin/admin_search/bindings/admin_search_binding.dart';
+import 'package:baca_app/A_newstructure/features/admin/admin_search/view/ui/admin_search_view.dart';
 import 'package:baca_app/A_newstructure/features/auth/complete_profile/bindings/complete_profile_binding.dart';
 import 'package:baca_app/A_newstructure/features/auth/complete_profile/view/ui/complete_profile_view.dart';
 import 'package:baca_app/A_newstructure/features/auth/login/bindings/login_binding.dart';
@@ -149,7 +151,7 @@ class CustomPage {
       binding: UserBookDetailBinding(),
     ),
     GetPage(
-      name: Routes.USER_BOOK_DETAIL,
+      name: Routes.USER_BOOK_BORROW_DETAIL,
       page: () => UserBookBorrowDetailView(),
       binding: UserBookBorrowDetailBinding(),
     ),
@@ -212,6 +214,12 @@ class CustomPage {
       name: Routes.ADMIN_SCAN,
       page: () => AdminScanView(),
       binding: AdminScanBinding(),
+    ),
+
+    GetPage(
+      name: Routes.ADMIN_SEARCH,
+      page: () => AdminSearchView(),
+      binding: AdminSearchBinding(),
     ),
 
     // ======================= NOTIFICATION ======================== //

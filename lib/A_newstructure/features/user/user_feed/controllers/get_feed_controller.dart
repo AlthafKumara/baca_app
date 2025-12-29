@@ -6,19 +6,21 @@ import 'package:get/get.dart';
 
 class GetFeedController extends GetxController
     with StateMixin<List<CommunityModel>> {
-  // ================== Import ==================
+  // ================== Repository ==================
   final communityRepo = CommunityRepository();
   final profileRepo = ProfileRepository();
   final bookRepo = GetBookByIdRepository();
 
   // ================== Variable ==================
+  var isSearched = false.obs;
 
-  var childFeed = <CommunityModel>[].obs;
-  var parentFeed = <CommunityModel>[].obs;
+  List<CommunityModel> _allFeeds = [];
 
   // ================== Function ==================
 
   void getFeed() async {
+    change(null, status: RxStatus.loading());
+
     try {
       final feed = await communityRepo.getCommunity();
 
@@ -30,7 +32,6 @@ class GetFeedController extends GetxController
       final parentFeed = feed.where((e) => e.parentId == null).toList();
       final childFeed = feed.where((e) => e.parentId != null).toList();
 
-      // ================== BOOK ==================
       // ================== BOOK ==================
       final bookIds = feed
           .where((e) => e.bookId != null)
@@ -69,10 +70,13 @@ class GetFeedController extends GetxController
         childMap[parentId]!.add(child);
       }
 
-      // ================== ASSIGN KE PARENT  ==================
+      // ================== ASSIGN KE PARENT ==================
       for (var parent in parentFeed) {
         parent.replies = childMap[parent.id] ?? [];
       }
+
+      // 🔹 SIMPAN DATA ASLI
+      _allFeeds = parentFeed;
 
       change(parentFeed, status: RxStatus.success());
     } catch (e) {
@@ -80,9 +84,38 @@ class GetFeedController extends GetxController
     }
   }
 
+  /// ================== FILTER FEED (SEARCH) ==================
+  void filterFeed(String keyword) {
+    if (keyword.isEmpty) {
+      isSearched.value = false;
+      change(_allFeeds, status: RxStatus.success());
+      return;
+    }
+
+    isSearched.value = true;
+    final lower = keyword.toLowerCase();
+
+    final filtered = _allFeeds.where((feed) {
+      final contentMatch = feed.messageText.toLowerCase().contains(lower);
+
+      final userMatch =
+          feed.profile?.name.toLowerCase().contains(lower) ?? false;
+
+      final bookMatch = feed.book?.title.toLowerCase().contains(lower) ?? false;
+
+      return contentMatch || userMatch || bookMatch;
+    }).toList();
+
+    change(filtered, status: RxStatus.success());
+  }
+
   @override
   void onInit() {
     super.onInit();
+  }
+
+  void onReady() {
+    super.onReady();
     getFeed();
   }
 }

@@ -51,38 +51,43 @@ class UserDetailFeedView extends StatelessWidget {
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(vertical: 16.h),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            ParentFeedMessage(community: community, profile: profile),
-            SizedBox(height: 24.h),
-            Divider(color: AppColor.Neutral200, thickness: 8.h),
-            SizedBox(height: 24.h),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.w),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        "${coChild.length} replies",
-                        style: AppTextStyle.body1(
-                          color: AppColor.Neutral400,
-                          fontWeight: AppTextStyle.medium,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              ParentFeedMessage(community: community, profile: profile),
+              SizedBox(height: 24.h),
+              Divider(color: AppColor.Neutral200, thickness: 8.h),
+              SizedBox(height: 24.h),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          "${coChild.length} replies",
+                          style: AppTextStyle.body1(
+                            color: AppColor.Neutral400,
+                            fontWeight: AppTextStyle.medium,
+                          ),
                         ),
+                      ],
+                    ),
+                    SizedBox(height: 16.h),
+                    ...coChild.map(
+                      (community) => FeedMessageCard(
+                        community: community,
+                        profile: profile,
                       ),
-                    ],
-                  ),
-                  SizedBox(height: 16.h),
-                  ...coChild.map(
-                    (community) =>
-                        FeedMessageCard(community: community, profile: profile),
-                  ),
-                ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: Padding(

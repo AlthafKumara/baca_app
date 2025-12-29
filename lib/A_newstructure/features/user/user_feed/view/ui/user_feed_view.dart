@@ -13,13 +13,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class UserFeedView extends StatelessWidget {
+class UserFeedView extends GetView<UserFeedController> {
   final feedmessageC = Get.find<GetFeedController>();
-  final profileC = Get.find<UserFeedController>();
+
   UserFeedView({super.key});
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<UserFeedController>();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: AppColor.Neutral100,
@@ -62,7 +61,7 @@ class UserFeedView extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.w),
               child: CustomTextfield.textFieldRounded(
-                controller: TextEditingController(),
+                controller: controller.searchController,
                 enabled: true,
                 hintText: "Search Feeds",
                 isObsecureText: false,
@@ -83,7 +82,7 @@ class UserFeedView extends StatelessWidget {
                   return ListView.builder(
                     itemBuilder: (context, index) {
                       final community = state[index];
-                      final profile = profileC.profile.value;
+                      final profile = controller.profile.value;
 
                       if (profile == null) {
                         return CircularProgressIndicator(
