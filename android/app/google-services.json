@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "619019536671",
+    "project_id": "bacaapp-d81ba",
+    "storage_bucket": "bacaapp-d81ba.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:619019536671:android:1aed950007b775ad19082a",
+        "android_client_info": {
+          "package_name": "com.example.baca_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgtSozE5MNZcEjrJYWHW9H-8TSEIkAtxU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -39,6 +39,5 @@ class EmptyContainer extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }
