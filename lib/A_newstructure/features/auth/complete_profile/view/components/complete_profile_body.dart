@@ -1,4 +1,4 @@
-import 'package:baca_app/A_laststructure/app/core/utils/validator.dart';
+import 'package:baca_app/A_newstructure/utils/validators/validator.dart';
 import 'package:baca_app/A_newstructure/constants/assets_constant.dart';
 import 'package:baca_app/A_newstructure/features/auth/complete_profile/constants/complete_profile_constant.dart';
 import 'package:baca_app/A_newstructure/features/auth/complete_profile/controllers/complete_profile_controller.dart';

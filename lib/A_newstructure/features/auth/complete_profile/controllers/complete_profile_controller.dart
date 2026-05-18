@@ -1,12 +1,11 @@
 import 'dart:io';
 
-import 'package:baca_app/A_laststructure/app/core/utils/image_picker.dart';
+import 'package:baca_app/A_newstructure/utils/services/image_picker_services.dart';
 import 'package:baca_app/A_newstructure/configs/routes/route.dart';
 import 'package:baca_app/A_newstructure/constants/assets_constant.dart';
 import 'package:baca_app/A_newstructure/features/auth/complete_profile/repositories/complete_profile_repository.dart';
 import 'package:baca_app/A_newstructure/shared/widgets/bottom_sheet.dart';
 import 'package:baca_app/A_newstructure/shared/widgets/snackbar.dart';
-import 'package:baca_app/A_newstructure/utils/services/image_picker_services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
@@ -24,7 +23,7 @@ class CompleteProfileController extends GetxController {
 
   // ============== Functions =============== //
   Future<void> pickImage() async {
-    final file = await ImagePickerUtil.pickImageFromGalerry();
+    final file = await ImagePickerServices.pickImageFromGalerry();
 
     if (file != null) {
       selectedImage.value = file;
