@@ -15,7 +15,21 @@ import 'package:flutter/foundation.dart'
 /// );
 /// ```
 class DefaultFirebaseOptions {
-  static FirebaseOptions get currentPlatform {
+  const DefaultFirebaseOptions({
+    required this.apiKeyWeb,
+    required this.apiKeyIos,
+    required this.apiKeyAndroid,
+    required this.apiKeyWindows,
+    required this.apiKeyMacos,
+  });
+
+  final String apiKeyWeb;
+  final String apiKeyIos;
+  final String apiKeyAndroid;
+  final String apiKeyWindows;
+  final String apiKeyMacos;
+
+  FirebaseOptions get currentPlatform {
     if (kIsWeb) {
       return web;
     }
@@ -40,8 +54,8 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBqaqbJ1WDIkT6ZtwX2_QnUlqFnnDAqmhg',
+  FirebaseOptions get web => FirebaseOptions(
+    apiKey: apiKeyWeb,
     appId: '1:619019536671:web:93ec0677b9e3b14519082a',
     messagingSenderId: '619019536671',
     projectId: 'bacaapp-d81ba',
@@ -50,16 +64,16 @@ class DefaultFirebaseOptions {
     measurementId: 'G-T0D1LE616X',
   );
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAgtSozE5MNZcEjrJYWHW9H-8TSEIkAtxU',
+  FirebaseOptions get android => FirebaseOptions(
+    apiKey: apiKeyAndroid,
     appId: '1:619019536671:android:1aed950007b775ad19082a',
     messagingSenderId: '619019536671',
     projectId: 'bacaapp-d81ba',
     storageBucket: 'bacaapp-d81ba.firebasestorage.app',
   );
 
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAr_ex9ZGV6wdaGC2t7Gpi6h1wUmOYO6UM',
+  FirebaseOptions get ios => FirebaseOptions(
+    apiKey: apiKeyIos,
     appId: '1:619019536671:ios:372eebb97be0197219082a',
     messagingSenderId: '619019536671',
     projectId: 'bacaapp-d81ba',
@@ -67,8 +81,8 @@ class DefaultFirebaseOptions {
     iosBundleId: 'com.example.bacaApp',
   );
 
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAr_ex9ZGV6wdaGC2t7Gpi6h1wUmOYO6UM',
+  FirebaseOptions get macos => FirebaseOptions(
+    apiKey: apiKeyMacos,
     appId: '1:619019536671:ios:372eebb97be0197219082a',
     messagingSenderId: '619019536671',
     projectId: 'bacaapp-d81ba',
@@ -76,8 +90,8 @@ class DefaultFirebaseOptions {
     iosBundleId: 'com.example.bacaApp',
   );
 
-  static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyBqaqbJ1WDIkT6ZtwX2_QnUlqFnnDAqmhg',
+  FirebaseOptions get windows => FirebaseOptions(
+    apiKey: apiKeyWindows,
     appId: '1:619019536671:web:6dcff03ebe2b3fbb19082a',
     messagingSenderId: '619019536671',
     projectId: 'bacaapp-d81ba',

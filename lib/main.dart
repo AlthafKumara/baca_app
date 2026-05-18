@@ -1,4 +1,6 @@
+import 'package:baca_app/firebase_options.dart';
 import 'package:baca_app/my_app.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -11,6 +13,16 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await dotenv.load(fileName: ".env");
+
+  final firebaseConfig = DefaultFirebaseOptions(
+    apiKeyWeb: dotenv.env['FIREBASE_API_WEB']!,
+    apiKeyIos: dotenv.env['FIREBASE_API_IOS']!,
+    apiKeyAndroid: dotenv.env['FIREBASE_API_ANDROID']!,
+    apiKeyWindows: dotenv.env['FIREBASE_API_WINDOWS']!,
+    apiKeyMacos: dotenv.env['FIREBASE_API_MACOS']!,
+  );
+
+  await Firebase.initializeApp(options: firebaseConfig.currentPlatform);
 
   await Supabase.initialize(
     url: dotenv.env['SUPABASE_URL']!,
