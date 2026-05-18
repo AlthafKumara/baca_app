@@ -1,4 +1,4 @@
-import 'package:baca_app/A_laststructure/app/modules/auth/widget/complete_profile_body.dart';
+import 'package:baca_app/A_newstructure/features/auth/complete_profile/view/components/complete_profile_body.dart';
 import 'package:baca_app/A_newstructure/constants/assets_constant.dart';
 import 'package:baca_app/A_newstructure/features/auth/complete_profile/constants/complete_profile_constant.dart';
 import 'package:baca_app/A_newstructure/features/auth/complete_profile/controllers/complete_profile_controller.dart';

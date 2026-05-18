@@ -1,5 +1,3 @@
-import 'package:baca_app/A_laststructure/app/data/model/book_review.dart';
-
 class BookModel {
   final int id;
   final String title;

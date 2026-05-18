@@ -1,4 +1,4 @@
-import 'package:baca_app/A_laststructure/app/core/font/app_text_style.dart';
+import 'package:baca_app/A_newstructure/shared/styles/app_text_style.dart';
 import 'package:baca_app/A_newstructure/shared/controllers/get_book_review.dart';
 import 'package:baca_app/A_newstructure/shared/models/book_review_model.dart';
 import 'package:baca_app/A_newstructure/shared/models/profile_model.dart';

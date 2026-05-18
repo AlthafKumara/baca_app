@@ -1,8 +1,6 @@
-import 'package:baca_app/A_laststructure/app/modules/auth/utils/existing_email.dart';
 import 'package:get/get.dart';
 
 class Validator {
-  ExistingEmail existingEmail = ExistingEmail();
   String? validatorEmail(String? value) {
     if (value == null || value.isEmpty) {
       return "Please enter your email";
@@ -53,7 +51,7 @@ class Validator {
 
   String? validatorAuthor(String? value) {
     if (value == null || value.isEmpty) {
-      return "Please enter your author  ";
+      return "Please enter your author";
     }
     return null;
   }
