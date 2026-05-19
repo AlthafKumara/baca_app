@@ -8,7 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AdminCardStatusContainer extends StatelessWidget {
   final Status status;
   final BorrowModel borrow;
-  AdminCardStatusContainer({
+  const AdminCardStatusContainer({
     super.key,
     required this.status,
     required this.borrow,

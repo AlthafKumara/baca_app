@@ -3,7 +3,6 @@ import 'package:baca_app/A_newstructure/shared/models/book_model.dart';
 import 'package:baca_app/A_newstructure/shared/styles/app_color.dart';
 import 'package:baca_app/A_newstructure/shared/styles/app_text_style.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 

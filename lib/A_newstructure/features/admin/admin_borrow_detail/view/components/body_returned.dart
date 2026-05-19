@@ -11,7 +11,7 @@ class BodyReturned extends StatelessWidget {
   final Status status;
   final BorrowModel borrow;
 
-  BodyReturned({super.key, required this.status, required this.borrow});
+  const BodyReturned({super.key, required this.status, required this.borrow});
 
   @override
   Widget build(BuildContext context) {

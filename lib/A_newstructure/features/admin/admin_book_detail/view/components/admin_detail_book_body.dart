@@ -178,7 +178,7 @@ class AdminDetailBookBody extends StatelessWidget {
                     ),
                     Expanded(
                       child: Text(
-                        "${book.author}",
+                        book.author,
                         style: AppTextStyle.description2(
                           fontWeight: AppTextStyle.medium,
                           color: AppColor.Neutral900,

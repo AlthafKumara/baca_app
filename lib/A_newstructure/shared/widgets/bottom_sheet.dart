@@ -9,11 +9,11 @@ class CustomBottomSheet {
   CustomBottomSheet._();
 
   static void singleBottomSheet({
-    final image,
-    final String? title,
-    final String? message,
-    final String? buttonText,
-    final void Function()? onPressed,
+    required final String image,
+    required final String title,
+    required final String message,
+    required final String buttonText,
+    required final void Function()? onPressed,
   }) {
     Get.bottomSheet(
       backgroundColor: AppColor.Neutral100,
@@ -36,7 +36,7 @@ class CustomBottomSheet {
             Image.asset(image, width: 160.w),
             SizedBox(height: 16.h),
             Text(
-              title!,
+              title,
               style: AppTextStyle.heading5(
                 color: AppColor.Neutral900,
                 fontWeight: AppTextStyle.bold,
@@ -45,7 +45,7 @@ class CustomBottomSheet {
             ),
             SizedBox(height: 8.h),
             Text(
-              message!,
+              message,
               style: AppTextStyle.description2(
                 color: AppColor.Neutral400,
                 fontWeight: AppTextStyle.regular,
@@ -54,7 +54,7 @@ class CustomBottomSheet {
             ),
             SizedBox(height: 16.h),
             CustomButtonLarge.primarylarge(
-              text: buttonText!,
+              text: buttonText,
               onPressed: onPressed,
             ),
           ],

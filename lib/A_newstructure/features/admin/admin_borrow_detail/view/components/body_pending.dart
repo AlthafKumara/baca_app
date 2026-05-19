@@ -11,7 +11,7 @@ class BodyPending extends StatelessWidget {
   final Status status;
   final BorrowModel borrow;
 
-  BodyPending({super.key, required this.status, required this.borrow});
+  const BodyPending({super.key, required this.status, required this.borrow});
 
   @override
   Widget build(BuildContext context) {
