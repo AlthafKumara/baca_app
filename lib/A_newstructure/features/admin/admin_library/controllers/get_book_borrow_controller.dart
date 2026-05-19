@@ -6,14 +6,14 @@ import 'package:get/get.dart';
 
 class GetBookBorrowController extends GetxController
     with StateMixin<List<BorrowModel>> {
-  final borrowServices = GetAllBorrowRepository();
-  final bookServices = GetBookByIdRepository();
+  final borrowAllBorrowRepo = GetAllBorrowRepository();
+  final getBookByIdRepo = GetBookByIdRepository();
   var listBorrow = <BorrowModel>[].obs;
   void getBookBorrowed() async {
     change(null, status: RxStatus.loading());
 
     try {
-      final borrows = await borrowServices.getBookBorrow();
+      final borrows = await borrowAllBorrowRepo.getBookBorrow();
       print("Borrows fetched: $borrows");
 
       if (borrows.isEmpty) {
@@ -28,7 +28,7 @@ class GetBookBorrowController extends GetxController
         change([], status: RxStatus.empty());
         return;
       }
-      final books = await bookServices.getBookById(bookIds);
+      final books = await getBookByIdRepo.getBookById(bookIds);
       final bookMap = {for (var b in books) b.id: b};
       for (var borrow in borrows) {
         if (bookMap.containsKey(borrow.bookId)) {

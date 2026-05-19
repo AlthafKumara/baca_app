@@ -1,4 +1,5 @@
 import 'package:baca_app/A_newstructure/configs/routes/route.dart';
+import 'package:baca_app/A_newstructure/features/admin/admin_library/controllers/get_book_borrow_by_id_controller.dart';
 import 'package:baca_app/A_newstructure/features/notification/controllers/notification_controller.dart';
 import 'package:baca_app/A_newstructure/features/notification/models/notification_model.dart';
 import 'package:baca_app/A_newstructure/features/notification/view/components/notification_card.dart';
@@ -44,9 +45,23 @@ class NotificationView extends GetView<NotificationController> {
                 final notification = notifications[index];
                 return NotificationCard(
                   notification: notification,
-                  onTap: () {
+                  onTap: () async {
                     if (notification.type == NotificationType.general) {
-                      // Get.offAllNamed(Routes.ADMIN_LIBRARY);
+                      if (notification.borrowId != null) {
+                        final borrowC = Get.put(
+                          GetBookBorrowByIdController(
+                            borrowId: notification.borrowId!,
+                          ),
+                        );
+                        await borrowC.getBookBorrowed();
+                        Get.toNamed(
+                          Routes.ADMIN_BOOK_BORROW_DETAIL,
+                          arguments: {
+                            "borrow": borrowC.borrowData.value,
+                            "status": borrowC.borrowStatus.value,
+                          },
+                        );
+                      }
                     } else if (notification.type ==
                         NotificationType.community) {
                       controller.toFeed();

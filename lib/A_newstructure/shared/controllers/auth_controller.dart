@@ -1,5 +1,6 @@
 import 'package:baca_app/A_newstructure/configs/routes/route.dart';
 import 'package:baca_app/A_newstructure/shared/repositories/auth_repository.dart';
+import 'package:baca_app/A_newstructure/shared/repositories/fcm_token_repository.dart';
 import 'package:baca_app/A_newstructure/shared/widgets/snackbar.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -7,6 +8,7 @@ import 'package:get/get.dart';
 class AuthController extends GetxController {
   // ================== IMPORTiNG =================
   final authRepo = AuthRepository();
+  final fcmTokenRepository = FCMTokenRepository();
   // ================== VARIABLES =================
   final changeAuhtkey = GlobalKey<FormState>();
   final adminchangeAuhtkey = GlobalKey<FormState>();
@@ -37,9 +39,12 @@ class AuthController extends GetxController {
     isObsecureText.value = !isObsecureText.value;
   }
 
-  Future<void> handleLogout() async {
+  Future<void> handleLogout(String? userId) async {
     try {
       await authRepo.logout();
+      if (userId != null) {
+        await fcmTokenRepository.removeToken(userId);
+      }
       CustomSnackbar.succesSnackbar("Logout success");
       Get.offAllNamed(Routes.LOGIN);
     } catch (e) {

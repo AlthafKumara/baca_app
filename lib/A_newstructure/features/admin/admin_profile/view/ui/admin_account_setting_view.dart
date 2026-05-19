@@ -62,7 +62,7 @@ class AdminAccountSettingView extends GetView<AdminProfileController> {
                   message:
                       "Are you sure you want to logout from this account? You can login again to this account!",
                   onPressed: () {
-                    authC.handleLogout();
+                    authC.handleLogout(profile!.id);
                   },
                 );
               },

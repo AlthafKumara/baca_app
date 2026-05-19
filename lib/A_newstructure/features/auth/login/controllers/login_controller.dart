@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:baca_app/A_newstructure/configs/routes/route.dart';
 import 'package:baca_app/A_newstructure/features/auth/login/repositories/login_repository.dart';
+import 'package:baca_app/A_newstructure/shared/repositories/fcm_token_repository.dart';
 import 'package:baca_app/A_newstructure/shared/repositories/profile_repository.dart';
 import 'package:baca_app/A_newstructure/shared/widgets/snackbar.dart';
 import 'package:baca_app/A_newstructure/utils/enums/profiles_enum.dart';
@@ -10,6 +13,7 @@ class LoginController extends GetxController {
   // ------------------------------REPO-----------------------------------
   final loginRepository = LoginRepository();
   final profileRepository = ProfileRepository();
+  final fcmTokenRepository = FCMTokenRepository();
 
   // ------------------------------VARIABLES-----------------------------------
   final loginkey = GlobalKey<FormState>();
@@ -41,10 +45,12 @@ class LoginController extends GetxController {
       final user = loginRepository.supabase.auth.currentUser;
       if (user == null) throw "User not found after login";
 
-      CustomSnackbar.succesSnackbar("Login success");
 
       final profile = await profileRepository.loadProfile();
+      await fcmTokenRepository.saveToken(user.id);
+      
 
+      CustomSnackbar.succesSnackbar("Login success");
       if (profile == null) {
         Get.offAllNamed(Routes.COMPLETE_PROFILE);
       }
@@ -57,6 +63,7 @@ class LoginController extends GetxController {
         toHomeUser();
       }
     } catch (e) {
+      log(e.toString());
       CustomSnackbar.failedSnackbar(e.toString());
     } finally {
       isLoading.value = false;

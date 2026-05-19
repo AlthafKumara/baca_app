@@ -1,5 +1,6 @@
 import 'package:baca_app/A_newstructure/configs/routes/route.dart';
 import 'package:baca_app/A_newstructure/features/auth/register/repositories/register_repository.dart';
+import 'package:baca_app/A_newstructure/shared/repositories/fcm_token_repository.dart';
 import 'package:baca_app/A_newstructure/shared/widgets/snackbar.dart';
 import 'package:baca_app/A_newstructure/utils/functions/existing_email.dart';
 import 'package:flutter/widgets.dart';
@@ -8,6 +9,7 @@ import 'package:get/get.dart';
 class RegisterController extends GetxController {
   // ====================== Repo ====================== //
   final registerRepository = RegisterRepository();
+  final fcmTokenRepository = FCMTokenRepository();
 
   // ====================== Variable ====================== //
   final registerKey = GlobalKey<FormState>();

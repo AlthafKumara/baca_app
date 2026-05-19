@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:baca_app/A_newstructure/shared/repositories/fcm_token_repository.dart';
 import 'package:baca_app/A_newstructure/utils/services/image_picker_services.dart';
 import 'package:baca_app/A_newstructure/configs/routes/route.dart';
 import 'package:baca_app/A_newstructure/constants/assets_constant.dart';
@@ -13,6 +14,7 @@ class CompleteProfileController extends GetxController {
   // ============ Import =============== //
   final completeProfileRepository = CompleteProfileRepository();
   final imagePickerServices = ImagePickerServices();
+  final fcmTokenRepository = FCMTokenRepository();
 
   // ============= Variables =============== //
   final nameController = TextEditingController();
@@ -46,6 +48,9 @@ class CompleteProfileController extends GetxController {
         gender: gender.value!,
         photoFile: selectedImage.value,
       );
+
+      await fcmTokenRepository.saveToken(user.id);
+
       CustomBottomSheet.singleBottomSheet(
         image: Assets.Ilustration_registerSuccess,
         title: "Your account successfully created",
