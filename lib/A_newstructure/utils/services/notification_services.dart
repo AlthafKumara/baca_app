@@ -8,10 +8,6 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-// navigatorKey = "remote control" Navigator dari luar widget tree
-// Deklarasi di sini agar bisa diakses dari mana saja
-final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
-
 class NotificationService {
   static final _plugin = FlutterLocalNotificationsPlugin();
 
@@ -21,8 +17,8 @@ class NotificationService {
   // Channel Android — wajib ada, ini "jalur" notifikasi di Android
   // Setiap channel bisa punya pengaturan suara/vibrate sendiri
   static const _androidChannel = AndroidNotificationChannel(
-    'notification_baca', // id channel — harus unik
-    'Notifikasi Baca App', // nama yang tampil di pengaturan HP
+    'notification_baca', 
+    'Notifikasi Baca App', 
     description: 'Notifikasi aktivitas peminjaman buku dan konten lainnya',
     importance: Importance.high,
   );
@@ -81,8 +77,6 @@ class NotificationService {
           priority: Priority.high,
         ),
       ),
-      // payload = "surat pengantar" berisi data untuk routing
-      // disimpan sebagai JSON string karena hanya bisa String
       payload: jsonEncode(message.data),
     );
   }

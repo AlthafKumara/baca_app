@@ -1,35 +1,29 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:baca_app/A_newstructure/shared/models/book_model.dart';
 
-class SavedListModel {
-  final int? id;
-  final int? bookId;
-  final String? userId;
-  final String? listName;
-  final String? createdAt;
-  BookModel? books;
+part 'saved_list_model.freezed.dart';
+part 'saved_list_model.g.dart';
 
-  SavedListModel({
-    this.id,
-    this.bookId,
-    this.userId,
-    this.createdAt,
-    this.listName,
-    this.books,
-  });
+BookModel? _bookModelFromJson(dynamic json) {
+  if (json == null) return null;
+  if (json is Map<String, dynamic>) return BookModel.fromMap(json);
+  return null;
+}
 
-  factory SavedListModel.fromMap(Map<String, dynamic> map) => SavedListModel(
-    id: map['id'],
-    bookId: map['book_id'],
-    userId: map['user_id'],
-    listName: map['list_name'],
-    createdAt: map['created_at'],
-  );
+dynamic _bookModelToJson(BookModel? book) => book?.toMap();
 
-  Map<String, dynamic> toMap() => {
-    'id': id,
-    'book_id': bookId,
-    'user_id': userId,
-    'list_name': listName,
-    'created_at': createdAt,
-  };
+@freezed
+abstract class SavedListModel with _$SavedListModel {
+  factory SavedListModel({
+    int? id,
+    @JsonKey(name: 'book_id') int? bookId,
+    @JsonKey(name: 'user_id') String? userId,
+    @JsonKey(name: 'list_name') String? listName,
+    @JsonKey(name: 'created_at') String? createdAt,
+    @JsonKey(fromJson: _bookModelFromJson, toJson: _bookModelToJson)
+    BookModel? books,
+  }) = _SavedListModel;
+
+  factory SavedListModel.fromJson(Map<String, dynamic> json) =>
+      _$SavedListModelFromJson(json);
 }

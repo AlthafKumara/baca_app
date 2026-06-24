@@ -48,11 +48,14 @@ class UserLibrarySavedListController extends GetxController
       if (listbook.isEmpty) {
         change([], status: RxStatus.empty());
       } else {
-        for (var list in listbook) {
+        for (var i = 0; i < listbook.length; i++) {
+          final list = listbook[i];
           if (list.bookId != null) {
-            list.books = (await getbookIdRepo.getBookById([
-              list.bookId!,
-            ])).first;
+            listbook[i] = list.copyWith(
+              books: (await getbookIdRepo.getBookById([
+                list.bookId!,
+              ])).first,
+            );
           }
         }
 

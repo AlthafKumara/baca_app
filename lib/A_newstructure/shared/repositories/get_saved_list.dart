@@ -12,7 +12,7 @@ class GetSavedListRepository {
           .select()
           .eq('user_id', userId);
 
-      final savedList = saved.map((e) => SavedListModel.fromMap(e)).toList();
+      final savedList = saved.map((e) => SavedListModel.fromJson(e)).toList();
       return savedList;
     } catch (e) {
       throw "Failed to get saved list: $e";

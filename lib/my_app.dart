@@ -24,7 +24,6 @@ class _MyAppState extends State<MyApp> {
     final message = await FirebaseMessaging.instance.getInitialMessage();
     if (message == null) return;
 
-    // Tunggu GetMaterialApp selesai build dulu
     NotificationService.pendingNotificationData = message.data;
   }
 
